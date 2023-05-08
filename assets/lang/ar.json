@@ -1,0 +1,59 @@
+{
+  "Skip" : "تخطي",
+
+  "Welcome" : "مرحبا",
+  "Your health first" : "صحتك أولا",
+  "Get Started" : "البدء",
+
+  "DOCTOR" : "طبيب",
+  "CLIENT" : "عميل",
+  "Welcome My Doctor" : "مرحبا بطبيبي",
+
+  "Register" : "اشترك",
+  "Don' t have an account?" : "ليس لديك حساب؟",
+  "Emaill" : "البريد الالكتروني",
+  "Password" : "كلمة المرور",
+  "Sign In" : "تسجيل الدخول",
+
+  "Home" : "الصفحه الرئيسيه",
+  "Chat" : "محادثة",
+  "reports" : "التقارير",
+  "setting" : "إعدادات",
+
+  "Total" : "الاجمالي",
+  "pay all" : "دفع الكل",
+  "shopping basket" : "سلة المشتريات",
+
+  "type your message here ..." : "اكتب رسالتك هنا ...",
+  "Book a clinic statement" : "حجز كشف عيادة.",
+  "Search by specialty, doctor's name, or hospital" : "       ابحث بالتخصص, اسم الدكتور, او المستشفي ",
+
+  "Cardiologist" : "طبيب قلب",
+  "Ophthalmologist" : "اخصائي بصريات",
+  "Gastroenterologist doctor" : "طبيب الجهاز الهضمي",
+
+  "How Can Help you" : "كيف يمكن أن نساعدك",
+  "To day?" : "اليوم؟",
+
+  "pharmacy" : "صيدليه",
+  "News" : "اخبار",
+
+  "the most chosen majors" : " ... التخصصات الاكثر اختيارا",
+  "leather" : "جلدية",
+  "surgery" : "جراحة",
+  "esoteric" : "باطنة",
+  "bones" : "عظام",
+  "heart disease" : "امراض القلب",
+  "nose and ear" : "انف واذن",
+  "searching for .." : "البحث عن ..",
+
+  "Order your medicines in the easiest way" : "اطلب أدويتك بأسهل طريقه",
+  "Find your medication" : "ابحث عن دوائك",
+  "Search by section" : "ابحث بالقسم...",
+
+  "Search your flight location" : "ابحث في موقع رحلتك"
+
+
+
+
+}
