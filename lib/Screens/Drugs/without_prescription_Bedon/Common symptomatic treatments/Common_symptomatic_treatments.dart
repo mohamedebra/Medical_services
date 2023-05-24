@@ -132,13 +132,13 @@ class _Common_symptomatic_treatmentsState extends State<Common_symptomatic_treat
                             child: Column(
                               children: [
                                 Image(
-                                  image: NetworkImage('${business[7]['image']}'),width: 120,height: 120,),
+                                  image: NetworkImage('${business[1]['image']}'),width: 120,height: 120,),
                                 Text(
-                                    '${business[7]['name']}'),
+                                    '${business[1]['name']}'),
                                 Text(
                                   'عبله',style: TextStyle(color: Colors.grey[300]),),
                                 Text(
-                                    '${business[7]['price']} جنيه'),
+                                    '${business[1]['price']} جنيه'),
                                 InkWell(
                                   onTap: (){
                                     for(var i = 0 ; i >= 100; i++)
@@ -398,7 +398,7 @@ class _Common_symptomatic_treatmentsState extends State<Common_symptomatic_treat
     );
   }
   void getdata()async{
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/products');
+    var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
     if(response.statusCode == 200)
     {
       setState(() {

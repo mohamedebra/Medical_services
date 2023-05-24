@@ -207,7 +207,7 @@ class _News_MedicalState extends State<News_Medical> {
   );
 
   void getdata()async{
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/news');
+    var response = await Dio().get('http://medicalservices.great-site.net/api/v1/news');
     if(response.statusCode == 200)
       {
         setState(() {

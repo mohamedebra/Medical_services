@@ -3,12 +3,12 @@ import 'package:medical_services/Screens/news/webview.dart';
 
 Widget buildAitims(article,context) => InkWell(
   onTap: () {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => WebViewScreen(article['url']),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WebViewScreen(article['url']),
+      ),
+    );
   },
   child: Padding(
     padding: const EdgeInsets.all(20.0),

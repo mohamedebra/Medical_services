@@ -52,7 +52,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   Lang _lang =Lang();
   List business = [];
   void getdata()async{
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/specializations');
+    var response = await Dio().get('http://medicalservices.great-site.net/api/v1/specializations');
     if(response.statusCode == 200)
     {
 
@@ -381,7 +381,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                 CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '${business[5]['name']}',
+                                                    '${business[2]['name']}',
                                                     style: TextStyle(
                                                       fontWeight: FontWeight.bold,
                                                       fontSize: 18,
@@ -430,7 +430,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                             children: [
 
                                               Text(
-                                                '${business[4]['name']}',
+                                                '${business[1]['name']}',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 17,
@@ -532,7 +532,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                         children: [
                                           Expanded(
                                             child: Text(
-                                              '${business[2]['name']}',
+                                              '${business[5]['name']}',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18,
@@ -603,7 +603,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                 width: 22,
                                               ),
                                               Expanded(
-                                                child: Text('${business[1]['name']}',
+                                                child: Text('${business[0]['name']}',
                                                     style: TextStyle(
                                                       fontWeight: FontWeight.bold,
                                                       fontSize: 18,
@@ -644,7 +644,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                             children: [
                                               Expanded(
                                                 child: Text(
-                                                  '${business[0]['name']}',
+                                                  '${business[4]['name']}',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 18,

@@ -124,7 +124,7 @@ class _NotificationsState extends State<Notifications> {
 
     // https:newsapi.org/v2/everything?q=tesla&from=2023-02-09&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
     var response =
-        await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/news');
+        await Dio().get('http://192.168.1.12:8000/api/v1/news');
     if (response.statusCode == 200) {
       setState(() {
         business = response.data['data'] as List;

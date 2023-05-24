@@ -138,7 +138,7 @@ class _ReportsState extends State<Reports> {
   void getdata()async{
 
 
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/products');
+    var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
     // if(response.statusCode == 200)
     // {
     //   setState(() {

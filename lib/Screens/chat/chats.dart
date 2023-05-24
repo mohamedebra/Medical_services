@@ -24,7 +24,6 @@ class Chats extends StatelessWidget {
         var cubit = AppCubit.get(context);
         var users = FirebaseFirestore.instance.collection('users');
         // ignore: unrelated_type_equality_checks
-
         if (cubit.alluser != null || cubit.alluser != 0) {
           List<SocialModel> usersList = [];
           var uId = FirebaseAuth.instance.currentUser!.uid;

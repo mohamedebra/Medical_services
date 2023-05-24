@@ -37,7 +37,7 @@ class Mohammed_Ahmed_Al_Qasabi_chat extends StatelessWidget {
 
                   ),
                   SizedBox(width: 15,),
-                  Text('Dr ,  Mohammed Ahmed',style: TextStyle(fontSize: 20),)
+                  Text('Dr ,  Mohammed Ahmed',style: TextStyle(fontSize: 18),)
                 ],
               ),
             ),

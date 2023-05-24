@@ -37,7 +37,7 @@ class Mohammed_Al_Qabbani_chat extends StatelessWidget {
 
                   ),
                   SizedBox(width: 15,),
-                  Text('Dr , Mohammed Al-Qabbani',style: TextStyle(fontSize: 20),)
+                  Text('Dr , Mohammed Al-Qabbani',style: TextStyle(fontSize: 18),)
                 ],
               ),
             ),

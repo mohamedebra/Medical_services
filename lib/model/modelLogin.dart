@@ -11,7 +11,7 @@ class ModelLogin{
     required email,
     required password,
   }) async{
-    final  url = 'http://ugt.517.mywebsitetransfer.com/api/v1/user/auth/login';
+    final  url = 'http://medicalservices.great-site.net/api/v1/user/auth/login';
     final data = {
       "email" : email,
       "password" : password
@@ -36,7 +36,7 @@ class ModelLogin{
     required name,
     required type,
 }) async{
-    const  url = 'http://ugt.517.mywebsitetransfer.com/api/v1/user/auth/register';
+    const  url = 'http://medicalservices.great-site.net/api/v1/user/auth/register';
     final data = {
       "email" : email,
       "password" : password,
@@ -60,7 +60,7 @@ class ModelLogin{
   static Future buyprodact({
    required product_id,
 })async{
-   final url = "http://ugt.517.mywebsitetransfer.com/api/v1/buy-product";
+   final url = "http://192.168.1.12:8000/buy-product";
    final data = {
      "product_id" : product_id
    };
@@ -91,7 +91,7 @@ class ModelLogin{
  static Future getprodact({
    required category_id,
  })async{
-   final url = "http://ugt.517.mywebsitetransfer.com/api/v1/user-products";
+   final url = "http://192.168.1.12:8000/api/v1/user-products";
    final data = {
      "category_id" : category_id
    };
@@ -120,7 +120,7 @@ class ModelLogin{
 //http://ugt.517.mywebsitetransfer.com/api/v1/products
 //http://ugt.517.mywebsitetransfer.com/api/v1/products
    static Future getreports()async{
-     final url = "http://ugt.517.mywebsitetransfer.com/api/v1/products";
+     final url = "http://192.168.1.12:8000/api/v1/products";
 
      final  dio = Dio();
      Response response;

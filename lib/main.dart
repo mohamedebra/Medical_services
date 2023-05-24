@@ -15,7 +15,6 @@ import 'package:medical_services/Screens/Home/Home.dart';
 import 'package:medical_services/Screens/Home/home_screen.dart';
 import 'package:medical_services/Screens/chat/chats.dart';
 import 'package:medical_services/Screens/news/news.dart';
-import 'package:medical_services/Screens/news/test.dart';
 import 'package:medical_services/Screens/news/webview.dart';
 import 'package:medical_services/Screens/search/search.dart';
 import 'package:medical_services/Screens/setting/language/lang.dart';

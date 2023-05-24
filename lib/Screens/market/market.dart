@@ -54,28 +54,72 @@ class _MarketState extends State<Market> {
                             children: [
                               Row(
                                 children: [
-                                  Container(
-                                    width: 90,
-                                    height: 80,
-                                    child: Image(
-                                      image: NetworkImage(
-                                          '${business[index]['image']}'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   width: 90,
+                                  //   height: 80,
+                                  //   child: Image(
+                                  //     image: NetworkImage(
+                                  //         '${business[index]['image']}'),
+                                  //     fit: BoxFit.cover,
+                                  //   ),
+                                  // ),
                                   SizedBox(
                                     width: 15,
                                   ),
                                   Expanded(
                                     child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text('${business[index]['desc']}'),
+                                        Image(
+                                          image: AssetImage('images/بيستر.jpg'),width: 80,height: 90,),
                                         Text(
-                                          'عبله',
-                                          style: TextStyle(
-                                              color: Colors.grey[300]),
+                                            'بيستر يليانت مطهر طبي وجراحي'),
+                                        Text(
+                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
+                                        Text(
+                                            '120 جنيه'),
+                                        Container(
+                                          height: 1,
+                                          width: double.infinity,
+                                          color: Colors.grey[300],
                                         ),
-                                        Text('${business[index]['price']}'),
+                                        Image(
+                                          image: AssetImage('images/ايفوني.jpg'),width: 80,height: 100,),
+                                        Text(
+                                            'ايفوني ماسك'),
+                                        Text(
+                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
+                                        Text(
+                                            '90 جنيه'),
+                                        Container(
+                                          height: 1,
+                                          width: double.infinity,
+                                          color: Colors.grey[300],
+                                        ),
+                                        Image(
+                                          image: AssetImage('images/Pure .jpg'),width: 90,height: 100,),
+                                        Text(
+                                            'Pure Aloohol ethyl Alcohol'),
+                                        Text(
+                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
+                                        Text(
+                                            '20 جنيه'),
+                                        Container(
+                                          height: 1,
+                                          width: double.infinity,
+                                          color: Colors.grey[300],
+                                        ),
+                                        Image(
+                                          image: AssetImage('images/هيد اند شولدرز .jpg'),width: 90,height: 100,),
+                                        Text(
+                                            'يد اند شولدرز منتول فريش ضد القشره'),
+                                        Text(
+                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
+                                        Text(
+                                            '55 جنيه'),
+
+
+
                                       ],
                                     ),
                                   ),
@@ -94,7 +138,7 @@ class _MarketState extends State<Market> {
                           height: 1,
                           color: Colors.grey[300],
                         ),
-                    itemCount: business.length),
+                    itemCount: 1),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 25),
@@ -161,18 +205,29 @@ class _MarketState extends State<Market> {
   }
 
   void getdata()async{
+
     var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
     if(response.statusCode == 200)
     {
-      for(int i = 0; i >=100; i++ )
-        print('${response.data[i]["product_id"]} ======');
+      // for(int i = 0; i >=100; i++ ) {
+      //   print('${response.data[i]["product_id"]} ===222===');
+      // }
 
       setState(() {
-        for(int i = 0; i >=100; i++ )
+        for(var i = 0 ; i >= 100; i++) {
+          var id = ModelLogin.buyprodact(product_id: First_aid.business[i]['id']);
+          print("$id ......");
+        }
+        for(int i = 0; i >= 100; i++ )
+          business = response.data[First_aid.business[i]['id']]['data'] ;
 
-          business = response.data[i]['data'] as List ;
+
+
       });
-      print(response.data);
+      // print(response.data);
+      var id = ModelLogin.buyprodact(product_id: First_aid.business[4]['id']);
+      print("$id ......");
+      print(business);
       print('${response.statusCode}=======' );
 
     }

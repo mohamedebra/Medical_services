@@ -108,7 +108,7 @@ class _SearchState extends State<Search> {
                   (route) => false);
             },
             icon: Icon(Icons.arrow_back_ios)),
-        title: const Text('Reservation'),
+        title: const Text('information'),
         centerTitle: true,
       ),
       body: BlocProvider(
@@ -122,293 +122,316 @@ class _SearchState extends State<Search> {
                 child: Column(
                   children: [
                     
-                    SizedBox(
-                      height: 70,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Patient name',
-                              style: TextStyle(
-                                  fontSize: 17, color: Colors.grey[400]),
-                            ),
+                    // SizedBox(
+                    //   height: 70,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Padding(
+                    //         padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //         child: Text(
+                    //           'Patient name',
+                    //           style: TextStyle(
+                    //               fontSize: 17, color: Colors.grey[400]),
+                    //         ),
+                    //       ),
+                    //       TextFormField(
+                    //           controller: passwordcontrollr,
+                    //           keyboardType: TextInputType.visiblePassword,
+                    //           validator: (val) {
+                    //             if (val!.isEmpty) {
+                    //               return 'Please enter your Patient name';
+                    //             }
+                    //           },
+                    //           onFieldSubmitted: (value) {
+                    //             // if(formKey.currentState!.validate()){
+                    //             //   Logincubit.get(context)(
+                    //             //       email: emailcontrollr.text,
+                    //             //       password: passwordcontrollr.text
+                    //             //   );
+                    //             // }
+                    //           },
+                    //           decoration: InputDecoration(
+                    //             prefixIcon: Icon(Icons.person),
+                    //             // suffix: Icon(Icons.remove_red_eye_rounded),
+                    //             hintText: '*******',
+                    //             hintStyle: TextStyle(color: Colors.grey[400]),
+                    //             border: OutlineInputBorder(
+                    //                 borderRadius: BorderRadius.circular(20)),
+                    //           )),
+                    //       Padding(
+                    //         padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //         child: Text(
+                    //           'Choose a specialty',
+                    //           style: TextStyle(
+                    //               fontSize: 17, color: Colors.grey[400]),
+                    //         ),
+                    //       ),
+                    //       TextFormField(
+                    //           onChanged: (val){
+                    //             showBottomSheet(context: context, builder: (BuildContext context) {
+                    //               return  Container(
+                    //                 height: 300,
+                    //                 child: ListView.separated(
+                    //                   itemBuilder:  (context,index) {
+                    //                     return user(itemsUsers[index],index);
+                    //                   },
+                    //                   itemCount: itemsUsers.length,
+                    //                   separatorBuilder: (BuildContext context, int index)=> Padding(
+                    //                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //                     child: Container(
+                    //                       width: double.infinity,
+                    //                       height: 1,
+                    //                       color: Colors.grey,
+                    //
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               );
+                    //             });
+                    //
+                    //             setState(() {
+                    //               val = userlastcontrollr.text;
+                    //             });
+                    //           },
+                    //           onTap: (){
+                    //             showBottomSheet(context: context, builder: (BuildContext context) {
+                    //               return  Container(
+                    //                 color: Colors.grey[200],
+                    //                 height: 300,
+                    //                 child: ListView.separated(
+                    //                   itemBuilder:  (context,index) {
+                    //                     return user(itemsUsers[index],index);
+                    //                   },
+                    //                   itemCount: itemsUsers.length,
+                    //                   separatorBuilder: (BuildContext context, int index)=> Padding(
+                    //                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //                     child: Container(
+                    //                       width: double.infinity,
+                    //                       height: 1,
+                    //                       color: Colors.grey,
+                    //
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               );
+                    //             });
+                    //
+                    //           },
+                    //           controller: userlastcontrollr,
+                    //           keyboardType: TextInputType.emailAddress,
+                    //           validator: (val) {
+                    //             if (val!.isEmpty) {
+                    //               return 'Please enter your specialty';
+                    //             }
+                    //             return null;
+                    //           },
+                    //           decoration: InputDecoration(
+                    //               hintText: '*****',
+                    //               hintStyle: TextStyle(color: Colors.grey[400]),
+                    //               prefixIcon: Icon(Icons.person),
+                    //               prefixIconColor: Colors.grey[500],
+                    //               border: OutlineInputBorder(
+                    //                   borderRadius: BorderRadius.circular(20)))),
+                    //       Padding(
+                    //         padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //         child: Text(
+                    //           'Mobile number',
+                    //           style: TextStyle(
+                    //               fontSize: 17, color: Colors.grey[400]),
+                    //         ),
+                    //       ),
+                    //       TextFormField(
+                    //           controller: phonecontrollr,
+                    //           keyboardType: TextInputType.phone,
+                    //           validator: (val) {
+                    //             if (val!.isEmpty) {
+                    //               return 'Please enter your Mobile Number';
+                    //             }
+                    //           },
+                    //           onFieldSubmitted: (value) {
+                    //             // if(formKey.currentState!.validate()){
+                    //             //   Logincubit.get(context)(
+                    //             //       email: emailcontrollr.text,
+                    //             //       password: passwordcontrollr.text
+                    //             //   );
+                    //             // }
+                    //           },
+                    //           decoration: InputDecoration(
+                    //             prefixIcon: Icon(IconBroken.Call),
+                    //             hintText: '+20 Phone',
+                    //             hintStyle: TextStyle(color: Colors.grey[400]),
+                    //             border: OutlineInputBorder(
+                    //                 borderRadius: BorderRadius.circular(20)),
+                    //           )),
+                    //       Padding(
+                    //         padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //         child: Text(
+                    //           'Place',
+                    //           style: TextStyle(
+                    //               fontSize: 17, color: Colors.grey[400]),
+                    //         ),
+                    //       ),
+                    //       TextFormField(
+                    //         onTap: (){
+                    //           showBottomSheet(context: context, builder: (BuildContext context) {
+                    //             return  Container(
+                    //               color: Colors.grey[300],
+                    //               height: 300,
+                    //               child: ListView.separated(
+                    //                 itemBuilder:  (context,index) {
+                    //                   return plase(itemsemailcontrollr[index],index);
+                    //                 },
+                    //                 itemCount: itemsemailcontrollr.length,
+                    //                 separatorBuilder: (BuildContext context, int index)=> Padding(
+                    //                   padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //                   child: Container(
+                    //                     width: double.infinity,
+                    //                     height: 1,
+                    //                     color: Colors.grey,
+                    //
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             );
+                    //           });
+                    //
+                    //         },
+                    //           onChanged: (value){
+                    //             showBottomSheet(context: context, builder: (BuildContext context) {
+                    //               return  Container(
+                    //                 height: 300,
+                    //                 child: ListView.separated(
+                    //                   itemBuilder:  (context,index) {
+                    //                     return plase(itemsemailcontrollr[index],index);
+                    //                   },
+                    //                   itemCount: itemsemailcontrollr.length,
+                    //                   separatorBuilder: (BuildContext context, int index)=> Padding(
+                    //                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //                     child: Container(
+                    //                       width: double.infinity,
+                    //                       height: 1,
+                    //                       color: Colors.grey,
+                    //
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               );
+                    //             });
+                    //
+                    //             setState(() {
+                    //               value = emailcontrollr.text;
+                    //             });
+                    //           },
+                    //           controller: emailcontrollr,
+                    //           keyboardType: TextInputType.emailAddress,
+                    //           validator: (val) {
+                    //             if (val!.isEmpty) {
+                    //               return 'Please enter your Place';
+                    //             }
+                    //           },
+                    //           onFieldSubmitted: (value) {
+                    //             // if(formKey.currentState!.validate()){
+                    //             //   Logincubit.get(context)(
+                    //             //       email: emailcontrollr.text,
+                    //             //       password: passwordcontrollr.text
+                    //             //   );
+                    //             // }
+                    //           },
+                    //           decoration: InputDecoration(
+                    //             prefixIcon: Icon(Icons.location_on),
+                    //             hintText: '*******',
+                    //             hintStyle: TextStyle(color: Colors.grey[400]),
+                    //             border: OutlineInputBorder(
+                    //                 borderRadius: BorderRadius.circular(20)),
+                    //
+                    //           )),
+                    //
+                    //     ],
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 30,
+                    // ),
+                    // Row(
+                    //   crossAxisAlignment: CrossAxisAlignment.center,
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Container(
+                    //       width: 270,
+                    //       height: 55,
+                    //       decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.circular(10),
+                    //         color: Colors.blue[300],
+                    //
+                    //       ),
+                    //       child: TextButton(
+                    //           onPressed: ()async
+                    //           {
+                    //             if(formKey.currentState!.validate()){
+                    //               // Fluttertoast.showToast(
+                    //               //     msg: "Reservation requested",
+                    //               //     toastLength: Toast.LENGTH_LONG,
+                    //               //     gravity: ToastGravity.CENTER,
+                    //               //     timeInSecForIosWeb: 2,
+                    //               //     backgroundColor: Colors.blueGrey,
+                    //               //     textColor: Colors.white,
+                    //               //     fontSize: 16.0
+                    //               // );
+                    //               Navigator.push(context, MaterialPageRoute(builder: (context) => Card_Search()));
+                    //             }
+                    //           },
+                    //           child: Center(
+                    //             child: Text(
+                    //               'Reservation request',
+                    //               style: TextStyle(
+                    //                 color: Colors.white,
+                    //                 fontSize: 24,
+                    //               ),
+                    //             ),
+                    //           )),
+                    //     ),
+                    //   ],
+                    // ),
+                    Container(
+                      height: 85,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextFormField(
+                          controller: usercontrollr,
+                          decoration: InputDecoration(
+                              hintText: "Please enter text",
+                              hintStyle: TextStyle(color: Colors.grey[400]),
+                              border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20)
+                            )
                           ),
-                          TextFormField(
-                              controller: passwordcontrollr,
-                              keyboardType: TextInputType.visiblePassword,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter your Patient name';
-                                }
-                              },
-                              onFieldSubmitted: (value) {
-                                // if(formKey.currentState!.validate()){
-                                //   Logincubit.get(context)(
-                                //       email: emailcontrollr.text,
-                                //       password: passwordcontrollr.text
-                                //   );
-                                // }
-                              },
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.person),
-                                // suffix: Icon(Icons.remove_red_eye_rounded),
-                                hintText: '*******',
-                                hintStyle: TextStyle(color: Colors.grey[400]),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Choose a specialty',
-                              style: TextStyle(
-                                  fontSize: 17, color: Colors.grey[400]),
-                            ),
-                          ),
-                          TextFormField(
-                              onChanged: (val){
-                                showBottomSheet(context: context, builder: (BuildContext context) {
-                                  return  Container(
-                                    height: 300,
-                                    child: ListView.separated(
-                                      itemBuilder:  (context,index) {
-                                        return user(itemsUsers[index],index);
-                                      },
-                                      itemCount: itemsUsers.length,
-                                      separatorBuilder: (BuildContext context, int index)=> Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 1,
-                                          color: Colors.grey,
-
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                });
-
-                                setState(() {
-                                  val = userlastcontrollr.text;
-                                });
-                              },
-                              onTap: (){
-                                showBottomSheet(context: context, builder: (BuildContext context) {
-                                  return  Container(
-                                    color: Colors.grey[200],
-                                    height: 300,
-                                    child: ListView.separated(
-                                      itemBuilder:  (context,index) {
-                                        return user(itemsUsers[index],index);
-                                      },
-                                      itemCount: itemsUsers.length,
-                                      separatorBuilder: (BuildContext context, int index)=> Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 1,
-                                          color: Colors.grey,
-
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                });
-
-                              },
-                              controller: userlastcontrollr,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter your specialty';
-                                }
-                                return null;
-                              },
-                              decoration: InputDecoration(
-                                  hintText: '*****',
-                                  hintStyle: TextStyle(color: Colors.grey[400]),
-                                  prefixIcon: Icon(Icons.person),
-                                  prefixIconColor: Colors.grey[500],
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20)))),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Mobile number',
-                              style: TextStyle(
-                                  fontSize: 17, color: Colors.grey[400]),
-                            ),
-                          ),
-                          TextFormField(
-                              controller: phonecontrollr,
-                              keyboardType: TextInputType.phone,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter your Mobile Number';
-                                }
-                              },
-                              onFieldSubmitted: (value) {
-                                // if(formKey.currentState!.validate()){
-                                //   Logincubit.get(context)(
-                                //       email: emailcontrollr.text,
-                                //       password: passwordcontrollr.text
-                                //   );
-                                // }
-                              },
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(IconBroken.Call),
-                                hintText: '+20 Phone',
-                                hintStyle: TextStyle(color: Colors.grey[400]),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Place',
-                              style: TextStyle(
-                                  fontSize: 17, color: Colors.grey[400]),
-                            ),
-                          ),
-                          TextFormField(
-                            onTap: (){
-                              showBottomSheet(context: context, builder: (BuildContext context) {
-                                return  Container(
-                                  color: Colors.grey[300],
-                                  height: 300,
-                                  child: ListView.separated(
-                                    itemBuilder:  (context,index) {
-                                      return plase(itemsemailcontrollr[index],index);
-                                    },
-                                    itemCount: itemsemailcontrollr.length,
-                                    separatorBuilder: (BuildContext context, int index)=> Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 1,
-                                        color: Colors.grey,
-
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              });
-
-                            },
-                              onChanged: (value){
-                                showBottomSheet(context: context, builder: (BuildContext context) {
-                                  return  Container(
-                                    height: 300,
-                                    child: ListView.separated(
-                                      itemBuilder:  (context,index) {
-                                        return plase(itemsemailcontrollr[index],index);
-                                      },
-                                      itemCount: itemsemailcontrollr.length,
-                                      separatorBuilder: (BuildContext context, int index)=> Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 1,
-                                          color: Colors.grey,
-
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                });
-
-                                setState(() {
-                                  value = emailcontrollr.text;
-                                });
-                              },
-                              controller: emailcontrollr,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter your Place';
-                                }
-                              },
-                              onFieldSubmitted: (value) {
-                                // if(formKey.currentState!.validate()){
-                                //   Logincubit.get(context)(
-                                //       email: emailcontrollr.text,
-                                //       password: passwordcontrollr.text
-                                //   );
-                                // }
-                              },
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.location_on),
-                                hintText: '*******',
-                                hintStyle: TextStyle(color: Colors.grey[400]),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-
-                              )),
-
-                        ],
+                          onChanged: (String val){
+                            getsearch(val);
+                          },
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 270,
-                          height: 55,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue[300],
-
-                          ),
-                          child: TextButton(
-                              onPressed: ()async
-                              {
-                                if(formKey.currentState!.validate()){
-                                  // Fluttertoast.showToast(
-                                  //     msg: "Reservation requested",
-                                  //     toastLength: Toast.LENGTH_LONG,
-                                  //     gravity: ToastGravity.CENTER,
-                                  //     timeInSecForIosWeb: 2,
-                                  //     backgroundColor: Colors.blueGrey,
-                                  //     textColor: Colors.white,
-                                  //     fontSize: 16.0
-                                  // );
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Card_Search()));
-                                }
-                              },
-                              child: Center(
-                                child: Text(
-                                  'Reservation request',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                  ),
-                                ),
-                              )),
-                        ),
-                      ],
-                    ),
                     
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).size.height * .40,
-                    //   child: ConditionalBuilder(
-                    //       condition: Search.business.length > 0,
-                    //       builder: (context) => ListView.separated(
-                    //           itemBuilder: (context, index) =>
-                    //               buildAitims(Search.business[index], context),
-                    //           separatorBuilder: (context, index) => Container(),
-                    //           itemCount: Search.business.length),
-                    //       fallback: (context) =>
-                    //           Center(child: CircularProgressIndicator())),
-                    // ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .70,
+                      child: ConditionalBuilder(
+                          condition: Search.business.length > 0,
+                          builder: (context) => ListView.separated(
+                              itemBuilder: (context, index) =>
+                                  buildAitims(Search.business[index], context),
+
+                              separatorBuilder: (context, index) => Container(),
+                              itemCount: Search.business.length),
+                          fallback: (context) =>
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: Center(child:  LinearProgressIndicator()),
+                              )),
+                    ),
                   ],
                 ),
               ),
@@ -420,6 +443,7 @@ class _SearchState extends State<Search> {
   }
 
   List<dynamic> search = [];
+  List<dynamic> error = [];
   void getsearch(String val) async {
     search = [];
     // DioHelper.getData(
@@ -447,14 +471,19 @@ class _SearchState extends State<Search> {
     // &sortBy=publishedAt
     // &apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
     var response = await Dio().get(
-        'https://newsapi.org/v2/top-headlines?country=$val&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc');
+
+        //'https://newsapi.org/v2/everything?q=$val&from=2023-04-16&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'
+       "https://newsapi.org/v2/everything?q=$val&from=2023-04-21&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc"
+
+    );
     if (response.statusCode == 200) {
       setState(() {
         Search.business = response.data['articles'] as List;
       });
-    } else {
-      print(response.statusCode);
-    }
+    } else if(response.statusCode == 426){
+      setState(() {
+        error = response.data['message'] as List;
+      });    }
   }
 
   Widget articleBulider(search, context) => ConditionalBuilder(
