@@ -13,7 +13,9 @@ class My_Appointments extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 45,),
+            SizedBox(
+              height: 45,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Card(
@@ -33,39 +35,46 @@ class My_Appointments extends StatelessWidget {
                                 children: [
                                   Stack(
                                     children: [
-                                      Image(image: AssetImage('images/doctor2.png'),
+                                      Image(
+                                        image: AssetImage('images/doctor2.png'),
                                         width: 70,
                                         height: 70,
-
                                       ),
                                       // Icon(Icons.messenger_outlined,color: Colors.blue,size: 20,)
-
                                     ],
                                     alignment: Alignment.bottomRight,
                                   ),
-                                  SizedBox(width: 25,),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('Dr ,  Wafaa Abu Talib',style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),),
+                                      Text(
+                                        'Dr ,  Wafaa Abu Talib',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('Gastroenterologist doctor',style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.grey
-                                      ),),
+                                      Text(
+                                        'Gastroenterologist doctor',
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.grey),
+                                      ),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('09:00 AM  - 04:00 PM',style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.blue[300]
-                                      ),),
-
+                                      Text(
+                                        '09:00 AM  - 04:00 PM',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Colors.blue[300]),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -73,14 +82,15 @@ class My_Appointments extends StatelessWidget {
                             ),
                           ],
                         ),
-
                       ],
                     )
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Card(
@@ -100,40 +110,46 @@ class My_Appointments extends StatelessWidget {
                                 children: [
                                   Stack(
                                     children: [
-                                      Image(image: AssetImage('images/doctor.png'),
+                                      Image(
+                                        image: AssetImage('images/doctor.png'),
                                         width: 70,
                                         height: 70,
-
                                       ),
                                       // Icon(Icons.messenger_outlined,color: Colors.blue,size: 20,)
-
                                     ],
                                     alignment: Alignment.bottomRight,
                                   ),
-                                  SizedBox(width: 25,),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('Dr ,  Mohamed Ebrahim',style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),),
+                                      Text(
+                                        'Dr ,  Mohamed Ebrahim',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('Cardiologistr',style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.grey
-                                      ),),
+                                      Text(
+                                        'Cardiologistr',
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.grey),
+                                      ),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('09:00 AM  - 04:00 PM',style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.blue[300]
-                                      ),),
-
-
+                                      Text(
+                                        '09:00 AM  - 04:00 PM',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Colors.blue[300]),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -141,14 +157,15 @@ class My_Appointments extends StatelessWidget {
                             ),
                           ],
                         ),
-
                       ],
                     )
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Card(
@@ -168,41 +185,47 @@ class My_Appointments extends StatelessWidget {
                                 children: [
                                   Stack(
                                     children: [
-                                      Image(image: AssetImage('images/doctor3.png'),
+                                      Image(
+                                        image: AssetImage('images/doctor3.png'),
                                         width: 70,
                                         height: 70,
-
                                       ),
                                       // Icon(Icons.messenger_outlined,color: Colors.blue,size: 20,)
-
                                     ],
                                     alignment: Alignment.bottomRight,
                                   ),
-                                  SizedBox(width: 25,),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('Dr ,  Hossam Mohamed',style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                      Text(
+                                        'Dr ,  Hossam Mohamed',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                        maxLines: 2,
                                       ),
-                                      maxLines: 2,),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('Ophthalmologist',style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.grey
-                                      ),),
+                                      Text(
+                                        'Ophthalmologist',
+                                        style: TextStyle(
+                                            fontSize: 15, color: Colors.grey),
+                                      ),
                                       SizedBox(
                                         height: 7,
                                       ),
-                                      Text('09:00 AM  - 04:00 PM',style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.blue[300]
-                                      ),),
-
-
+                                      Text(
+                                        '09:00 AM  - 04:00 PM',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Colors.blue[300]),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -210,15 +233,12 @@ class My_Appointments extends StatelessWidget {
                             ),
                           ],
                         ),
-
                       ],
                     )
                   ],
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

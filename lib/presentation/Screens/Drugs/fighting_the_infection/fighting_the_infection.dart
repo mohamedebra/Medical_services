@@ -7,16 +7,16 @@ import 'package:medical_services/presentation/Screens/Drugs/fighting_the_infecti
 import 'package:medical_services/presentation/Screens/Drugs/fighting_the_infection/fighting_the_infection/fighting_the_infectionn.dart';
 
 class Fighting_the_infection extends StatelessWidget {
-  Lang _lang =Lang();
+  Lang _lang = Lang();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getfightingtheinfection(),style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20
-        ),),
+        title: Text(
+          _lang.getfightingtheinfection(),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -28,8 +28,8 @@ class Fighting_the_infection extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-
-                      image: NetworkImage("https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg"),
+                      image: NetworkImage(
+                          "https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -39,7 +39,8 @@ class Fighting_the_infection extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                      image: NetworkImage("https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854034.jpg"),
+                      image: NetworkImage(
+                          "https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854034.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -49,7 +50,8 @@ class Fighting_the_infection extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                      image: NetworkImage("https://img.freepik.com/free-photo/young-male-psysician-with-patient-measuring-blood-pressure_1303-17877.jpg"),
+                      image: NetworkImage(
+                          "https://img.freepik.com/free-photo/young-male-psysician-with-patient-measuring-blood-pressure_1303-17877.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -57,7 +59,7 @@ class Fighting_the_infection extends StatelessWidget {
               ],
               options: CarouselOptions(
                 height: 220,
-                aspectRatio: 16/1,
+                aspectRatio: 16 / 1,
                 viewportFraction: 0.8,
                 initialPage: 0,
                 enableInfiniteScroll: true,
@@ -69,29 +71,40 @@ class Fighting_the_infection extends StatelessWidget {
                 enlargeCenterPage: true,
                 enlargeFactor: 0.3,
                 scrollDirection: Axis.horizontal,
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(_lang.getfightingtheinfection(),style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600),),
+            child: Text(
+              _lang.getfightingtheinfection(),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+            ),
           ),
           Row(
             children: [
               Expanded(
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> fighting_the_infectionn()));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => fighting_the_infectionn()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Image(image: AssetImage('images/12345.jpg'),width: 95,),
-                        SizedBox(height: 10,),
-                        Text(_lang.getfightingtheinfection(),style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15
-                        ),)
+                        Image(
+                          image: AssetImage('images/12345.jpg'),
+                          width: 95,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          _lang.getfightingtheinfection(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        )
                       ],
                     ),
                   ),
@@ -99,18 +112,28 @@ class Fighting_the_infection extends StatelessWidget {
               ),
               Expanded(
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Alcohol_and_sterilization()));
-
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Alcohol_and_sterilization()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Image(image: AssetImage('images/4001.jpg'),width: 150,),
-                        SizedBox(height: 10,),
-
-                        Text(_lang.getAlcoholandsterilization(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)
+                        Image(
+                          image: AssetImage('images/4001.jpg'),
+                          width: 150,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          _lang.getAlcoholandsterilization(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        )
                       ],
                     ),
                   ),
@@ -118,30 +141,35 @@ class Fighting_the_infection extends StatelessWidget {
               ),
               Expanded(
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> face_masks()));
-
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => face_masks()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Image(image: AssetImage('images/210.jpg'),width: 94,),
-                        const SizedBox(height: 10,),
-                        Text(_lang.getfacemasks(),style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
+                        Image(
+                          image: AssetImage('images/210.jpg'),
+                          width: 94,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          _lang.getfacemasks(),
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
-
-
         ],
       ),
     );
   }
 }
-

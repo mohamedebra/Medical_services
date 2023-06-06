@@ -7,7 +7,6 @@ import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/Re
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/Talaat%20Al-Lisi.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/mohamed_saeed.dart';
 
-
 class Inside extends StatefulWidget {
   const Inside({Key? key}) : super(key: key);
 
@@ -26,22 +25,21 @@ class _InsideState extends State<Inside> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getInternaldoctors(),style: TextStyle(fontSize: 20),),
-
+        title: Text(
+          _lang.getInternaldoctors(),
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 40,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 40, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -53,7 +51,6 @@ class _InsideState extends State<Inside> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -63,8 +60,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -75,7 +71,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد محمد.jpg'),
+                                          image: AssetImage(
+                                              'images/احمد محمد.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -90,7 +87,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,Ahmed Mohamed Abdel-Al',
@@ -127,11 +125,7 @@ class _InsideState extends State<Inside> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -143,7 +137,6 @@ class _InsideState extends State<Inside> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -153,8 +146,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -165,7 +157,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/اماني عبد المقصود.jpg'),
+                                          image: AssetImage(
+                                              'images/اماني عبد المقصود.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -180,7 +173,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,Amani Abd al-Maqsud Shulgami',
@@ -217,23 +211,16 @@ class _InsideState extends State<Inside> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Mohamed_saeed()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Mohamed_saeed()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -243,8 +230,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -255,7 +241,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/Muhammad Saeed Rushdi.jpg'),
+                                          image: AssetImage(
+                                              'images/Muhammad Saeed Rushdi.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -270,7 +257,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , Muhammad Saeed Rushdi',
@@ -307,11 +295,7 @@ class _InsideState extends State<Inside> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -323,7 +307,6 @@ class _InsideState extends State<Inside> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -333,8 +316,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -345,7 +327,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/ريم عبد المنعم.jpg'),
+                                          image: AssetImage(
+                                              'images/ريم عبد المنعم.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -360,7 +343,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , Reem Abdel Moneim',
@@ -397,23 +381,16 @@ class _InsideState extends State<Inside> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Talaat_Al_Lisi()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Talaat_Al_Lisi()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -423,8 +400,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -435,7 +411,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/طلعت الليسي.jpg'),
+                                          image: AssetImage(
+                                              'images/طلعت الليسي.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -450,7 +427,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , Talaat Al-Lisi',
@@ -487,23 +465,16 @@ class _InsideState extends State<Inside> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Ahmed_Dweik()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Ahmed_Dweik()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -513,8 +484,7 @@ class _InsideState extends State<Inside> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -525,7 +495,8 @@ class _InsideState extends State<Inside> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد دويك .jpg'),
+                                          image: AssetImage(
+                                              'images/احمد دويك .jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -540,7 +511,8 @@ class _InsideState extends State<Inside> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , Ahmed Dweik',
@@ -575,7 +547,6 @@ class _InsideState extends State<Inside> {
               ),
             ),
           ),
-
         ],
       ),
     );

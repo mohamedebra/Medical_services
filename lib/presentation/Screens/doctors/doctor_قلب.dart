@@ -6,7 +6,6 @@ import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiolog
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiology%20consultant/Khaled%20Essam.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiology%20consultant/Muhammad%20Farooq.dart';
 
-
 class Heart extends StatefulWidget {
   const Heart({Key? key}) : super(key: key);
 
@@ -25,21 +24,21 @@ class _HeartState extends State<Heart> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getCardiologists(),style: TextStyle(fontSize: 20),),
+        title: Text(
+          _lang.getCardiologists(),
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 40,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 40, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -51,7 +50,6 @@ class _HeartState extends State<Heart> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -61,8 +59,7 @@ class _HeartState extends State<Heart> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -73,7 +70,8 @@ class _HeartState extends State<Heart> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد السيد.jpg'),
+                                          image: AssetImage(
+                                              'images/احمد السيد.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -88,7 +86,8 @@ class _HeartState extends State<Heart> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Ahmed El-Sayed Tawfiq',
@@ -125,23 +124,16 @@ class _HeartState extends State<Heart> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Khaled_Essam()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Khaled_Essam()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -151,8 +143,7 @@ class _HeartState extends State<Heart> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -163,7 +154,8 @@ class _HeartState extends State<Heart> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/خالد عصام .jpg'),
+                                          image: AssetImage(
+                                              'images/خالد عصام .jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -178,7 +170,8 @@ class _HeartState extends State<Heart> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Khaled Essam',
@@ -215,23 +208,16 @@ class _HeartState extends State<Heart> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Ahmed_Badir()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Ahmed_Badir()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -241,8 +227,7 @@ class _HeartState extends State<Heart> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -253,7 +238,8 @@ class _HeartState extends State<Heart> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/Ahmed Badir.jpg'),
+                                          image: AssetImage(
+                                              'images/Ahmed Badir.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -268,7 +254,8 @@ class _HeartState extends State<Heart> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Ahmed Badir',
@@ -305,23 +292,16 @@ class _HeartState extends State<Heart> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Adel_Othman()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Adel_Othman()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -331,8 +311,7 @@ class _HeartState extends State<Heart> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -343,7 +322,8 @@ class _HeartState extends State<Heart> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/عادل عثمان.jpg'),
+                                          image: AssetImage(
+                                              'images/عادل عثمان.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -358,7 +338,8 @@ class _HeartState extends State<Heart> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Adel Othman',
@@ -395,23 +376,16 @@ class _HeartState extends State<Heart> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Muhammad_Farooq()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Muhammad_Farooq()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -421,8 +395,7 @@ class _HeartState extends State<Heart> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -433,7 +406,8 @@ class _HeartState extends State<Heart> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/محمد فاروق.jpg'),
+                                          image: AssetImage(
+                                              'images/محمد فاروق.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -448,7 +422,8 @@ class _HeartState extends State<Heart> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Muhammad Farooq',

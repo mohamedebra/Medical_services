@@ -6,10 +6,10 @@ class BaordindModel {
   BaordindModel({required this.image, required this.title, required this.body});
 }
 
-class SliderViewObject{
+class SliderViewObject {
   BaordindModel baordindModel;
   int numOfSlides;
   int currentIndex;
 
-  SliderViewObject(this.baordindModel,this.currentIndex,this.numOfSlides);
+  SliderViewObject(this.baordindModel, this.currentIndex, this.numOfSlides);
 }

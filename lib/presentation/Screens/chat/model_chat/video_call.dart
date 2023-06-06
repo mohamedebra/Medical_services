@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_services/presentation/Screens/chat/model_chat/model_chat.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:video_player/video_player.dart';
+
 class Vedio_call extends StatefulWidget {
   const Vedio_call({Key? key}) : super(key: key);
 
@@ -18,7 +19,6 @@ class _Vedio_callState extends State<Vedio_call> {
   int? _remoteUid;
   bool _localUserJoined = false;
   static const appId = "23412a0608db4cc9a582f158bae53777";
-
 
   @override
   void initState() {
@@ -51,15 +51,14 @@ class _Vedio_callState extends State<Vedio_call> {
               child: Center(
                 child: _localUserJoined
                     ? AgoraVideoView(
-                  controller: VideoViewController(
-                    rtcEngine: _engine,
-                    canvas: const VideoCanvas(
-                        uid:0,
-                        setupMode:VideoViewSetupMode.videoViewSetupAdd,
-                        view: 2
-                    ),
-                  ),
-                )
+                        controller: VideoViewController(
+                          rtcEngine: _engine,
+                          canvas: const VideoCanvas(
+                              uid: 0,
+                              setupMode: VideoViewSetupMode.videoViewSetupAdd,
+                              view: 2),
+                        ),
+                      )
                     : const CircularProgressIndicator(),
               ),
             ),
@@ -68,7 +67,6 @@ class _Vedio_callState extends State<Vedio_call> {
       ),
     );
   }
-
 
   // Future<void> initAgora()async{
   //   await [Permission.microphone ,Permission.camera].request();
@@ -132,8 +130,7 @@ class _Vedio_callState extends State<Vedio_call> {
 
     //create the engine
     _engine = createAgoraRtcEngine();
-    await _engine.initialize(
-        const RtcEngineContext(
+    await _engine.initialize(const RtcEngineContext(
       appId: appId,
       channelProfile: ChannelProfileType.channelProfileLiveBroadcasting,
     ));
@@ -152,14 +149,16 @@ class _Vedio_callState extends State<Vedio_call> {
             _remoteUid = remoteUid;
           });
         },
-        onUserOffline: (RtcConnection connection, int remoteUid, UserOfflineReasonType reason) {
+        onUserOffline: (RtcConnection connection, int remoteUid,
+            UserOfflineReasonType reason) {
           debugPrint("remote user $remoteUid left channel");
           setState(() {
             _remoteUid = null;
           });
         },
         onTokenPrivilegeWillExpire: (RtcConnection connection, String token) {
-          debugPrint('[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token');
+          debugPrint(
+              '[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token');
         },
       ),
     );

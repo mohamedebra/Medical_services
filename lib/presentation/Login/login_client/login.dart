@@ -98,16 +98,15 @@ class _LoginState extends State<Login> {
                 context,
                 MaterialPageRoute(builder: (context) => Home()),
                 (route) => false);
-              Fluttertoast.showToast(
-                  msg: "Welcome Medical +",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.CENTER,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.blueGrey,
-                  textColor: Colors.white,
-                  fontSize: 16.0
-              );
-          }else if(state is MedicalLoginErrorState){
+            Fluttertoast.showToast(
+                msg: "Welcome Medical +",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 2,
+                backgroundColor: Colors.blueGrey,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else if (state is MedicalLoginErrorState) {
             Fluttertoast.showToast(
                 msg: "The Email or password is wrong",
                 toastLength: Toast.LENGTH_LONG,
@@ -115,10 +114,8 @@ class _LoginState extends State<Login> {
                 timeInSecForIosWeb: 2,
                 backgroundColor: Colors.blueGrey,
                 textColor: Colors.white,
-                fontSize: 16.0
-            );
+                fontSize: 16.0);
           }
-
         },
         builder: (context, state) {
           var cubit = AppCubit.get(context);
@@ -147,7 +144,6 @@ class _LoginState extends State<Login> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         .35),
-
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -199,14 +195,6 @@ class _LoginState extends State<Login> {
                                       if (val!.isEmpty) {
                                         return 'Please enter your password';
                                       }
-                                    },
-                                    onFieldSubmitted: (value) {
-                                      // if(formKey.currentState!.validate()){
-                                      //   Logincubit.get(context)(
-                                      //       email: emailcontrollr.text,
-                                      //       password: passwordcontrollr.text
-                                      //   );
-                                      // }
                                     },
                                     obscureText:
                                         AppCubit.get(context).isPassword,
@@ -287,12 +275,13 @@ class _LoginState extends State<Login> {
                                             //
                                             //
                                             // }
-                                            cubit.loginuser(email: emailcontrollr.text, password: passwordcontrollr.text);
-
+                                            cubit.loginuser(
+                                                email: emailcontrollr.text,
+                                                password:
+                                                    passwordcontrollr.text);
                                           }
 
                                           // cubit.userLogin(email: emailcontrollr.text, password: passwordcontrollr.text);
-
                                         },
                                         child: Text(
                                           _lang.getSignIn(),
@@ -348,34 +337,4 @@ class _LoginState extends State<Login> {
     );
   }
 
-  // Future<void> signUpUser() async {
-  //   final formData = {
-  //     'name': emailcontrollr.text,
-  //     // 'password': ,
-  //     'grant_type': 'password',
-  //   };
-  //   try {
-  //     Dio dio =  Dio();
-  //     var url = 'http://ugt.517.mywebsitetransfer.com/api/v1/user/auth/login';
-  //
-  //     Response response = await dio.post(url);
-  //     var oje = jsonDecode(response.data);
-  //     print(oje);
-  //     final responseData = await dio.post<Map<String, dynamic>>
-  //
-  //       ('/token',
-  //         options: Options(
-  //
-  //           method: 'POST',
-  //           headers: <String, dynamic>{},
-  //         ),
-  //
-  //         data: formData);
-  //
-  //
-  //     print(responseData.toString());
-  //   } catch (e) {
-  //   }
-  //
-  // }
 }

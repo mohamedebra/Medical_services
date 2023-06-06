@@ -12,7 +12,6 @@ import 'package:medical_services/presentation/Screens/search/search.dart';
 
 import 'homelayout.dart';
 
-
 class Next extends StatefulWidget {
   @override
   State<Next> createState() => _NextState();
@@ -36,14 +35,13 @@ class _NextState extends State<Next> {
       ),
       body: BlocProvider<AppCubit>(
         create: (context) => AppCubit(),
-
-        child: BlocConsumer<AppCubit,MedialState>(
-          listener: (context,state){
-            if(state is MedicalRegesterScussesState){
+        child: BlocConsumer<AppCubit, MedialState>(
+          listener: (context, state) {
+            if (state is MedicalRegesterScussesState) {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => Home()),
-                      (route) => false);
+                  (route) => false);
               Fluttertoast.showToast(
                   msg: "Welcome Medical +",
                   toastLength: Toast.LENGTH_LONG,
@@ -51,9 +49,8 @@ class _NextState extends State<Next> {
                   timeInSecForIosWeb: 2,
                   backgroundColor: Colors.blueGrey,
                   textColor: Colors.white,
-                  fontSize: 16.0
-              );
-            }else  if(state is MedicalRegesterErrorState){
+                  fontSize: 16.0);
+            } else if (state is MedicalRegesterErrorState) {
               Fluttertoast.showToast(
                   msg: "The Email or password is wrong",
                   toastLength: Toast.LENGTH_LONG,
@@ -61,13 +58,12 @@ class _NextState extends State<Next> {
                   timeInSecForIosWeb: 2,
                   backgroundColor: Colors.blueGrey,
                   textColor: Colors.white,
-                  fontSize: 16.0
-              );
-
+                  fontSize: 16.0);
             }
           },
-          builder: (context,state){
-            var usercontrollr = HomeLayOut.userfirstcontrollr.text + HomeLayOut.userlastcontrollr.text;
+          builder: (context, state) {
+            var usercontrollr = HomeLayOut.userfirstcontrollr.text +
+                HomeLayOut.userlastcontrollr.text;
             SocialModel model = SocialModel();
 
             return SingleChildScrollView(
@@ -77,91 +73,77 @@ class _NextState extends State<Next> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                            top: 50
+                        padding:
+                            const EdgeInsets.only(left: 15, right: 15, top: 50),
+                        child: Text(
+                          'Times of work',
+                          style:
+                              TextStyle(fontSize: 23, color: Colors.grey[800]),
                         ),
-                        child: Text('Times of work',style: TextStyle(fontSize: 23,color: Colors.grey[800]),),
                       ),
                     ],
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child:  TextFormField(
+                    child: TextFormField(
                       controller: fromtime,
                       keyboardType: TextInputType.datetime,
                       onTap: () {
                         showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.now())
+                                context: context, initialTime: TimeOfDay.now())
                             .then((value) {
-                          fromtime.text = value!
-                              .format(context)
-                              .toString();
-                          print(value
-                              .format(context)
-                              .toString());
+                          fromtime.text = value!.format(context).toString();
+                          print(value.format(context).toString());
                         });
                       },
-                      onChanged: (value){
-                      },
+                      onChanged: (value) {},
                       validator: (val) {
                         if (val!.isEmpty) {
                           return "Time don't must in Empty";
                         }
                       },
                       decoration: InputDecoration(
-                          labelText: "From time",
-                          prefix: Icon(Icons.access_time),
-
+                        labelText: "From time",
+                        prefix: Icon(Icons.access_time),
                       ),
                     ),
-
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child:   TextFormField(
+                    child: TextFormField(
                       controller: totime,
                       keyboardType: TextInputType.datetime,
                       onTap: () {
                         showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.now())
+                                context: context, initialTime: TimeOfDay.now())
                             .then((value) {
-                          totime.text = value!
-                              .format(context)
-                              .toString();
-                          print(value
-                              .format(context)
-                              .toString());
+                          totime.text = value!.format(context).toString();
+                          print(value.format(context).toString());
                         });
                       },
-                      onChanged: (value){
-                      },
+                      onChanged: (value) {},
                       validator: (val) {
                         if (val!.isEmpty) {
                           return "Time don't must in Empty";
                         }
                       },
                       decoration: InputDecoration(
-                          labelText: "To time",
-                          prefix: Icon(Icons.access_time),
-
+                        labelText: "To time",
+                        prefix: Icon(Icons.access_time),
                       ),
                     ),
-
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                            top: 50
+                        padding:
+                            const EdgeInsets.only(left: 15, right: 15, top: 50),
+                        child: Text(
+                          'Abstract',
+                          style:
+                              TextStyle(fontSize: 23, color: Colors.grey[800]),
                         ),
-                        child: Text('Abstract',style: TextStyle(fontSize: 23,color: Colors.grey[800]),),
                       ),
                     ],
                   ),
@@ -172,18 +154,13 @@ class _NextState extends State<Next> {
                         width: MediaQuery.of(context).size.width * .99,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey
-
-                        ),
-
+                            color: Colors.grey),
                         child: Container(
                           height: 230,
                           width: MediaQuery.of(context).size.width * .90,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.grey[100]
-                          ),
-
+                              color: Colors.grey[100]),
                           child: TextFormField(
                             controller: abstract,
                             keyboardType: TextInputType.visiblePassword,
@@ -200,20 +177,15 @@ class _NextState extends State<Next> {
                               //   );
                               // }
                             },
-                            onTap: (){},
+                            onTap: () {},
                             decoration: InputDecoration(
                               isCollapsed: true,
-
                               hintText: 'Abstract ......',
                               hintStyle: TextStyle(color: Colors.grey[400]),
-
                             ),
-
-
                           ),
                         ),
-                      )
-                  ),
+                      )),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -224,12 +196,9 @@ class _NextState extends State<Next> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.blue[300],
-
                         ),
-
                         child: TextButton(
-                            onPressed: ()async
-                            {
+                            onPressed: () async {
                               // if(formKey.currentState!.validate()){
                               //   // AppCubit.get(context).user(
                               //   //     name: usercontrollr,
@@ -271,7 +240,6 @@ class _NextState extends State<Next> {
                                   phone: HomeLayOut.phonecontrollr.text,
                                   name: HomeLayOut.userfirstcontrollr.text,
                                   type: 'doctot');
-
                             },
                             child: Center(
                               child: Text(
@@ -285,9 +253,6 @@ class _NextState extends State<Next> {
                       ),
                     ],
                   ),
-
-
-
                 ],
               ),
             );
@@ -297,20 +262,15 @@ class _NextState extends State<Next> {
     );
   }
 
-  void getdata()async{
-
-    var response = await Dio().get('https://schema.postman.com/json/collection/v2.0.0/collection.json');
-    if(response.statusCode == 200)
-    {
+  void getdata() async {
+    var response = await Dio().get(
+        'https://schema.postman.com/json/collection/v2.0.0/collection.json');
+    if (response.statusCode == 200) {
       setState(() {
-       business = response.data['definitions'] as List;
+        business = response.data['definitions'] as List;
       });
-
-    }
-    else{
+    } else {
       print(response.statusCode);
     }
-
   }
-
 }

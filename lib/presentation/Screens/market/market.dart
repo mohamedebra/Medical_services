@@ -67,58 +67,75 @@ class _MarketState extends State<Market> {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Image(
-                                          image: AssetImage('images/بيستر.jpg'),width: 80,height: 90,),
+                                          image: AssetImage('images/بيستر.jpg'),
+                                          width: 80,
+                                          height: 90,
+                                        ),
+                                        Text('بيستر يليانت مطهر طبي وجراحي'),
                                         Text(
-                                            'بيستر يليانت مطهر طبي وجراحي'),
-                                        Text(
-                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
-                                        Text(
-                                            '120 جنيه'),
+                                          'عبله',
+                                          style: TextStyle(
+                                              color: Colors.grey[300]),
+                                        ),
+                                        Text('120 جنيه'),
                                         Container(
                                           height: 1,
                                           width: double.infinity,
                                           color: Colors.grey[300],
                                         ),
                                         Image(
-                                          image: AssetImage('images/ايفوني.jpg'),width: 80,height: 100,),
+                                          image:
+                                              AssetImage('images/ايفوني.jpg'),
+                                          width: 80,
+                                          height: 100,
+                                        ),
+                                        Text('ايفوني ماسك'),
                                         Text(
-                                            'ايفوني ماسك'),
-                                        Text(
-                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
-                                        Text(
-                                            '90 جنيه'),
+                                          'عبله',
+                                          style: TextStyle(
+                                              color: Colors.grey[300]),
+                                        ),
+                                        Text('90 جنيه'),
                                         Container(
                                           height: 1,
                                           width: double.infinity,
                                           color: Colors.grey[300],
                                         ),
                                         Image(
-                                          image: AssetImage('images/Pure .jpg'),width: 90,height: 100,),
+                                          image: AssetImage('images/Pure .jpg'),
+                                          width: 90,
+                                          height: 100,
+                                        ),
+                                        Text('Pure Aloohol ethyl Alcohol'),
                                         Text(
-                                            'Pure Aloohol ethyl Alcohol'),
-                                        Text(
-                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
-                                        Text(
-                                            '20 جنيه'),
+                                          'عبله',
+                                          style: TextStyle(
+                                              color: Colors.grey[300]),
+                                        ),
+                                        Text('20 جنيه'),
                                         Container(
                                           height: 1,
                                           width: double.infinity,
                                           color: Colors.grey[300],
                                         ),
                                         Image(
-                                          image: AssetImage('images/هيد اند شولدرز .jpg'),width: 90,height: 100,),
+                                          image: AssetImage(
+                                              'images/هيد اند شولدرز .jpg'),
+                                          width: 90,
+                                          height: 100,
+                                        ),
                                         Text(
                                             'يد اند شولدرز منتول فريش ضد القشره'),
                                         Text(
-                                          'عبله',style: TextStyle(color: Colors.grey[300]),),
-                                        Text(
-                                            '55 جنيه'),
-
-
-
+                                          'عبله',
+                                          style: TextStyle(
+                                              color: Colors.grey[300]),
+                                        ),
+                                        Text('55 جنيه'),
                                       ],
                                     ),
                                   ),
@@ -203,37 +220,31 @@ class _MarketState extends State<Market> {
     );
   }
 
-  void getdata()async{
-
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
-    if(response.statusCode == 200)
-    {
+  void getdata() async {
+    var response = await Dio()
+        .get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
+    if (response.statusCode == 200) {
       // for(int i = 0; i >=100; i++ ) {
       //   print('${response.data[i]["product_id"]} ===222===');
       // }
 
       setState(() {
-        for(var i = 0 ; i >= 100; i++) {
-          var id = ModelLogin.buyprodact(product_id: First_aid.business[i]['id']);
+        for (var i = 0; i >= 100; i++) {
+          var id =
+              ModelLogin.buyprodact(product_id: First_aid.business[i]['id']);
           print("$id ......");
         }
-        for(int i = 0; i >= 100; i++ )
-          business = response.data[First_aid.business[i]['id']]['data'] ;
-
-
-
+        for (int i = 0; i >= 100; i++)
+          business = response.data[First_aid.business[i]['id']]['data'];
       });
       // print(response.data);
       var id = ModelLogin.buyprodact(product_id: First_aid.business[4]['id']);
       print("$id ......");
       print(business);
-      print('${response.statusCode}=======' );
-
-    }
-    else{
+      print('${response.statusCode}=======');
+    } else {
       print('${response.statusCode} error====');
     }
-
   }
   // getprodact() async {
   //   const url = "http://ugt.517.mywebsitetransfer.com/api/v1/user-products";
@@ -251,5 +262,4 @@ class _MarketState extends State<Market> {
   //     return print(response.statusCode);
   //   }
   // }
-
 }

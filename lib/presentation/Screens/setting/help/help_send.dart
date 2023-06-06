@@ -9,7 +9,7 @@ class Help_Send extends StatefulWidget {
 }
 
 class _Help_SendState extends State<Help_Send> {
-  var txetContorlr =TextEditingController();
+  var txetContorlr = TextEditingController();
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -21,41 +21,38 @@ class _Help_SendState extends State<Help_Send> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 40,right: 20,left: 20),
+            padding: const EdgeInsets.only(top: 40, right: 20, left: 20),
             child: Container(
               decoration: BoxDecoration(
-                border: BorderDirectional(
-                  end: BorderSide(color: Colors.grey),
-                  start: BorderSide(color: Colors.grey),
-                  top: BorderSide(color: Colors.grey),
-                  bottom: BorderSide(color: Colors.grey),
-                )
-              ),
+                  border: BorderDirectional(
+                end: BorderSide(color: Colors.grey),
+                start: BorderSide(color: Colors.grey),
+                top: BorderSide(color: Colors.grey),
+                bottom: BorderSide(color: Colors.grey),
+              )),
               height: 200,
               child: TextField(
-                onTap: (){},
+                onTap: () {},
                 controller: txetContorlr,
                 maxLines: 7,
                 decoration: const InputDecoration(
                   hintText: '                                  Help Center',
-                    enabled: true,
-                    helperMaxLines: 5,
-                    focusedErrorBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    constraints: BoxConstraints(
-                      maxWidth: double.infinity,
-                      maxHeight: double.infinity
-                    ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                  ),
+                  enabled: true,
+                  helperMaxLines: 5,
+                  focusedErrorBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  constraints: BoxConstraints(
+                      maxWidth: double.infinity, maxHeight: double.infinity),
+                  border: OutlineInputBorder(borderSide: BorderSide.none),
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -65,12 +62,10 @@ class _Help_SendState extends State<Help_Send> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue[300],
-
                 ),
                 child: TextButton(
-                    onPressed: ()async
-                    {
-                      if(formKey.currentState!.validate()){
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
                         Fluttertoast.showToast(
                             msg: "Help Send",
                             toastLength: Toast.LENGTH_LONG,
@@ -78,8 +73,7 @@ class _Help_SendState extends State<Help_Send> {
                             timeInSecForIosWeb: 2,
                             backgroundColor: Colors.blueGrey,
                             textColor: Colors.white,
-                            fontSize: 16.0
-                        );
+                            fontSize: 16.0);
                       }
                     },
                     child: Center(

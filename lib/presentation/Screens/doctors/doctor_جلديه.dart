@@ -3,7 +3,6 @@ import 'package:medical_services/domian/model/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/leather/Curriculum_Vitae_doctor2.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/leather/kamar%20Banna.dart';
 
-
 class Leather extends StatefulWidget {
   const Leather({Key? key}) : super(key: key);
 
@@ -22,22 +21,21 @@ class _LeatherState extends State<Leather> {
 
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getDermatologists(),style: TextStyle(fontSize: 20),),
-
+        title: Text(
+          _lang.getDermatologists(),
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(
-              top: 40,
-              start: 20,
-              end: 20,
-              bottom: 10
-            ),
+                top: 40, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -49,7 +47,6 @@ class _LeatherState extends State<Leather> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -59,8 +56,7 @@ class _LeatherState extends State<Leather> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -71,7 +67,8 @@ class _LeatherState extends State<Leather> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/سمر حسام.jpg'),
+                                          image:
+                                              AssetImage('images/سمر حسام.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -86,7 +83,8 @@ class _LeatherState extends State<Leather> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , Samar Hossam Omar',
@@ -123,23 +121,16 @@ class _LeatherState extends State<Leather> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-              top: 5,
-              start: 20,
-              end: 20,
-              bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => kamar_Banna()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => kamar_Banna()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -149,8 +140,7 @@ class _LeatherState extends State<Leather> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -161,7 +151,8 @@ class _LeatherState extends State<Leather> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/قمريه البنا .jpg'),
+                                          image: AssetImage(
+                                              'images/قمريه البنا .jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -176,7 +167,8 @@ class _LeatherState extends State<Leather> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr , kamar Banna',

@@ -40,11 +40,11 @@ class _HomeLayOutState extends State<Register> {
       create: (BuildContext context) => AppCubit(),
       child: BlocConsumer<AppCubit, MedialState>(
         listener: (context, state) {
-          if(state is MedicalRegesterScussesState){
+          if (state is MedicalRegesterScussesState) {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => Home()),
-                    (route) => false);
+                (route) => false);
             Fluttertoast.showToast(
                 msg: "Welcome Medical +",
                 toastLength: Toast.LENGTH_LONG,
@@ -52,10 +52,8 @@ class _HomeLayOutState extends State<Register> {
                 timeInSecForIosWeb: 2,
                 backgroundColor: Colors.blueGrey,
                 textColor: Colors.white,
-                fontSize: 16.0
-            );
-          }
-          else if(state is MedicalRegesterErrorState){
+                fontSize: 16.0);
+          } else if (state is MedicalRegesterErrorState) {
             Fluttertoast.showToast(
                 msg: "The Email or password is wrong",
                 toastLength: Toast.LENGTH_LONG,
@@ -63,11 +61,8 @@ class _HomeLayOutState extends State<Register> {
                 timeInSecForIosWeb: 2,
                 backgroundColor: Colors.blueGrey,
                 textColor: Colors.white,
-                fontSize: 16.0
-            );
-
+                fontSize: 16.0);
           }
-
         },
         builder: (context, state) {
           SocialModel model = SocialModel();
@@ -209,14 +204,6 @@ class _HomeLayOutState extends State<Register> {
                                         return 'Please enter your Mobile Number';
                                       }
                                     },
-                                    onFieldSubmitted: (value) {
-                                      // if(formKey.currentState!.validate()){
-                                      //   Logincubit.get(context)(
-                                      //       email: emailcontrollr.text,
-                                      //       password: passwordcontrollr.text
-                                      //   );
-                                      // }
-                                    },
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(IconBroken.Call),
                                       hintText: '+20 Phone',
@@ -239,14 +226,6 @@ class _HomeLayOutState extends State<Register> {
                                       if (val!.isEmpty) {
                                         return 'Please enter your email';
                                       }
-                                    },
-                                    onFieldSubmitted: (value) {
-                                      // if(formKey.currentState!.validate()){
-                                      //   Logincubit.get(context)(
-                                      //       email: emailcontrollr.text,
-                                      //       password: passwordcontrollr.text
-                                      //   );
-                                      // }
                                     },
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(IconBroken.Message),
@@ -271,14 +250,7 @@ class _HomeLayOutState extends State<Register> {
                                         return 'Please enter your password';
                                       }
                                     },
-                                    onFieldSubmitted: (value) {
-                                      // if(formKey.currentState!.validate()){
-                                      //   Logincubit.get(context)(
-                                      //       email: emailcontrollr.text,
-                                      //       password: passwordcontrollr.text
-                                      //   );
-                                      // }
-                                    },
+
                                     obscureText:
                                         AppCubit.get(context).isPassword,
                                     decoration: InputDecoration(
@@ -320,12 +292,18 @@ class _HomeLayOutState extends State<Register> {
                                               //     uId: model.uId.toString()
                                               // );
 
-                                              AppCubit.get(context).registaruser(
-                                                  email: emailcontrollr.text,
-                                                  password: passwordcontrollr.text,
-                                                  phone: phonecontrollr.text,
-                                                  name: userfirstcontrollr.text,
-                                                  type: 'patient');
+                                              AppCubit.get(context)
+                                                  .registaruser(
+                                                      email:
+                                                          emailcontrollr.text,
+                                                      password:
+                                                          passwordcontrollr
+                                                              .text,
+                                                      phone:
+                                                          phonecontrollr.text,
+                                                      name: userfirstcontrollr
+                                                          .text,
+                                                      type: 'patient');
 
                                               // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                                             }

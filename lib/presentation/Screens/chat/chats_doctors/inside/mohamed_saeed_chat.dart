@@ -3,40 +3,32 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 
-
 class mohamed_saeed_chat extends StatelessWidget {
-
-
-
-
-
-
   var messageContror = TextEditingController();
 
-
   @override
-
-
-
-
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-
       child: BlocConsumer<AppCubit, MedialState>(
-        listener: (context,state){},
-        builder: (context,state) {
+        listener: (context, state) {},
+        builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
               title: Row(
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundImage: AssetImage('images/Muhammad Saeed Rushdi.jpg'),
-
+                    backgroundImage:
+                        AssetImage('images/Muhammad Saeed Rushdi.jpg'),
                   ),
-                  SizedBox(width: 15,),
-                  Text('Dr , Muhammad Saeed',style: TextStyle(fontSize: 20),)
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    'Dr , Muhammad Saeed',
+                    style: TextStyle(fontSize: 20),
+                  )
                 ],
               ),
             ),
@@ -47,33 +39,32 @@ class mohamed_saeed_chat extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(10),
                               topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10)
-                          ),
-                          color: Colors.grey[300]
-                      ),
+                              bottomRight: Radius.circular(10)),
+                          color: Colors.grey[300]),
                       child: Text('Welcome my name Dr , Muhammad Saeed'),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadiusDirectional.only(
                             topEnd: Radius.circular(10),
                             topStart: Radius.circular(10),
                             bottomStart: Radius.circular(10),
                           ),
-                          color: Colors.blue[100]
-                      ),
+                          color: Colors.blue[100]),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text('Welcome my doctor \n My name Mohamed'),
@@ -86,12 +77,8 @@ class mohamed_saeed_chat extends StatelessWidget {
                         border: Border.all(
                           color: Colors.black26,
                           width: 1,
-
-
                         ),
-                        borderRadius: BorderRadius.circular(20)
-
-                    ),
+                        borderRadius: BorderRadius.circular(20)),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Row(
                       children: [
@@ -102,34 +89,31 @@ class mohamed_saeed_chat extends StatelessWidget {
                               controller: messageContror,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'type your message here ...'
-                              ),
+                                  hintText: 'type your message here ...'),
                             ),
                           ),
                         ),
                         Container(
                           height: 70,
                           color: Colors.blue[300],
-                          child: MaterialButton(onPressed: (){
-
-
-                          },
+                          child: MaterialButton(
+                            onPressed: () {},
                             minWidth: 1,
-
-                            child: Icon(Icons.send,size: 25,color: Colors.white,),),
+                            child: Icon(
+                              Icons.send,
+                              size: 25,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   )
-
                 ],
               ),
-
-
             ),
           );
         },
-
       ),
     );
   }

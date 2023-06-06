@@ -9,24 +9,27 @@ class Favorite_doctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext  context) => AppCubit(),
-      child: BlocConsumer<AppCubit,MedialState>(
-        listener: (context,state) {},
-        builder: (context, state){
+      create: (BuildContext context) => AppCubit(),
+      child: BlocConsumer<AppCubit, MedialState>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Favorite Doctor',style: TextStyle(fontSize: 23),),
+              title: Text(
+                'Favorite Doctor',
+                style: TextStyle(fontSize: 23),
+              ),
               backgroundColor: Colors.blueGrey[50],
               centerTitle: false,
             ),
             body: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 5,right: 5,top: 50),
+                  padding: const EdgeInsets.only(left: 5, right: 5, top: 50),
                   child: Card(
                     elevation: 10,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Stack(
                         children: [
                           Row(
@@ -39,35 +42,41 @@ class Favorite_doctor extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.all(6.0),
                                       child: Row(
-
                                         children: [
                                           Stack(
-
                                             children: [
-                                              Image(image: AssetImage('images/doctor.png'),
+                                              Image(
+                                                image: AssetImage(
+                                                    'images/doctor.png'),
                                                 width: 70,
                                                 height: 70,
-
                                               ),
-
                                             ],
                                             alignment: Alignment.bottomRight,
                                           ),
-                                          SizedBox(width: 25,),
+                                          SizedBox(
+                                            width: 25,
+                                          ),
                                           Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
-                                              Text('Dr ,  Mohamed Ebrahim',style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),),
+                                              Text(
+                                                'Dr ,  Mohamed Ebrahim',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 7,
                                               ),
-                                              Text('Cardiologist',style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey
-                                              ),)
+                                              Text(
+                                                'Cardiologist',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
+                                              )
                                             ],
                                           ),
                                         ],
@@ -76,15 +85,19 @@ class Favorite_doctor extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              IconButton(onPressed: (){
-                                AppCubit.get(context).changeIconfavorite();
-                              }, icon: Icon(AppCubit.get(context).iconData,size: 17,color: Colors.red[400],))
-
+                              IconButton(
+                                  onPressed: () {
+                                    AppCubit.get(context).changeIconfavorite();
+                                  },
+                                  icon: Icon(
+                                    AppCubit.get(context).iconData,
+                                    size: 17,
+                                    color: Colors.red[400],
+                                  ))
 
                               //IconButton(onPressed: (){
                               //                                       AppCubit.get(context).changeIcon();
                               //                                     },icon: Icon(AppCubit.get(context).icon),),
-
                             ],
                           )
                         ],
@@ -92,13 +105,15 @@ class Favorite_doctor extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Card(
                     elevation: 10,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Stack(
                         children: [
                           Row(
@@ -111,35 +126,41 @@ class Favorite_doctor extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.all(6.0),
                                       child: Row(
-
                                         children: [
                                           Stack(
-
                                             children: [
-                                              Image(image: AssetImage('images/doctor2.png'),
+                                              Image(
+                                                image: AssetImage(
+                                                    'images/doctor2.png'),
                                                 width: 70,
                                                 height: 70,
-
                                               ),
-
                                             ],
                                             alignment: Alignment.bottomRight,
                                           ),
-                                          SizedBox(width: 25,),
+                                          SizedBox(
+                                            width: 25,
+                                          ),
                                           Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
-                                              Text('Dr ,  Wafaa Abu Talib',style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),),
+                                              Text(
+                                                'Dr ,  Wafaa Abu Talib',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 7,
                                               ),
-                                              Text('Gastroenterologist doctor',style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey
-                                              ),)
+                                              Text(
+                                                'Gastroenterologist doctor',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
+                                              )
                                             ],
                                           ),
                                         ],
@@ -148,11 +169,15 @@ class Favorite_doctor extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              IconButton(onPressed: (){
-                                AppCubit.get(context).changeIconfavorite1();
-                              }, icon: Icon(AppCubit.get(context).iconData1,size: 17,color: Colors.red[400],))
-
-
+                              IconButton(
+                                  onPressed: () {
+                                    AppCubit.get(context).changeIconfavorite1();
+                                  },
+                                  icon: Icon(
+                                    AppCubit.get(context).iconData1,
+                                    size: 17,
+                                    color: Colors.red[400],
+                                  ))
                             ],
                           )
                         ],
@@ -160,13 +185,15 @@ class Favorite_doctor extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Card(
                     elevation: 10,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Stack(
                         children: [
                           Row(
@@ -179,35 +206,41 @@ class Favorite_doctor extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.all(6.0),
                                       child: Row(
-
                                         children: [
                                           Stack(
-
                                             children: [
-                                              Image(image: AssetImage('images/doctor3.png'),
+                                              Image(
+                                                image: AssetImage(
+                                                    'images/doctor3.png'),
                                                 width: 70,
                                                 height: 70,
-
                                               ),
-
                                             ],
                                             alignment: Alignment.bottomRight,
                                           ),
-                                          SizedBox(width: 25,),
+                                          SizedBox(
+                                            width: 25,
+                                          ),
                                           Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
-                                              Text('Dr ,  Hossam Mohamed',style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),),
+                                              Text(
+                                                'Dr ,  Hossam Mohamed',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 7,
                                               ),
-                                              Text('Ophthalmologist',style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey
-                                              ),)
+                                              Text(
+                                                'Ophthalmologist',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
+                                              )
                                             ],
                                           ),
                                         ],
@@ -216,10 +249,15 @@ class Favorite_doctor extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              IconButton(onPressed: (){
-                                AppCubit.get(context).changeIconfavorite2();
-                              }, icon: Icon(AppCubit.get(context).iconData2,size: 17,color: Colors.red[400],))
-
+                              IconButton(
+                                  onPressed: () {
+                                    AppCubit.get(context).changeIconfavorite2();
+                                  },
+                                  icon: Icon(
+                                    AppCubit.get(context).iconData2,
+                                    size: 17,
+                                    color: Colors.red[400],
+                                  ))
                             ],
                           )
                         ],
@@ -227,7 +265,6 @@ class Favorite_doctor extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ],
             ),
           );

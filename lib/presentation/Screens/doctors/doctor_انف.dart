@@ -7,7 +7,6 @@ import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20no
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20nose%20and%20throat/dr_shady.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20nose%20and%20throat/dr_sherif.dart';
 
-
 class Nose extends StatefulWidget {
   const Nose({Key? key}) : super(key: key);
 
@@ -26,22 +25,21 @@ class _NoseState extends State<Nose> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getEarandnosedoctors(),style: TextStyle(fontSize: 20),),
-
+        title: Text(
+          _lang.getEarandnosedoctors(),
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 40,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 40, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -53,7 +51,6 @@ class _NoseState extends State<Nose> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -63,8 +60,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -75,7 +71,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد الشاعر.jpg'),
+                                          image: AssetImage(
+                                              'images/احمد الشاعر.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -90,7 +87,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Ahmed ElShaer',
@@ -127,23 +125,16 @@ class _NoseState extends State<Nose> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Dr_Sherif()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dr_Sherif()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -153,8 +144,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -165,7 +155,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/شريف زايد.jpg'),
+                                          image: AssetImage(
+                                              'images/شريف زايد.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -180,7 +171,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Sherif Zayed',
@@ -217,23 +209,16 @@ class _NoseState extends State<Nose> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Dr_Shady()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dr_Shady()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -243,8 +228,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -255,7 +239,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/شادي السيد عبدالعزيز.jpg'),
+                                          image: AssetImage(
+                                              'images/شادي السيد عبدالعزيز.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -270,7 +255,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Shady Al-Sayed Abdulaziz',
@@ -279,7 +265,7 @@ class _NoseState extends State<Nose> {
                                             fontSize: 16,
                                           ),
                                           overflow: TextOverflow.visible,
-                                            maxLines: 1,
+                                          maxLines: 1,
                                         ),
                                         SizedBox(
                                           height: 7,
@@ -309,23 +295,16 @@ class _NoseState extends State<Nose> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Dr_Ahmed_Alfy()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dr_Ahmed_Alfy()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -335,8 +314,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -347,7 +325,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد الالفي.jpg'),
+                                          image: AssetImage(
+                                              'images/احمد الالفي.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -362,7 +341,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Ahmed Alfy',
@@ -371,7 +351,7 @@ class _NoseState extends State<Nose> {
                                             fontSize: 16,
                                           ),
                                           overflow: TextOverflow.visible,
-                                            maxLines: 1,
+                                          maxLines: 1,
                                         ),
                                         SizedBox(
                                           height: 7,
@@ -401,23 +381,16 @@ class _NoseState extends State<Nose> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Dr_Islam()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dr_Islam()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -427,8 +400,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -439,7 +411,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/اسلام محمد.jpg'),
+                                          image: AssetImage(
+                                              'images/اسلام محمد.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -454,7 +427,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Islam Mohammed',
@@ -463,7 +437,7 @@ class _NoseState extends State<Nose> {
                                             fontSize: 16,
                                           ),
                                           overflow: TextOverflow.visible,
-                                            maxLines: 1,
+                                          maxLines: 1,
                                         ),
                                         SizedBox(
                                           height: 7,
@@ -493,23 +467,16 @@ class _NoseState extends State<Nose> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Dr_Mohamed()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dr_Mohamed()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -519,8 +486,7 @@ class _NoseState extends State<Nose> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -531,7 +497,8 @@ class _NoseState extends State<Nose> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/محمد رفعت.jpg'),
+                                          image: AssetImage(
+                                              'images/محمد رفعت.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -546,7 +513,8 @@ class _NoseState extends State<Nose> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Dr ,  Mohamed Refaat',
@@ -555,7 +523,7 @@ class _NoseState extends State<Nose> {
                                             fontSize: 16,
                                           ),
                                           overflow: TextOverflow.visible,
-                                            maxLines: 1,
+                                          maxLines: 1,
                                         ),
                                         SizedBox(
                                           height: 7,
@@ -583,7 +551,6 @@ class _NoseState extends State<Nose> {
               ),
             ),
           ),
-
         ],
       ),
     );

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dio/dio.dart';
@@ -39,35 +38,29 @@ class _Home_ScreenState extends State<Home_Screen> {
 // TODO: implement initState
     super.initState();
   }
-  Lang _lang =Lang();
-  List business = [];
-  void getdata()async{
-    var response = await Dio().get('http://medicalservices.great-site.net/api/v1/specializations');
-    if(response.statusCode == 200)
-    {
 
+  Lang _lang = Lang();
+  List business = [];
+  void getdata() async {
+    var response = await Dio()
+        .get('http://medicalservices.great-site.net/api/v1/specializations');
+    if (response.statusCode == 200) {
       print(response.data);
 
-      SharedPreferences pref =
-      await SharedPreferences
-          .getInstance();
-      pref
-          .setBool('data', true)
-          .then((value) {
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      pref.setBool('data', true).then((value) {
         if (value == true) {
           setState(() {
-            business = response.data['data'] as List ;
-
+            business = response.data['data'] as List;
           });
         }
         print("$pref ////////////////////////////////");
-
       });
-
-    }
-    else{
+    } else {
       print(response.statusCode);
-    }}
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -79,17 +72,12 @@ class _Home_ScreenState extends State<Home_Screen> {
               body: SingleChildScrollView(
                 physics: ScrollPhysics(),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    right: 20,
-                    left: 20
-                  ),
+                  padding: const EdgeInsets.only(top: 5, right: 20, left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20),
+                        padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -104,29 +92,40 @@ class _Home_ScreenState extends State<Home_Screen> {
                         ),
                       ),
                       InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Search()));
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Container(
                             height: 50,
                             decoration: BoxDecoration(
-                              border: BorderDirectional(
-                                bottom: BorderSide(color: Colors.grey),
-                                top: BorderSide(color: Colors.grey),
-                                start: BorderSide(color: Colors.grey),
-                                end: BorderSide(color: Colors.grey),
-                              )
-                            ),
+                                border: BorderDirectional(
+                              bottom: BorderSide(color: Colors.grey),
+                              top: BorderSide(color: Colors.grey),
+                              start: BorderSide(color: Colors.grey),
+                              end: BorderSide(color: Colors.grey),
+                            )),
                             child: Row(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10),
-                                  child: Text(_lang.getsearchHome(),style: TextStyle(color: Colors.grey[400],fontSize: 12),),
+                                  child: Text(
+                                    _lang.getsearchHome(),
+                                    style: TextStyle(
+                                        color: Colors.grey[400], fontSize: 12),
+                                  ),
                                 ),
-                                SizedBox(width: 20,),
-                                Icon(IconBroken.Search,color: Colors.grey[500],),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  IconBroken.Search,
+                                  color: Colors.grey[500],
+                                ),
                               ],
                             ),
                           ),
@@ -139,7 +138,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
-                                  image: NetworkImage("https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg"),
+                                  image: NetworkImage(
+                                      "https://img.freepik.com/premium-photo/healthcare-medical-concept-medicine-doctor-with-stethoscope-hand-patients-come_34200-313.jpg"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -149,7 +149,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
-                                  image: NetworkImage("https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854034.jpg"),
+                                  image: NetworkImage(
+                                      "https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854034.jpg"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -159,7 +160,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
-                                  image: NetworkImage("https://img.freepik.com/free-photo/young-male-psysician-with-patient-measuring-blood-pressure_1303-17877.jpg"),
+                                  image: NetworkImage(
+                                      "https://img.freepik.com/free-photo/young-male-psysician-with-patient-measuring-blood-pressure_1303-17877.jpg"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -167,30 +169,35 @@ class _Home_ScreenState extends State<Home_Screen> {
                           ],
                           options: CarouselOptions(
                             height: 180,
-                            aspectRatio: 16/10,
+                            aspectRatio: 16 / 10,
                             viewportFraction: 1,
                             initialPage: 0,
                             enableInfiniteScroll: true,
                             reverse: false,
                             autoPlay: true,
                             autoPlayInterval: Duration(seconds: 3),
-                            autoPlayAnimationDuration: Duration(milliseconds: 800),
+                            autoPlayAnimationDuration:
+                                Duration(milliseconds: 800),
                             autoPlayCurve: Curves.fastOutSlowIn,
                             enlargeCenterPage: true,
                             enlargeFactor: 0.3,
                             scrollDirection: Axis.horizontal,
-                          )
-                      ),
+                          )),
                       Text(
                         _lang.gethelpHome1(),
                         style: TextStyle(
-                            fontSize: 20  , fontWeight: FontWeight.w800,color: Colors.indigo[900],inherit: false),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.indigo[900],
+                            inherit: false),
                       ),
                       Text(
                         _lang.gethelpHome2(),
                         style: TextStyle(
-                            fontSize: 20  , fontWeight: FontWeight.w800,color: Colors.indigo[900],inherit: false
-                        ),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.indigo[900],
+                            inherit: false),
                       ),
                       SizedBox(
                         height: 15,
@@ -246,9 +253,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                                 children: [
                                   CircleAvatar(
                                     radius: 30,
-                                    backgroundImage: AssetImage(
-                                        'images/asd.png'),
-
+                                    backgroundImage:
+                                        AssetImage('images/asd.png'),
                                   ),
                                   SizedBox(
                                     height: 15,
@@ -279,7 +285,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Colors.deepPurpleAccent.shade100,
+                                    backgroundColor:
+                                        Colors.deepPurpleAccent.shade100,
                                     radius: 30,
                                     backgroundImage:
                                         AssetImage('images/maps.png'),
@@ -311,7 +318,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: Colors.grey[100],
-
                               ),
                               width: 250,
                               child: Column(
@@ -342,21 +348,21 @@ class _Home_ScreenState extends State<Home_Screen> {
                                 Expanded(
                                   child: Container(
                                     height: 80,
-                                    width: MediaQuery.of(context).size.width * .43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.grey[100]
-                                    ),
+                                        color: Colors.grey[100]),
                                     child: InkWell(
-
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.end,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Row(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Image(
                                                 image: AssetImage(
@@ -369,12 +375,13 @@ class _Home_ScreenState extends State<Home_Screen> {
                                               ),
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     '${business[2]['name']}',
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 18,
                                                     ),
                                                   ),
@@ -384,42 +391,47 @@ class _Home_ScreenState extends State<Home_Screen> {
                                           ),
                                         ],
                                       ),
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Leather()));
-
+                                                builder: (context) =>
+                                                    Leather()));
                                       },
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 15,),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Expanded(
                                   child: Container(
                                     height: 80,
-                                    width: MediaQuery.of(context).size.width* .43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.grey[100]
-                                    ),
+                                        color: Colors.grey[100]),
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Surgery()));
-
+                                                builder: (context) =>
+                                                    Surgery()));
                                       },
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
-
                                               Text(
                                                 '${business[1]['name']}',
                                                 style: TextStyle(
@@ -427,7 +439,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                   fontSize: 17,
                                                 ),
                                               ),
-
                                               SizedBox(
                                                 width: 30,
                                               ),
@@ -454,23 +465,24 @@ class _Home_ScreenState extends State<Home_Screen> {
                                 Expanded(
                                   child: Container(
                                     height: 80,
-                                    width: MediaQuery.of(context).size.width * .43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: Colors.grey[100]),
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Inside()));
-
+                                                builder: (context) =>
+                                                    Inside()));
                                       },
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Row(
                                             children: [
@@ -482,10 +494,12 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                   height: 63,
                                                 ),
                                               ),
-                                              SizedBox(width: 30,),
+                                              SizedBox(
+                                                width: 30,
+                                              ),
                                               Expanded(
                                                 child: Text(
-                                                  '${business[3]['name']}',//_lang.getesoteric()
+                                                  '${business[3]['name']}', //_lang.getesoteric()
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 18,
@@ -499,27 +513,29 @@ class _Home_ScreenState extends State<Home_Screen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 15,),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Expanded(
                                   child: Container(
-                                    width: MediaQuery.of(context).size.width * .43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     height: 80,
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(10),
-                                        color: Colors.grey[100]
-                                    ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey[100]),
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => Nose()));
-
                                       },
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Expanded(
                                             child: Text(
@@ -535,13 +551,12 @@ class _Home_ScreenState extends State<Home_Screen> {
                                           ),
                                           Expanded(
                                             child: Image(
-                                              image: AssetImage(
-                                                  'images/nose.png'),
+                                              image:
+                                                  AssetImage('images/nose.png'),
                                               width: 63,
                                               height: 63,
                                             ),
                                           ),
-
                                         ],
                                       ),
                                     ),
@@ -554,33 +569,33 @@ class _Home_ScreenState extends State<Home_Screen> {
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-
                               children: [
                                 Expanded(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: Colors.grey[100]),
                                     height: 80,
-                                    width: MediaQuery.of(context).size.width *.43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => Bones()));
-
                                       },
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Row(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Expanded(
                                                 child: Image(
@@ -594,9 +609,11 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                 width: 22,
                                               ),
                                               Expanded(
-                                                child: Text('${business[0]['name']}',
+                                                child: Text(
+                                                    '${business[0]['name']}',
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 18,
                                                     )),
                                               )
@@ -607,31 +624,33 @@ class _Home_ScreenState extends State<Home_Screen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 15,),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Expanded(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(10),
-                                        color: Colors.grey[100]
-                                    ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey[100]),
                                     height: 80,
-                                    width: MediaQuery.of(context).size.width *.43,
+                                    width:
+                                        MediaQuery.of(context).size.width * .43,
                                     child: InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => Heart()));
-
                                       },
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Expanded(
                                                 child: Text(
@@ -653,7 +672,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                                                   height: 63,
                                                 ),
                                               ),
-
                                             ],
                                           ),
                                         ],
@@ -665,17 +683,16 @@ class _Home_ScreenState extends State<Home_Screen> {
                             ),
                           ],
                         ),
-                        fallback: (BuildContext context) => Center(child: CircularProgressIndicator(),),
+                        fallback: (BuildContext context) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-
             );
           },
         ));
   }
-
-
 }

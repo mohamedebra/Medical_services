@@ -20,53 +20,49 @@ import 'package:medical_services/presentation/Screens/reports/reports.dart';
 import 'package:medical_services/presentation/Screens/setting/setting.dart';
 import 'package:medical_services/presentation/resources/style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 import '../presentation/Screens/Home/home_screen.dart';
-
-
 
 class AppCubit extends Cubit<MedialState> {
   AppCubit() : super(MedicalIntialstate());
 
   static AppCubit get(context) => BlocProvider.of(context);
 
-
   SocialModel? model;
   ModelLogin? modelLogin;
 
+  loginuser({required email, required password}) {
+    emit(MedicalLoginLodingState());
+    ModelLogin.loginuser(email: email, password: password).then((value) {
+      emit(MedicalLoginScussesState(value!.email));
+      print('${value.email}**********************************');
+      // print(value.user!.uid);
 
-   loginuser({required email ,required password}){
-     emit(MedicalLoginLodingState());
-     ModelLogin.loginuser(email: email, password: password).
-     then((value) {
-       emit(MedicalLoginScussesState(value!.email));
-       print('${value.email}**********************************');
-       // print(value.user!.uid);
-
-       // model!.uId = value.user!.uid;
-     })
-         .catchError((error) {
-       emit(MedicalLoginErrorState(error.toString()));
-     });
+      // model!.uId = value.user!.uid;
+    }).catchError((error) {
+      emit(MedicalLoginErrorState(error.toString()));
+    });
   }
+
   registaruser({
     required email,
     required password,
     required phone,
     required name,
     required type,
-}){
+  }) {
     emit(MedicalLoginLodingState());
-    ModelLogin.registaruser(email: email, password: password, phone: phone, name: name, type: type).
-    then((value)
-    {
+    ModelLogin.registaruser(
+            email: email,
+            password: password,
+            phone: phone,
+            name: name,
+            type: type)
+        .then((value) {
       emit(MedicalRegesterScussesState());
-
-    }).catchError((error){
+    }).catchError((error) {
       emit(MedicalRegesterErrorState('${error.toString()}///////////////////'));
     });
-
-
   }
 
   int currentIndex = 0;
@@ -78,12 +74,7 @@ class AppCubit extends Cubit<MedialState> {
     Setting(),
   ];
 
-  List title = [
-    'Medical +',
-    'Reports',
-    'Chats',
-    'Settings'
-  ];
+  List title = ['Medical +', 'Reports', 'Chats', 'Settings'];
 
   void changeBottonNav(index) {
     currentIndex = index;
@@ -124,7 +115,6 @@ class AppCubit extends Cubit<MedialState> {
     emit(ChangeIconFavorie2());
   }
 
-
   // NetworkImage person = NetworkImage('${model!.image}');
   // bool isPerson= true;
   //
@@ -142,11 +132,10 @@ class AppCubit extends Cubit<MedialState> {
   void changeIcon() {
     isPassword = !isPassword;
     icon =
-    isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
+        isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
 
     emit(ChangeIcon());
   }
-
 
   // userLogin({
   //   required String email,
@@ -167,7 +156,6 @@ class AppCubit extends Cubit<MedialState> {
   //   });
   // }
 
-
   // Future<UserCredential> signInWithEmailAndPassword({
   //   required String email,
   //   required String password,
@@ -183,7 +171,6 @@ class AppCubit extends Cubit<MedialState> {
   //     rethrow;
   //   }
   // }
-
 
   // void user({
   //
@@ -241,18 +228,15 @@ class AppCubit extends Cubit<MedialState> {
         name: name,
         phone: phone,
         uId: FirebaseAuth.instance.currentUser!.uid,
-        password: password
-
-
-    );
-    FirebaseFirestore.instance.
-    collection('users')
+        password: password);
+    FirebaseFirestore.instance
+        .collection('users')
         .doc()
-        .set(model.toMap()).then((value) {
+        .set(model.toMap())
+        .then((value) {
       print(FirebaseAuth.instance.currentUser!.uid);
       emit(MedicalCreateRegisterSuccessstate());
-    })
-        .catchError((error) {
+    }).catchError((error) {
       emit(MedicalCreateRegisterError(error.toString()));
     });
   }
@@ -286,7 +270,6 @@ class AppCubit extends Cubit<MedialState> {
       text: text,
       dataTime: dataTime,
       receiverId: receiverId,
-
     );
 //set my chats
 
@@ -297,8 +280,7 @@ class AppCubit extends Cubit<MedialState> {
         .then((value) {
       print(value);
       emit(MedicalSendMesssagesSucssesState());
-    })
-        .catchError((error) {
+    }).catchError((error) {
       print(error.toString());
       emit(MedicalSendMesssagesErrorState());
     });
@@ -318,15 +300,16 @@ class AppCubit extends Cubit<MedialState> {
 //       emit(MedicalSendMesssagesErrorState());
 //     });
   }
+
   deletemag() {
-    FirebaseFirestore.instance.collection('messages')
+    FirebaseFirestore.instance
+        .collection('messages')
         .doc('') // <-- Doc ID to be deleted.
         .delete() // <-- Delete
         .then((_) {
       print('Deleted');
       emit(MedicalDeleteMesssagesSucssesState());
-    })
-        .catchError((error) {
+    }).catchError((error) {
       print('Delete failed: $error');
       emit(MedicaldeleteMesssagesSucssesState());
     });
@@ -367,14 +350,9 @@ class AppCubit extends Cubit<MedialState> {
   // });
   MessageModel? usermodel;
   getdata() async {
-    FirebaseFirestore.instance.collection('messages')
-        .add(
-        {
-          'text': 'bottom'
-        });
+    FirebaseFirestore.instance.collection('messages').add({'text': 'bottom'});
 
     //create an instance of Firestore.
-
 
     // StreamSubscription<QuerySnapshot<Map<String, dynamic>>> users =
 
@@ -400,8 +378,8 @@ class AppCubit extends Cubit<MedialState> {
     // await getData.get().then((value){
     //   print(value.data());
     // });
-
   }
+
   final firestore = FirebaseFirestore.instance;
 
   // A simple Future which will return the fetched Product in form of Object.
@@ -434,22 +412,18 @@ class AppCubit extends Cubit<MedialState> {
       print('======================mohamed==========');
     });
   }
+
   List<MessageModel> messages = [];
-   getmessages ()async
-      {
-  var messages = await FirebaseFirestore.instance
+  getmessages() async {
+    var messages = await FirebaseFirestore.instance
         .collection('messages')
-    .snapshots()
-  .listen((event) {
-  });
-          emit(MedicalGetMesssagesSucssesState());
-    }
+        .snapshots()
+        .listen((event) {});
+    emit(MedicalGetMesssagesSucssesState());
+  }
+
   late SharedPreferences sharedPreferences;
-  saveData({
-    required String key,
-    required dynamic value
-  }) async
-  {
+  saveData({required String key, required dynamic value}) async {
     return await sharedPreferences.setDouble(key, value);
   }
 
@@ -459,10 +433,8 @@ class AppCubit extends Cubit<MedialState> {
     return sharedPreferences.getBool(key);
   }
 
-
   File? proFileimage;
   var picker = ImagePicker();
-
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -476,39 +448,34 @@ class AppCubit extends Cubit<MedialState> {
     }
   }
 
-
   List<dynamic> news = [];
 
   Future<void> getsports() async {
     if (news.length == 0) {
       emit(NewsLodingnewsStates());
-      DioHelper.getData(
-          url: 'v2/top-headlines',
-          query: {
-            'sources': 'techcrunch',
-            'apiKey': 'c9e2a047a41c43cca0ca5f777a0a82dc',
-          }
+      DioHelper.getData(url: 'v2/top-headlines', query: {
+        'sources': 'techcrunch',
+        'apiKey': 'c9e2a047a41c43cca0ca5f777a0a82dc',
+      }
 
+          //https://newsapi.org/v2/top-headlines?
+          // sources=techcrunch
+          // &apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
 
-        //https://newsapi.org/v2/top-headlines?
-        // sources=techcrunch
-        // &apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
+          // var request = http.Request('GET', Uri.parse(
+          //     'https://newsapi.org/v2/everything?q=health&from=2023-02-04&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'));
+          //
+          //
+          // http.StreamedResponse response = await request.send();
+          //
+          // if (response.statusCode == 200) {
+          //   print(await response.stream.bytesToString());
+          // }
+          // else {
+          //   print(response.reasonPhrase);
+          // }
 
-
-        // var request = http.Request('GET', Uri.parse(
-        //     'https://newsapi.org/v2/everything?q=health&from=2023-02-04&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'));
-        //
-        //
-        // http.StreamedResponse response = await request.send();
-        //
-        // if (response.statusCode == 200) {
-        //   print(await response.stream.bytesToString());
-        // }
-        // else {
-        //   print(response.reasonPhrase);
-        // }
-
-      ).then((value) {
+          ).then((value) {
         //print(value.data.toString());
 
         print(news[0]['title']);
@@ -523,41 +490,35 @@ class AppCubit extends Cubit<MedialState> {
   }
 
   List<dynamic> business = [];
-  var uri = 'https://newsapi.org/v2/top-headlines?apiKey=c9e2a047a41c43cca0ca5f777a0a82dc&sources=techcrunch';
+  var uri =
+      'https://newsapi.org/v2/top-headlines?apiKey=c9e2a047a41c43cca0ca5f777a0a82dc&sources=techcrunch';
 
-  void getbusiness(){
-
-    if(business.length == 0){
+  void getbusiness() {
+    if (business.length == 0) {
       emit(NewsLodingnewsStates());
-      DioHelper.getData(
-          url: 'v2/everything',
-          query:{
-            'q':'tesla',
-            'from':'2023-02-07',
-            'sortBy':'publishedAt',
-            'apiKey':'c9e2a047a41c43cca0ca5f777a0a82dc',
-          } ).then((value) {
+      DioHelper.getData(url: 'v2/everything', query: {
+        'q': 'tesla',
+        'from': '2023-02-07',
+        'sortBy': 'publishedAt',
+        'apiKey': 'c9e2a047a41c43cca0ca5f777a0a82dc',
+      }).then((value) {
         //print(value.data.toString());
 
         business = value.data['articles'];
         // print(business[0]);
         emit(NewsGetvews());
-      //https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=c9e2a047a41c43cca0ca5f777a0a8
-      }).catchError((error){
+        //https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=c9e2a047a41c43cca0ca5f777a0a8
+      }).catchError((error) {
         print(error.toString());
         emit(NewsGetnewsError(error.toString()));
       });
-    }else{
+    } else {
       emit(NewsGetvews());
     }
-
   }
 //https://newsapi.org/
 // v2/top-headlines?
 // country=us
 // &category=business
 // &apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
-
-  }
-
-
+}

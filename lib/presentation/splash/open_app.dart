@@ -15,17 +15,20 @@ class OpenApp extends StatefulWidget {
 class _OpenAppState extends State<OpenApp> {
   Timer? _timer;
 
-  _startDelay(){
-    _timer = Timer( const Duration(seconds: 3), _goNext);
+  _startDelay() {
+    _timer = Timer(const Duration(seconds: 3), _goNext);
   }
 
-  _goNext(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> OnBaording()));
+  _goNext() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => OnBaording()));
   }
+
   void initState() {
     _startDelay();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +50,9 @@ class _OpenAppState extends State<OpenApp> {
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: MediaQuery.of(context).size.height * .2,),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .2,
+                    ),
                     Text(
                       'Medical +',
                       style: const TextStyle(
@@ -67,10 +72,10 @@ class _OpenAppState extends State<OpenApp> {
       ),
     );
   }
+
   @override
   void dispose() {
     _timer?.cancel();
     super.dispose();
   }
 }
-

@@ -3,38 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medical_services/domian/model/model_firebase.dart';
 
-class ModelLogin{
-
-
- static Future<FireModel?> loginuser({
+class ModelLogin {
+  static Future<FireModel?> loginuser({
     required email,
     required password,
-  }) async{
-    final  url = 'http://medicalservices.great-site.net/api/v1/user/auth/login';
-    final data = {
-      "email" : email,
-      "password" : password
-    };
+  }) async {
+    final url = 'http://medicalservices.great-site.net/api/v1/user/auth/login';
+    final data = {"email": email, "password": password};
     final dio = Dio();
     Response response;
-    response = await dio.post(url,data: data);
-    if(response.statusCode == 200){
+    response = await dio.post(url, data: data);
+    if (response.statusCode == 200) {
       final body = response.data;
       return FireModel(
-          email: email,
-          token: data['token'],
-          password: password,
-          category_id:'',
+        email: email,
+        token: data['token'],
+        password: password,
+        category_id: '',
         name: '',
         phone: '',
         type: '',
       );
-
-    }else {
+    } else {
       return null;
     }
   }
-
 
   static Future<FireModel?> registaruser({
     required email,
@@ -42,109 +35,110 @@ class ModelLogin{
     required phone,
     required name,
     required type,
-}) async{
-    const  url = 'http://medicalservices.great-site.net/api/v1/user/auth/register';
+  }) async {
+    const url =
+        'http://medicalservices.great-site.net/api/v1/user/auth/register';
     final data = {
-      "email" : email,
-      "password" : password,
-      "phone" : phone,
-      "name" : name,
-      "type" : type,
+      "email": email,
+      "password": password,
+      "phone": phone,
+      "name": name,
+      "type": type,
     };
     final dio = Dio();
     Response response;
-    response = await dio.post(url,data: data);
-    if(response.statusCode == 200){
+    response = await dio.post(url, data: data);
+    if (response.statusCode == 200) {
       final body = response.data;
-      return FireModel(email: email,token: data['token'], category_id: '', name: '', phone: '', password: '', type: '');
-
-    }else {
+      return FireModel(
+          email: email,
+          token: data['token'],
+          category_id: '',
+          name: '',
+          phone: '',
+          password: '',
+          type: '');
+    } else {
       return null;
     }
   }
- List bussines = [];
+
+  List bussines = [];
 
   static Future buyprodact({
-   required product_id,
-})async{
-   final url = "http://192.168.1.12:8000/buy-product";
-   final data = {
-     "product_id" : product_id
-   };
-   final  dio = Dio();
-   Response response;
-   response = await dio.post(url,data: data);
-   if(response.statusCode == 200 ){
-     final body = response.data;
-     Fluttertoast.showToast(
-         msg: "",
-         toastLength: Toast.LENGTH_LONG,
-         gravity: ToastGravity.CENTER,
-         timeInSecForIosWeb: 2,
-         backgroundColor: Colors.blueGrey,
-         textColor: Colors.white,
-         fontSize: 16.0
-     );
+    required product_id,
+  }) async {
+    final url = "http://192.168.1.12:8000/buy-product";
+    final data = {"product_id": product_id};
+    final dio = Dio();
+    Response response;
+    response = await dio.post(url, data: data);
+    if (response.statusCode == 200) {
+      final body = response.data;
+      Fluttertoast.showToast(
+          msg: "",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.blueGrey,
+          textColor: Colors.white,
+          fontSize: 16.0);
 
+      return data['product_id'];
+    } else {
+      return null;
+    }
+  }
 
-     return data['product_id'];
+  static Future getprodact({
+    required category_id,
+  }) async {
+    final url = "http://192.168.1.12:8000/api/v1/user-products";
+    final data = {"category_id": category_id};
+    final dio = Dio();
+    Response response;
+    response = await dio.get(url);
+    if (response.statusCode == 200) {
+      final body = response.data;
+      Fluttertoast.showToast(
+          msg: "تم اضافه المنتج",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.blueGrey,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      return FireModel(
+          token: data['token'],
+          category_id: '',
+          name: '',
+          email: '',
+          phone: '',
+          password: '',
+          type: '');
+    } else {
+      return null;
+    }
+  }
 
-   }else{
-     return null;
-   }
-}
-
-
- static Future getprodact({
-   required category_id,
- })async{
-   final url = "http://192.168.1.12:8000/api/v1/user-products";
-   final data = {
-     "category_id" : category_id
-   };
-   final  dio = Dio();
-   Response response;
-   response = await dio.get(url);
-   if(response.statusCode == 200 ){
-     final body = response.data;
-     Fluttertoast.showToast(
-         msg: "تم اضافه المنتج",
-         toastLength: Toast.LENGTH_LONG,
-         gravity: ToastGravity.CENTER,
-         timeInSecForIosWeb: 2,
-         backgroundColor: Colors.blueGrey,
-         textColor: Colors.white,
-         fontSize: 16.0
-     );
-     return  FireModel(token: data['token'], category_id: '', name: '', email: '', phone: '', password: '', type: '');
-
-
-
-   }else{
-     return null;
-   }
- }
 //http://ugt.517.mywebsitetransfer.com/api/v1/products
 //http://ugt.517.mywebsitetransfer.com/api/v1/products
-   static Future getreports()async{
-     final url = "http://192.168.1.12:8000/api/v1/products";
+  static Future getreports() async {
+    final url = "http://192.168.1.12:8000/api/v1/products";
 
-     final  dio = Dio();
-     Response response;
-     response = await dio.get(url);
-     if(response.statusCode == 200 ){
-       final body = response.data;
+    final dio = Dio();
+    Response response;
+    response = await dio.get(url);
+    if (response.statusCode == 200) {
+      final body = response.data;
 
-         response.data['data'] as List ;
-       print(response.data);
-     }else{
-       return null;
-     }
-   }
-
-
+      response.data['data'] as List;
+      print(response.data);
+    } else {
+      return null;
+    }
+  }
 }
-
 
 //Future<dynamic> getdata() async {
 //   var uri =

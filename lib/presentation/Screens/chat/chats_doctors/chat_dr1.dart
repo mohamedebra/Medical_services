@@ -57,7 +57,8 @@ class _ChatDr1State extends State<ChatDr1> {
             .orderBy('dataTime', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
-          var mag = FirebaseFirestore.instance.collection('messages').doc().delete();
+          var mag =
+              FirebaseFirestore.instance.collection('messages').doc().delete();
 
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
@@ -114,24 +115,18 @@ class _ChatDr1State extends State<ChatDr1> {
                       children: [
                         Expanded(
                           child: ListView.separated(
-
                               reverse: true,
                               controller: controller,
                               itemBuilder: (context, index) {
-
                                 return message[index].receiverId == uId
                                     ? buildmessage(message[index])
                                     : buildyourmessage(message[index]);
-
                               },
                               separatorBuilder: (context, index) => SizedBox(
                                     height: 15,
-
-
                                   ),
                               itemCount: message.length),
                         ),
-
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -191,14 +186,12 @@ class _ChatDr1State extends State<ChatDr1> {
   Widget buildmessage(MessageModel message) => Align(
         alignment: AlignmentDirectional.centerStart,
         child: InkWell(
-          onTap: ()async {
+          onTap: () async {
             // // AppCubit.get(context).deletemag();
             // FirebaseFirestore.instance.collection('messages')
             //     .doc() // <-- Doc ID to be deleted.
             //     .delete() ;
             // AppCubit.get(context).deletemag();
-
-
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -235,28 +228,29 @@ class _ChatDr1State extends State<ChatDr1> {
         ),
       );
 
-  deletemeg(String id){
-    FirebaseFirestore.instance.collection('messages')
+  deletemeg(String id) {
+    FirebaseFirestore.instance
+        .collection('messages')
         .doc(id) // <-- Doc ID to be deleted.
-        .delete() ;
+        .delete();
   }
-  Widget buildChats(SocialModel model, BuildContext context) => Row(
-    children: [
-      CircleAvatar(
-        radius: 17,
-        backgroundImage: NetworkImage(
-            'https://firebasestorage.googleapis.com/v0/b/medical-371515.appspot.com/o/WhatsApp%20Image%202023-04-19%20at%202.23.09%20AM.jpeg?alt=media&token=668dfc5a-0809-489b-9ab5-7dbdfb3b1748'),
-      ),
-      SizedBox(
-        width: 6,
-      ),
-      Text(
-        'Dr, Mohamed ebrahim',
-        style: TextStyle(fontSize: 15),
-      )
-    ],
-  );
 
+  Widget buildChats(SocialModel model, BuildContext context) => Row(
+        children: [
+          CircleAvatar(
+            radius: 17,
+            backgroundImage: NetworkImage(
+                'https://firebasestorage.googleapis.com/v0/b/medical-371515.appspot.com/o/WhatsApp%20Image%202023-04-19%20at%202.23.09%20AM.jpeg?alt=media&token=668dfc5a-0809-489b-9ab5-7dbdfb3b1748'),
+          ),
+          SizedBox(
+            width: 6,
+          ),
+          Text(
+            'Dr, Mohamed ebrahim',
+            style: TextStyle(fontSize: 15),
+          )
+        ],
+      );
 }
 //builder:(BuildContext context, AsyncSnapshot snapshot)
 

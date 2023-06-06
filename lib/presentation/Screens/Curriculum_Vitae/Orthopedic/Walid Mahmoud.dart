@@ -25,26 +25,46 @@ class Walid_Mahmoud extends StatelessWidget {
                         backgroundImage: AssetImage('images/وليد محمود.jpg'),
                       ),
                     ),
-                    SizedBox(height: 5,),
-                    Text('Dr , Walid Mahmoud',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-                    SizedBox(height: 5,),
-                    Text('Orthopedic doctor',style: TextStyle(fontSize: 15,color: Colors.grey),),
-                    Text('المواعيد',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-                    Text('11:00 PM  - 09:00 PM   ',style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.blue
-                    ),),
-                    Text('سعر الحجز',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-                    Text('250 ج ',style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.blue
-                    ),),
-
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Dr , Walid Mahmoud',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Orthopedic doctor',
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
+                    Text(
+                      'المواعيد',
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      '11:00 PM  - 09:00 PM   ',
+                      style: TextStyle(fontSize: 15, color: Colors.blue),
+                    ),
+                    Text(
+                      'سعر الحجز',
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      '250 ج ',
+                      style: TextStyle(fontSize: 15, color: Colors.blue),
+                    ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             Stack(
               children: [
                 Container(
@@ -59,39 +79,74 @@ class Walid_Mahmoud extends StatelessWidget {
                     color: Colors.blue[100],
                   ),
                 ),
-                SizedBox(height: 25,),
+                SizedBox(
+                  height: 25,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   child: Row(
                     children: [
-                      Expanded(child: Row(
+                      Expanded(
+                          child: Row(
                         children: [
                           CircleAvatar(
                             radius: 25,
                             backgroundColor: Colors.blue,
-                            child: Icon(Icons.people_alt_outlined,size: 35,),
+                            child: Icon(
+                              Icons.people_alt_outlined,
+                              size: 35,
+                            ),
                           ),
-                          SizedBox(width: 15,),
+                          SizedBox(
+                            width: 15,
+                          ),
                           Column(
                             children: const [
-                              Text('306+',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black87,fontSize: 20),),
-                              Text('patients',style: TextStyle(fontSize: 15,color: Colors.black54),)
+                              Text(
+                                '306+',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
+                                    fontSize: 20),
+                              ),
+                              Text(
+                                'patients',
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black54),
+                              )
                             ],
                           )
                         ],
                       )),
-                      Expanded(child: Row(
+                      Expanded(
+                          child: Row(
                         children: [
                           CircleAvatar(
                             radius: 25,
                             backgroundColor: Colors.blue,
-                            child: Icon(Icons.insights,size: 35,),
+                            child: Icon(
+                              Icons.insights,
+                              size: 35,
+                            ),
                           ),
-                          SizedBox(width: 15,),
+                          SizedBox(
+                            width: 15,
+                          ),
                           Column(
                             children: [
-                              Text('10 years',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black87,fontSize: 20),),
-                              Text('Experiences',style: TextStyle(fontSize: 15,color: Colors.black54),)
+                              Text(
+                                '10 years',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
+                                    fontSize: 20),
+                              ),
+                              Text(
+                                'Experiences',
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black54),
+                              )
                             ],
                           )
                         ],
@@ -99,12 +154,14 @@ class Walid_Mahmoud extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 50,),
-
-
+                SizedBox(
+                  height: 50,
+                ),
               ],
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Column(
               children: [
                 Container(
@@ -113,22 +170,23 @@ class Walid_Mahmoud extends StatelessWidget {
                       borderRadius: BorderRadiusDirectional.only(
                         topEnd: Radius.circular(50),
                         topStart: Radius.circular(50),
-
                       ),
-                      color: Colors.blue[100]
-                  ),
-
+                      color: Colors.blue[100]),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('About doctor',style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600
-                        ),),
-                        SizedBox(height: 15,),
-                        Text('''
+                        Text(
+                          'About doctor',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          '''
 Member of the Egyptian Society of Orthopedics
 Academic experience:
 Master of Surgery from the Faculty of Medicine, Ain Shams University - Egypt
@@ -138,31 +196,51 @@ baby bones
 adult bones
 Hand and shoulder bones
 Bone deformities
-Ankle and foot bones       ''',style: TextStyle(
-                            color: Colors.grey[700]
-                        ),),
-                        SizedBox(height: 25,),
+Ankle and foot bones       ''',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Row(
                           children: [
                             CircleAvatar(
                               radius: 25,
                               backgroundColor: Colors.blue,
-                              child:    IconButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Walid_Mahmoud_chat()));
-                              }, icon: Icon(Icons.chat,color: Colors.white,)),
+                              child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Walid_Mahmoud_chat()));
+                                  },
+                                  icon: Icon(
+                                    Icons.chat,
+                                    color: Colors.white,
+                                  )),
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * .6,),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * .6,
+                            ),
                             CircleAvatar(
                               radius: 25,
                               backgroundColor: Colors.blue,
-                              child:    IconButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Walid_Mahmoud_resevtion()));
-                              }, icon: Icon(Icons.price_change_outlined,color: Colors.white,)),
+                              child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Walid_Mahmoud_resevtion()));
+                                  },
+                                  icon: Icon(
+                                    Icons.price_change_outlined,
+                                    color: Colors.white,
+                                  )),
                             ),
-
                           ],
                         ),
-
                       ],
                     ),
                   ),

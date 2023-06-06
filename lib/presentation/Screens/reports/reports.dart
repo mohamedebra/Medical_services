@@ -11,7 +11,7 @@ class Reports extends StatefulWidget {
 }
 
 class _ReportsState extends State<Reports> {
-  List  business = [];
+  List business = [];
   @override
   void initState() {
     getdata();
@@ -22,62 +22,64 @@ class _ReportsState extends State<Reports> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white70,
-      body:               SizedBox(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: ConditionalBuilder(
           condition: business.length > 0,
           builder: (BuildContext context) {
             return ListView.separated(
-                itemBuilder: (context,index)=> Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                  child: Column(
-                    children: [
-                      Row(
+                itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 5),
+                      child: Column(
                         children: [
-                          Column(
+                          Row(
                             children: [
-                              Container(
-                                width: 70,
-                                height: 70,
-                                child: Image(
-                                  image: NetworkImage('${business[index]['image']}'),fit: BoxFit.cover,
+                              Column(
+                                children: [
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    child: Image(
+                                      image: NetworkImage(
+                                          '${business[index]['image']}'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 7,
+                                  ),
+                                  Text('${business[index]['price']} جنيه'),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text('${business[index]['name']}'),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Text(
+                                      '${business[index]['created_at']}',
+                                      style: TextStyle(color: Colors.grey[300]),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(height: 7,),
-                              Text(
-                                  '${business[index]['price']} جنيه'),
-
                             ],
                           ),
-                          SizedBox(width: 15,),
-                          Expanded(
-                            child: Column(
-
-                              children: [
-                                Text(
-                                    '${business[index]['name']}'),
-                                SizedBox(height: 25,),
-                                Text(
-                                  '${business[index]['created_at']}',style: TextStyle(color: Colors.grey[300]),),
-
-
-
-
-                              ],
-                            ),
-                          ),
+                          // Container(height: 2,width: 1,color: Colors.grey[200],),
                         ],
                       ),
-                      // Container(height: 2,width: 1,color: Colors.grey[200],),
-
-                    ],
-                  ),
-                ),
-                separatorBuilder: (context,index) => Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: Colors.grey[300],
-                ),
+                    ),
+                separatorBuilder: (context, index) => Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[300],
+                    ),
                 itemCount: business.length);
           },
           fallback: (BuildContext context) {
@@ -87,10 +89,9 @@ class _ReportsState extends State<Reports> {
           },
         ),
       ),
-
     );
   }
-   // void getdata()async{
+  // void getdata()async{
   //
   //   // var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
   //   // if(response.statusCode == 200)
@@ -122,20 +123,11 @@ class _ReportsState extends State<Reports> {
   //
   // }
 
-
-
-
-
-
-
-
   // ConditionalBuilder(
   //         condition: business.length > 0 ,
   //         builder: (BuildContext context) =>
   //         fallback: (BuildContext context) => Center(child: Image(image: AssetImage('images/reports.png'),),)
-  void getdata()async{
-
-
+  void getdata() async {
     var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
     // if(response.statusCode == 200)
     // {
@@ -148,16 +140,15 @@ class _ReportsState extends State<Reports> {
     //   print(response.statusCode);
     // }
 
-    if(response.statusCode == 200 ){
+    if (response.statusCode == 200) {
       final body = response.data;
 
       setState(() {
-        business = response.data['data'] as List ;
+        business = response.data['data'] as List;
       });
       print(response.data);
-    }else{
+    } else {
       return null;
     }
-
   }
 }

@@ -30,39 +30,38 @@ class _DrugsState extends State<Drugs> {
     });
     super.initState();
   }
+
   List data = [];
-  void getData()async{
-    var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/news');
-    if(response.statusCode == 200)
-    {
+  void getData() async {
+    var response =
+        await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/news');
+    if (response.statusCode == 200) {
       setState(() {
-        data = response.data['data'] as List ;
+        data = response.data['data'] as List;
       });
       print(response.data);
-
-    }
-    else{
+    } else {
       print(response.statusCode);
     }
   }
-  Widget build(BuildContext context) {
-    var txetContorlr =TextEditingController();
 
+  Widget build(BuildContext context) {
+    var txetContorlr = TextEditingController();
 
     return BlocProvider<AppCubit>(
       create: (BuildContext context) => AppCubit(),
-
-      child: BlocConsumer<AppCubit,MedialState>(
-        listener: (context,state){},
-        builder: (context,state){
-
+      child: BlocConsumer<AppCubit, MedialState>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              backgroundColor:Colors.blue[200],
-              leading: IconButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
-              }, icon: Icon(Icons.arrow_back_ios
-              )),
+              backgroundColor: Colors.blue[200],
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  icon: Icon(Icons.arrow_back_ios)),
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -75,44 +74,52 @@ class _DrugsState extends State<Drugs> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(35),
-                            bottomRight: Radius.circular(35)
-                          ),
+                              bottomLeft: Radius.circular(35),
+                              bottomRight: Radius.circular(35)),
                           color: Colors.blue[200],
-
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
-                              child: Text(_lang.getDrugs1(),style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  color: Colors.black),),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: Text(
+                                _lang.getDrugs1(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25,
+                                    color: Colors.black),
+                              ),
                             ),
-                            SizedBox(height: 35,),
+                            SizedBox(
+                              height: 35,
+                            ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               child: Container(
                                 height: 60,
                                 child: TextFormField(
-                                  onTap: (){},
+                                  onTap: () {},
                                   controller: txetContorlr,
                                   decoration: InputDecoration(
                                       fillColor: Colors.blue[200],
                                       filled: true,
-                                      suffixIcon:Padding(
-                                        padding: const EdgeInsets.only(right: 40),
-                                        child: Icon(IconBroken.Search,color: Colors.grey[700],),
+                                      suffixIcon: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 40),
+                                        child: Icon(
+                                          IconBroken.Search,
+                                          color: Colors.grey[700],
+                                        ),
                                       ),
                                       hintText: _lang.getDrugs2(),
-                                      hintStyle: TextStyle(color: Colors.black45,fontSize: 12),
+                                      hintStyle: TextStyle(
+                                          color: Colors.black45, fontSize: 12),
                                       border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20)
-                                    )
-
-                                  ),
+                                          borderRadius:
+                                              BorderRadius.circular(20))),
                                 ),
                               ),
                             ),
@@ -138,20 +145,23 @@ class _DrugsState extends State<Drugs> {
                             //     ),
                             //   ),
                             // )
-
-
                           ],
                         ),
                       )
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Text(_lang.getSection(),style: TextStyle(fontSize: 25),),
+                        child: Text(
+                          _lang.getSection(),
+                          style: TextStyle(fontSize: 25),
+                        ),
                       ),
                     ],
                   ),
@@ -161,109 +171,156 @@ class _DrugsState extends State<Drugs> {
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Vitamins()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Vitamins()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image(image: AssetImage('images/1252.jpg'),width: 70,),
-                                    const SizedBox(height: 35,),
-                                    Text(_lang.getVitamins(),                                  style: TextStyle(
-                                        fontSize: 14,fontWeight: FontWeight.bold
-                                    ))
+                                    Image(
+                                      image: AssetImage('images/1252.jpg'),
+                                      width: 70,
+                                    ),
+                                    const SizedBox(
+                                      height: 35,
+                                    ),
+                                    Text(_lang.getVitamins(),
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold))
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Without_Prescription()));
-
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Without_Prescription()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image(image: AssetImage('images/53615.jpg'),width: 90,),
-                                    SizedBox(height: 10,),
-                                    Text(_lang.getMedications(),                                  style: TextStyle(
-                                        fontSize: 15,fontWeight: FontWeight.bold
-                                    ))
+                                    Image(
+                                      image: AssetImage('images/53615.jpg'),
+                                      width: 90,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(_lang.getMedications(),
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold))
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Fighting_the_infection()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Fighting_the_infection()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-
-                                    Image(image: AssetImage('images/12345.jpg'),width: 90,),
-                                    SizedBox(height: 17,),
-                                    Text(_lang.getfighting(),
+                                    Image(
+                                      image: AssetImage('images/12345.jpg'),
+                                      width: 90,
+                                    ),
+                                    SizedBox(
+                                      height: 17,
+                                    ),
+                                    Text(
+                                      _lang.getfighting(),
                                       style: TextStyle(
-                                          fontSize: 15,fontWeight: FontWeight.bold
-                                      ),)
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    )
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Woman_care()));
-
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Woman_care()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image(image: AssetImage('images/300.jpg'),width: 97,),
-                                    SizedBox(height: 10,),
-
-                                    Text(_lang.getwomen(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)
+                                    Image(
+                                      image: AssetImage('images/300.jpg'),
+                                      width: 97,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      _lang.getwomen(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    )
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Hair_care()));
-
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Hair_care()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image(image: AssetImage('images/15150482641.jpg'),width: 95,),
-                                    SizedBox(height: 10,),
-
-                                    Text(_lang.gethair(),style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
+                                    Image(
+                                      image:
+                                          AssetImage('images/15150482641.jpg'),
+                                      width: 95,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      _lang.gethair(),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
+                                    )
                                   ],
                                 ),
                               ),
@@ -271,19 +328,30 @@ class _DrugsState extends State<Drugs> {
                           ),
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> Man_care()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Man_care()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image(image: AssetImage('images/21492918701.jpg'),width: 113,),
-                                    SizedBox(height: 10,),
-                                    Text(_lang.getman(),style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15
-                                    ),)
+                                    Image(
+                                      image:
+                                          AssetImage('images/21492918701.jpg'),
+                                      width: 113,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      _lang.getman(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    )
                                   ],
                                 ),
                               ),
@@ -349,20 +417,12 @@ class _DrugsState extends State<Drugs> {
                   //     ),
                   //     itemCount: data.length,),
                   // )
-
-
-
-
-
                 ],
               ),
             ),
           );
         },
-
       ),
     );
-
   }
-
 }

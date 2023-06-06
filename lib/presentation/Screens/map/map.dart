@@ -34,27 +34,21 @@ class _MapsState extends State<Maps> {
 
   var scffoldKey = GlobalKey<ScaffoldState>();
 
-
   LatLng currentLoction = Maps._kGooglePlex.target;
 
-
-
-  tolocatio() async{
-    Text(
-        'lat: ${currentLoction.latitude} , long: ${currentLoction.longitude}');
+  tolocatio() async {
+    Text('lat: ${currentLoction.latitude} , long: ${currentLoction.longitude}');
   }
 
   Set<Marker> _markers = Set();
 
   final Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>();
-  late FirebaseMessaging note ;
+      Completer<GoogleMapController>();
+  late FirebaseMessaging note;
 
   String location = "Search Location";
   String googleApikey = "AIzaSyCiugS2YJUSyBS8zwf2-nnG36hjVNOg9Gk";
   GoogleMapController? mapController; //contrller for Google map
-
-
 
   @override
   void initState() {
@@ -69,7 +63,6 @@ class _MapsState extends State<Maps> {
       child: BlocConsumer<AppCubit, MedialState>(
         listener: (context, state) {},
         builder: (context, state) {
-
           return Scaffold(
             key: scffoldKey,
             appBar: AppBar(
@@ -82,33 +75,32 @@ class _MapsState extends State<Maps> {
                     onTap: _handlePressButton,
                     controller: messageContror,
                     decoration: InputDecoration(
-
                       prefixIcon: Icon(Icons.search),
                       suffixIcon: Icon(Icons.location_searching),
-                      hintText: '${getLang(context, "Search your flight location")}',
+                      hintText:
+                          '${getLang(context, "Search your flight location")}',
                     ),
                   ),
                 ),
               ),
               actions: [
                 IconButton(
-                    onPressed: () => _setMarker(currentLoction),
-                    icon: Icon(Icons.location_on),color: Colors.black87,)
+                  onPressed: () => _setMarker(currentLoction),
+                  icon: Icon(Icons.location_on),
+                  color: Colors.black87,
+                )
               ],
 //
             ),
             body: Column(
               children: [
-
                 Expanded(
-
                   child: GoogleMap(
                     // polylines: polyline.toSet(),
                     mapType: MapType.normal,
                     initialCameraPosition: Maps._kGooglePlex,
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
-
                     },
                     onCameraMove: (CameraPosition _kGooglePlex) {
                       setState(() {
@@ -118,46 +110,43 @@ class _MapsState extends State<Maps> {
                     markers: _markers,
                   ),
                 ),
-
               ],
             ),
-            floatingActionButton: FloatingActionButton(onPressed: (){
-              getUserCurrentLocation().then((value) async {
-                print(value.latitude.toString() +" "+value.longitude.toString());
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                getUserCurrentLocation().then((value) async {
+                  print(value.latitude.toString() +
+                      " " +
+                      value.longitude.toString());
 
-                // marker added for current users location
-                _markers.add(
-                    Marker(
-                      markerId: MarkerId("7"),
-                      position: LatLng(value.latitude, value.longitude),
-                      infoWindow: InfoWindow(
-                        title: 'موقعي الحالي',
-                      ),
-                    )
-                );
+                  // marker added for current users location
+                  _markers.add(Marker(
+                    markerId: MarkerId("7"),
+                    position: LatLng(value.latitude, value.longitude),
+                    infoWindow: InfoWindow(
+                      title: 'موقعي الحالي',
+                    ),
+                  ));
 
-                // specified current users location
-                CameraPosition cameraPosition = new CameraPosition(
-                  target: LatLng(value.latitude, value.longitude),
-                  zoom: 14,
-                );
+                  // specified current users location
+                  CameraPosition cameraPosition = new CameraPosition(
+                    target: LatLng(value.latitude, value.longitude),
+                    zoom: 14,
+                  );
 
-                final GoogleMapController controller = await _controller.future;
-                controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-                setState(() {
+                  final GoogleMapController controller =
+                      await _controller.future;
+                  controller.animateCamera(
+                      CameraUpdate.newCameraPosition(cameraPosition));
+                  setState(() {});
                 });
-              });
-            },
-              child: Icon(
-                  Icons.location_searching
-              ),
+              },
+              child: Icon(Icons.location_searching),
             ),
             bottomNavigationBar: SingleChildScrollView(
               child: Container(
-
                 alignment: Alignment.center,
-                child:
-                Text(
+                child: Text(
                     'lat: ${currentLoction.latitude} , long: ${currentLoction.longitude}'),
               ),
             ),
@@ -167,13 +156,12 @@ class _MapsState extends State<Maps> {
     );
   }
 
-
-
   Future<Position> getUserCurrentLocation() async {
-    await Geolocator.requestPermission().then((value){
-    }).onError((error, stackTrace) async {
+    await Geolocator.requestPermission()
+        .then((value) {})
+        .onError((error, stackTrace) async {
       await Geolocator.requestPermission();
-      print("ERROR"+error.toString());
+      print("ERROR" + error.toString());
     });
     return await Geolocator.getCurrentPosition();
   }
@@ -239,7 +227,7 @@ class _MapsState extends State<Maps> {
     Prediction? p = await PlacesAutocomplete.show(
         context: context,
         apiKey: 'AIzaSyCfiyN1pG7lK2lC_iKk5942eeDHuNBOWgI',
-        onError: (e){
+        onError: (e) {
           print(e.toString());
         },
         mode: Mode.fullscreen,
@@ -258,6 +246,7 @@ class _MapsState extends State<Maps> {
     displayPrediction(p!, scffoldKey.currentState);
     setState(() {});
   }
+
   Future<void> displayPrediction(p, ScaffoldState? currentState) async {
     GoogleMapsPlaces places = GoogleMapsPlaces(
         apiKey: 'AIzaSyCfiyN1pG7lK2lC_iKk5942eeDHuNBOWgI',
@@ -278,10 +267,4 @@ class _MapsState extends State<Maps> {
     googleMapController
         .animateCamera(CameraUpdate.newLatLngZoom(LatLng(lat, lng), 14.0));
   }
-
-
-
 }
-
-
-

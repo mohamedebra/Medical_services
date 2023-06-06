@@ -25,7 +25,10 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reservation information',style: TextStyle(fontSize: 20),),
+        title: Text(
+          'Reservation information',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -33,14 +36,24 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
           children: [
             Column(
               children: const [
-
-                SizedBox(height: 10,),
-                Center(child: Text('Reservation',style: TextStyle(fontSize: 17,color: Colors.grey),)),
-                Center(child: Text('A Medical',style: TextStyle(fontSize: 14,color: Colors.blue),)),
-
+                SizedBox(
+                  height: 10,
+                ),
+                Center(
+                    child: Text(
+                  'Reservation',
+                  style: TextStyle(fontSize: 17, color: Colors.grey),
+                )),
+                Center(
+                    child: Text(
+                  'A Medical',
+                  style: TextStyle(fontSize: 14, color: Colors.blue),
+                )),
               ],
             ),
-            const SizedBox(height: 7,),
+            const SizedBox(
+              height: 7,
+            ),
             Container(
               height: 1,
               width: double.infinity,
@@ -51,9 +64,17 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 7,),
-                      Icon(Icons.timer,color: Colors.green,),
-                      Text('Timer Waiting ${5}',style: TextStyle(color: Colors.greenAccent[400]),),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Icon(
+                        Icons.timer,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        'Timer Waiting ${5}',
+                        style: TextStyle(color: Colors.greenAccent[400]),
+                      ),
                     ],
                   ),
                 ),
@@ -65,13 +86,22 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 7,),
-                      Icon(Icons.price_change_outlined,color: Colors.blue,),
-                      Text('ج 220  Detection  ',),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Icon(
+                        Icons.price_change_outlined,
+                        color: Colors.blue,
+                      ),
+                      Text(
+                        'ج 220  Detection  ',
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 7,)
+                SizedBox(
+                  height: 7,
+                )
               ],
             ),
             Container(
@@ -84,21 +114,31 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      child: Icon(Icons.location_on , color: Colors.blue,),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: Icon(
+                        Icons.location_on,
+                        color: Colors.blue,
+                      ),
                     ),
-                    Text('6th of October, the central axis, in front of the third district',style: TextStyle(fontSize: 12,color: Colors.grey),),
-
+                    Text(
+                      '6th of October, the central axis, in front of the third district',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5,right: 20,left: 20),
-                  child: Text('Book now and the full address details and clinic number will be sent to you',style: TextStyle(fontSize: 14,color: Colors.grey[900]),),
+                  padding: const EdgeInsets.only(top: 5, right: 20, left: 20),
+                  child: Text(
+                    'Book now and the full address details and clinic number will be sent to you',
+                    style: TextStyle(fontSize: 14, color: Colors.grey[900]),
+                  ),
                 ),
-
               ],
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Container(
               height: 1,
               width: double.infinity,
@@ -107,7 +147,10 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
             Column(
               children: [
                 Center(
-                  child: Text('Book an appointment',style: TextStyle(fontSize: 20,color: Colors.grey[700]),),
+                  child: Text(
+                    'Book an appointment',
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                  ),
                 )
               ],
             ),
@@ -116,8 +159,16 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                 key: formKey,
                 child: Column(
                   children: [
-                    SizedBox(height: 5,),
-                    Text('Dr ,  Ahmed El-Sayed Tawfiq',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.blue),),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Dr ,  Ahmed El-Sayed Tawfiq',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.blue),
+                    ),
                     const SizedBox(
                       height: 35,
                     ),
@@ -195,7 +246,6 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20)),
                                 )),
                           ),
-
                         ],
                       ),
                     ),
@@ -212,12 +262,10 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.blue[300],
-
                           ),
                           child: TextButton(
-                              onPressed: ()async
-                              {
-                                if(formKey.currentState!.validate()){
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
                                   // Fluttertoast.showToast(
                                   //     msg: "Reservation requested",
                                   //     toastLength: Toast.LENGTH_LONG,
@@ -227,7 +275,10 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                                   //     textColor: Colors.white,
                                   //     fontSize: 16.0
                                   // );
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Card_Search()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Card_Search()));
                                 }
                               },
                               child: Center(
@@ -259,7 +310,6 @@ class Reservation_Ahmed_El_Sayed extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       ),

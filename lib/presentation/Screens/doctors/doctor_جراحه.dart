@@ -21,18 +21,16 @@ class _SurgeryState extends State<Surgery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lang.getDoctorsofsurgery(),style: TextStyle(fontSize: 20),),
-
+        title: Text(
+          _lang.getDoctorsofsurgery(),
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 40,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 40, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -44,7 +42,6 @@ class _SurgeryState extends State<Surgery> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -54,8 +51,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -66,7 +62,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/طارق عبدالغني.jpg'),
+                                          image: AssetImage(
+                                              'images/طارق عبدالغني.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -81,7 +78,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Tariq Abdul Ghani Hamed',
@@ -118,11 +116,7 @@ class _SurgeryState extends State<Surgery> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -134,7 +128,6 @@ class _SurgeryState extends State<Surgery> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -144,8 +137,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -156,7 +148,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/محمد القباني.jpg'),
+                                          image: AssetImage(
+                                              'images/محمد القباني.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -171,7 +164,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Mohammed Al-Qabbani',
@@ -208,11 +202,7 @@ class _SurgeryState extends State<Surgery> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -224,7 +214,6 @@ class _SurgeryState extends State<Surgery> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -234,8 +223,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -246,7 +234,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/محمد السروي.jpg'),
+                                          image: AssetImage(
+                                              'images/محمد السروي.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -261,7 +250,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Muhammad Al-Sarwi',
@@ -298,23 +288,16 @@ class _SurgeryState extends State<Surgery> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Ahmed_Mostafa()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Ahmed_Mostafa()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -324,8 +307,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -336,7 +318,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/احمد مصطفي.jpg'),
+                                          image: AssetImage(
+                                              'images/احمد مصطفي.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -351,7 +334,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Ahmed Mostafa Al-Saeed',
@@ -388,11 +372,7 @@ class _SurgeryState extends State<Surgery> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -404,7 +384,6 @@ class _SurgeryState extends State<Surgery> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -414,8 +393,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -426,7 +404,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/محمد احمد.jpg'),
+                                          image: AssetImage(
+                                              'images/محمد احمد.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -441,7 +420,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Mohammed Ahmed Al-Qasabi',
@@ -478,23 +458,16 @@ class _SurgeryState extends State<Surgery> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(
-                top: 5,
-                start: 20,
-                end: 20,
-                bottom: 10
-            ),
+                top: 5, start: 20, end: 20, bottom: 10),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Hany_Ali_Awad()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Hany_Ali_Awad()));
               },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[300],
-
                 ),
                 child: Stack(
                   children: [
@@ -504,8 +477,7 @@ class _SurgeryState extends State<Surgery> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70)
-                          ),
+                              borderRadius: BorderRadius.circular(70)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -516,7 +488,8 @@ class _SurgeryState extends State<Surgery> {
                                     Stack(
                                       children: [
                                         Image(
-                                          image: AssetImage('images/هاني علي.jpg'),
+                                          image:
+                                              AssetImage('images/هاني علي.jpg'),
                                           width: 70,
                                           height: 70,
                                         ),
@@ -531,7 +504,8 @@ class _SurgeryState extends State<Surgery> {
                                       width: 25,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: const [
                                         Text(
                                           'Dr , Hany Ali Awad',
@@ -566,7 +540,6 @@ class _SurgeryState extends State<Surgery> {
               ),
             ),
           ),
-
         ],
       ),
     );

@@ -53,6 +53,7 @@ void main() async {
     startWidget: widget,
   ));
 }
+
 class MyApp extends StatelessWidget {
   final Widget startWidget;
   MyApp({super.key, required this.startWidget});
@@ -127,4 +128,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

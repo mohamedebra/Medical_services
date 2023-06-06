@@ -8,7 +8,6 @@ import 'package:medical_services/presentation/Screens/search/search.dart';
 import 'package:medical_services/presentation/resources/style.dart';
 import 'package:medical_services/business_logic/states.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -17,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -27,6 +25,7 @@ class _HomeState extends State<Home> {
 
     super.initState();
   }
+
   Lang _lang = Lang();
 
   @override
@@ -45,11 +44,14 @@ class _HomeState extends State<Home> {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.blueGrey[50],
-              leading:
-              InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Market(prodact_id: null,)));
-
+              leading: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Market(
+                                prodact_id: null,
+                              )));
                 },
                 child: Row(
                   children: [
@@ -57,7 +59,8 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.only(left: 20),
                       child: Container(
                         child: Icon(
-                            Icons.production_quantity_limits,color: Colors.blue[400],
+                          Icons.production_quantity_limits,
+                          color: Colors.blue[400],
                         ),
                       ),
                     ),
@@ -67,14 +70,18 @@ class _HomeState extends State<Home> {
               title: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 55,right: 0),
-                    child: Image(image: AssetImage('images/5555 (2).png'),height: 60,),
+                    padding: const EdgeInsets.only(left: 55, right: 0),
+                    child: Image(
+                      image: AssetImage('images/5555 (2).png'),
+                      height: 60,
+                    ),
                   ),
-                  Text(cubit.title[cubit.currentIndex],),
+                  Text(
+                    cubit.title[cubit.currentIndex],
+                  ),
                 ],
               ),
               centerTitle: true,
-
               actions: [
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
@@ -87,7 +94,10 @@ class _HomeState extends State<Home> {
                               MaterialPageRoute(
                                   builder: (context) => Notifications()));
                         },
-                        icon: Icon(IconBroken.Notification,size: 27,),
+                        icon: Icon(
+                          IconBroken.Notification,
+                          size: 27,
+                        ),
                         color: Colors.blue[200],
                       ),
                     ],
@@ -117,7 +127,8 @@ class _HomeState extends State<Home> {
                     BottomNavigationBarItem(
                         icon: Icon(IconBroken.Chat), label: _lang.getChat()),
                     BottomNavigationBarItem(
-                        icon: Icon(IconBroken.Setting), label: _lang.getsetting()),
+                        icon: Icon(IconBroken.Setting),
+                        label: _lang.getsetting()),
                   ]),
             ),
           );

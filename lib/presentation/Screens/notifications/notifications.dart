@@ -39,7 +39,8 @@ class _NotificationsState extends State<Notifications> {
               height: MediaQuery.of(context).size.height,
               child: ListView.separated(
                   itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -48,7 +49,6 @@ class _NotificationsState extends State<Notifications> {
                             padding: const EdgeInsets.all(15.0),
                             child: Row(
                               children: [
-
                                 CircleAvatar(
                                   backgroundColor: Colors.red[100],
                                   child: Icon(Icons.notification_important),
@@ -93,7 +93,6 @@ class _NotificationsState extends State<Notifications> {
                         child: Container(
                           height: 1,
                           width: double.infinity,
-
                         ),
                       ),
                   itemCount: business.length),
@@ -123,8 +122,7 @@ class _NotificationsState extends State<Notifications> {
     // }
 
     // https:newsapi.org/v2/everything?q=tesla&from=2023-02-09&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
-    var response =
-        await Dio().get('http://192.168.1.12:8000/api/v1/news');
+    var response = await Dio().get('http://192.168.1.12:8000/api/v1/news');
     if (response.statusCode == 200) {
       setState(() {
         business = response.data['data'] as List;

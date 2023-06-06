@@ -8,7 +8,6 @@ import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/Screens/news/build.dart';
 import 'package:medical_services/business_logic/states.dart';
 
-
 class Search extends StatefulWidget {
   static List business = [];
   @override
@@ -34,63 +33,68 @@ class _SearchState extends State<Search> {
 
   var formKey = GlobalKey<FormState>();
 
-  user(Users model,int index) => Padding(
-    padding: const EdgeInsets.all(10.0),
-    child:  Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        InkWell(
-          onTap: (){
-            if(itemsUsers[index].ip  >= index){
-              userlastcontrollr.text = itemsUsers[index].id;
-            }
-          },
-
-          child: Row(
-            children: [
-              SizedBox(width: 10,),
-              Expanded(
-                child : Text('${model.id}',style: TextStyle(fontSize: 16),
-                  maxLines: 1,
-                  overflow:TextOverflow.clip ,),
+  user(Users model, int index) => Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InkWell(
+              onTap: () {
+                if (itemsUsers[index].ip >= index) {
+                  userlastcontrollr.text = itemsUsers[index].id;
+                }
+              },
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      '${model.id}',
+                      style: TextStyle(fontSize: 16),
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-
-      ],
-    ),
-  );
-   plase(Place model,int index) => Padding(
-    padding: const EdgeInsets.all(10.0),
-    child:  Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        InkWell(
-          onTap: (){
-            if(itemsemailcontrollr[index].ip  >= index){
-              emailcontrollr.text = itemsemailcontrollr[index].id;
-            }
-          },
-
-          child: Row(
-            children: [
-              SizedBox(width: 10,),
-              Expanded(
-                child : Text('${model.id}',style: TextStyle(fontSize: 16),
-                  maxLines: 1,
-                  overflow:TextOverflow.clip ,),
+      );
+  plase(Place model, int index) => Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InkWell(
+              onTap: () {
+                if (itemsemailcontrollr[index].ip >= index) {
+                  emailcontrollr.text = itemsemailcontrollr[index].id;
+                }
+              },
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      '${model.id}',
+                      style: TextStyle(fontSize: 16),
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-
-      ],
-    ),
-  );
-
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +121,6 @@ class _SearchState extends State<Search> {
                 key: formKey,
                 child: Column(
                   children: [
-                    
                     // SizedBox(
                     //   height: 70,
                     // ),
@@ -402,16 +405,14 @@ class _SearchState extends State<Search> {
                               hintText: "Please enter text",
                               hintStyle: TextStyle(color: Colors.grey[400]),
                               border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)
-                            )
-                          ),
-                          onChanged: (String val){
+                                  borderRadius: BorderRadius.circular(20))),
+                          onChanged: (String val) {
                             getsearch(val);
                           },
                         ),
                       ),
                     ),
-                    
+
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .70,
                       child: ConditionalBuilder(
@@ -419,13 +420,12 @@ class _SearchState extends State<Search> {
                           builder: (context) => ListView.separated(
                               itemBuilder: (context, index) =>
                                   buildAitims(Search.business[index], context),
-
                               separatorBuilder: (context, index) => Container(),
                               itemCount: Search.business.length),
-                          fallback: (context) =>
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(child:  LinearProgressIndicator()),
+                          fallback: (context) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Center(child: LinearProgressIndicator()),
                               )),
                     ),
                   ],
@@ -469,17 +469,16 @@ class _SearchState extends State<Search> {
     var response = await Dio().get(
 
         //'https://newsapi.org/v2/everything?q=$val&from=2023-04-16&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'
-       "https://newsapi.org/v2/everything?q=$val&from=2023-04-21&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc"
-
-    );
+        "https://newsapi.org/v2/everything?q=$val&from=2023-04-21&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc");
     if (response.statusCode == 200) {
       setState(() {
         Search.business = response.data['articles'] as List;
       });
-    } else if(response.statusCode == 426){
+    } else if (response.statusCode == 426) {
       setState(() {
         error = response.data['message'] as List;
-      });    }
+      });
+    }
   }
 
   Widget articleBulider(search, context) => ConditionalBuilder(
@@ -738,41 +737,67 @@ class _SearchState extends State<Search> {
 //                     ),
 //                   ),
 }
-List<Users> itemsUsers =[
-  Users(id: "heart disease	", ip: 0, ),
-  Users(id: "bones	", ip: 1, ),
-  Users(id: "nose and ear	", ip: 2,  ),
-  Users(id: "esoteric", ip: 3,  ),
-  Users(id: "surgery", ip: 4,  ),
-  Users(id: "leather", ip: 5,  ),
 
-
+List<Users> itemsUsers = [
+  Users(
+    id: "heart disease	",
+    ip: 0,
+  ),
+  Users(
+    id: "bones	",
+    ip: 1,
+  ),
+  Users(
+    id: "nose and ear	",
+    ip: 2,
+  ),
+  Users(
+    id: "esoteric",
+    ip: 3,
+  ),
+  Users(
+    id: "surgery",
+    ip: 4,
+  ),
+  Users(
+    id: "leather",
+    ip: 5,
+  ),
 ];
 
 class Users {
   String id;
   var ip;
 
-  Users({
-    required this.id,
-    required this.ip
-  });
+  Users({required this.id, required this.ip});
 }
 
 List<Place> itemsemailcontrollr = [
-  Place(id: "Dakahlia Governorate", ip: 0, ),
-  Place(id: "Gharbiya Governorate", ip: 1, ),
-  Place(id: "Red Sea Governorate", ip: 2,  ),
-  Place(id: "Cairo Governorate", ip: 3,  ),
-  Place(id: "Giza", ip: 4,  ),
+  Place(
+    id: "Dakahlia Governorate",
+    ip: 0,
+  ),
+  Place(
+    id: "Gharbiya Governorate",
+    ip: 1,
+  ),
+  Place(
+    id: "Red Sea Governorate",
+    ip: 2,
+  ),
+  Place(
+    id: "Cairo Governorate",
+    ip: 3,
+  ),
+  Place(
+    id: "Giza",
+    ip: 4,
+  ),
 ];
 
 class Place {
   String id;
   var ip;
 
-  Place({
-    required this.id,
-    required this.ip
-  });
+  Place({required this.id, required this.ip});
 }

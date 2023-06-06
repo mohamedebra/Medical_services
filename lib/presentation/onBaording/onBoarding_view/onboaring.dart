@@ -13,14 +13,11 @@ class OnBaording extends StatefulWidget {
 }
 
 class _OnBaordingState extends State<OnBaording> {
-
-
-
   var controller = PageController();
 
   OnBoardingViewModel _onBoardingViewModel = OnBoardingViewModel();
 
-  void sumip() async{
+  void sumip() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // CacheHelper.savedata(key: 'OnBoaring', value: false).then((value) {
     //   if(value ){
@@ -34,21 +31,19 @@ class _OnBaordingState extends State<OnBaording> {
     // });
 
     pref.setBool('OnBoarding', true).then((value) {
-      if(value == true){
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Get_Started()),
-                    (route) => false);
+      if (value == true) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Get_Started()),
+            (route) => false);
       }
     });
-
-
-
   }
-  _bind(){
+
+  _bind() {
     _onBoardingViewModel.start();
   }
+
   @override
   void initState() {
     _bind();
@@ -59,15 +54,13 @@ class _OnBaordingState extends State<OnBaording> {
   Widget build(BuildContext context) {
     return StreamBuilder<SliderViewObject>(
       stream: _onBoardingViewModel.outputSliderViewObject,
-      builder: ( context, snapshot) {
+      builder: (context, snapshot) {
         return getContontWidget(snapshot.data);
       },
     );
   }
 
-
-
-  Widget getContontWidget(SliderViewObject? sliderViewObject){
+  Widget getContontWidget(SliderViewObject? sliderViewObject) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[50],
@@ -139,14 +132,16 @@ class _OnBaordingState extends State<OnBaording> {
                               milliseconds: 750,
                             ),
                             curve: Curves.fastOutSlowIn);
-                      } else if(sliderViewObject.currentIndex == 2){
+                      } else if (sliderViewObject.currentIndex == 2) {
                         sumip();
 
                         //fastLinearToSlowEaseIn
                       }
-
                     },
-                    child: Icon(IconBroken.Arrow___Right,size: 27,),
+                    child: Icon(
+                      IconBroken.Arrow___Right,
+                      size: 27,
+                    ),
                   ),
                 )
               ],
@@ -155,48 +150,37 @@ class _OnBaordingState extends State<OnBaording> {
         ),
       ),
     );
-
   }
+
   Widget buildBaordingitime(BaordindModel model) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-              child:Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 1,
-                      bottom: 7
-
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(300),
-                            topLeft: Radius.circular(270),
-                            bottomRight: Radius.circular(260),
-                            bottomLeft: Radius.circular(290),
-
-                          ),
-                          color: Colors.blue[300]
-                      ),
-
-                    ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 1, bottom: 7),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(300),
+                          topLeft: Radius.circular(270),
+                          bottomRight: Radius.circular(260),
+                          bottomLeft: Radius.circular(290),
+                        ),
+                        color: Colors.blue[300]),
                   ),
-                  Image(
-
-                    image: AssetImage(model.image),
-
-
-
-                  )
-
-                ],
-              ),
-
+                ),
+                Image(
+                  image: AssetImage(model.image),
+                )
+              ],
+            ),
           ),
-          SizedBox(height: 25,),
+          SizedBox(
+            height: 25,
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,7 +192,9 @@ class _OnBaordingState extends State<OnBaording> {
                 Text(
                   '${model.body}',
                   style: TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 8,
                 ),
