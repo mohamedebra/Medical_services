@@ -80,6 +80,7 @@ dependencies:
   agora_rtc_engine: ^6.1.0
   permission_handler: ^10.2.0
   shimmer: ^2.0.0
+  flutter_placeholder_textlines: ^1.2.0
 
 
 

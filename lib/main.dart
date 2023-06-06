@@ -1,32 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:medical_services/Login/botton_admin_client.dart';
-import 'package:medical_services/Login/login_client/login.dart';
-import 'package:medical_services/Login/login_doctor/next.dart';
-import 'package:medical_services/Screens/Home/Home.dart';
-import 'package:medical_services/Screens/Home/home_screen.dart';
-import 'package:medical_services/Screens/chat/chats.dart';
-import 'package:medical_services/Screens/news/news.dart';
-import 'package:medical_services/Screens/news/webview.dart';
-import 'package:medical_services/Screens/search/search.dart';
-import 'package:medical_services/Screens/setting/language/lang.dart';
-import 'package:medical_services/cubit/cubit.dart';
-import 'package:medical_services/cubit/states.dart';
-import 'package:medical_services/dio/dio.dart';
-import 'package:medical_services/model/chacheHelper.dart';
-import 'package:medical_services/model/model.dart';
-import 'package:medical_services/onBaording/onboaring.dart';
-import 'onBaording/open_app.dart';
+import 'package:medical_services/business_logic/cubit.dart';
+import 'package:medical_services/business_logic/states.dart';
+import 'package:medical_services/domian/model/chacheHelper.dart';
+import 'package:medical_services/presentation/Screens/Home/Home.dart';
+import 'package:medical_services/presentation/Screens/setting/language/lang.dart';
+import 'package:medical_services/presentation/onBaording/onBoarding_view/onboaring.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
+import 'package:medical_services/presentation/splash/open_app.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
@@ -55,17 +43,16 @@ void main() async {
     if (token == true) {
       widget = Home();
     } else {
-      widget = OnBaording();
+      widget = OpenApp();
     }
   } else {
-    widget = OnBaording();
+    widget = OpenApp();
   }
   print(onBoarding);
   runApp(MyApp(
     startWidget: widget,
   ));
 }
-
 class MyApp extends StatelessWidget {
   final Widget startWidget;
   MyApp({super.key, required this.startWidget});
@@ -75,7 +62,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (BuildContext context) => AppCubit()),
         BlocProvider(
-          create: (context) => AppCubit()..getUsers(),
+          create: (context) => AppCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, MedialState>(
@@ -140,3 +127,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
