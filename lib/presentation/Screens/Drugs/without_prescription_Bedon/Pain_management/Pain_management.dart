@@ -1,7 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medical_services/lang/lang.dart';
+import 'package:medical_services/domian/model/modelLogin.dart';
+import 'package:medical_services/presentation/Screens/Drugs/without_prescription_Bedon/first_aid/first_aid.dart';
 
 class Pain_management extends StatefulWidget {
   @override
@@ -10,9 +13,9 @@ class Pain_management extends StatefulWidget {
 
 class _Pain_managementState extends State<Pain_management> {
   Lang _lang = Lang();
-
+  bool inLoading = true;
   List business = [];
-
+  List data = [];
   var messageContror = TextEditingController();
   @override
   void initState() {
@@ -94,7 +97,17 @@ class _Pain_managementState extends State<Pain_management> {
                                 ),
                                 Text('${business[6]['price']} جنيه'),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () async{
+
+                                    Fluttertoast.showToast(
+                                        msg: "تم اضافه المنتج",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 2,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -133,9 +146,18 @@ class _Pain_managementState extends State<Pain_management> {
                                   'عبله',
                                   style: TextStyle(color: Colors.grey[300]),
                                 ),
-                                Text('${business[2]['price']} جنيه'),
+                                Text('${business[2]['price']}123 جنيه'),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: ()async {
+                                    Fluttertoast.showToast(
+                                        msg: "تم اضافه المنتج",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 2,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -178,9 +200,21 @@ class _Pain_managementState extends State<Pain_management> {
                                   'عبله',
                                   style: TextStyle(color: Colors.grey[300]),
                                 ),
-                                Text('${business[0]['price']} جنيه'),
+                                Text('${business[0]['price']}  fgttgجنيه'),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    for (var i = 0; i >= 100; i++)
+                                      ModelLogin.buyprodact(
+                                          product_id: First_aid.business[i]['id']);
+                                    Fluttertoast.showToast(
+                                        msg: "تم اضافه المنتج",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 2,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -221,7 +255,19 @@ class _Pain_managementState extends State<Pain_management> {
                                 ),
                                 Text('${business[3]['price']} جنيه'),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    for (var i = 0; i >= 100; i++)
+                                      ModelLogin.buyprodact(
+                                          product_id: First_aid.business[i]['id']);
+                                    Fluttertoast.showToast(
+                                        msg: "تم اضافه المنتج",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 2,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -266,7 +312,19 @@ class _Pain_managementState extends State<Pain_management> {
                                 ),
                                 Text('${business[4]['price']} جنيه'),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    for (var i = 0; i >= 100; i++)
+                                      ModelLogin.buyprodact(
+                                          product_id: First_aid.business[i]['id']);
+                                    Fluttertoast.showToast(
+                                        msg: "تم اضافه المنتج",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 2,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
@@ -341,13 +399,12 @@ class _Pain_managementState extends State<Pain_management> {
   }
 
   void getdata() async {
-    var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
+    var response = await Dio().get('https://rowadtest.infosaseg.com/api/v1/products');
     if (response.statusCode == 200) {
       setState(() {
         business = response.data['data'] as List;
       });
     } else {
-      print(response.statusCode);
     }
   }
 }

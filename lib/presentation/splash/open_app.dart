@@ -1,8 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:medical_services/constants/string.dart';
 import 'package:medical_services/presentation/onBaording/onBoarding_view/onboaring.dart';
+import 'package:medical_services/presentation/resources/font_manger.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
 import 'package:shimmer/shimmer.dart';
 
 class OpenApp extends StatefulWidget {
@@ -16,12 +18,14 @@ class _OpenAppState extends State<OpenApp> {
   Timer? _timer;
 
   _startDelay() {
-    _timer = Timer(const Duration(seconds: 3), _goNext);
+    _timer = Timer(const Duration(seconds: timeSplash), _goNext);
   }
 
   _goNext() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => OnBaording()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => OnBaording()),
+        (route) => false);
   }
 
   void initState() {
@@ -53,15 +57,15 @@ class _OpenAppState extends State<OpenApp> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .2,
                     ),
-                    Text(
+                    const Text(
                       'Medical +',
-                      style: const TextStyle(
-                        fontSize: 60.0,
+                      style: TextStyle(
+                        fontSize: FontSize.s60,
                         color: Colors.white,
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4.0),
+                      padding: EdgeInsets.symmetric(vertical: AppPadding.p4),
                     ),
                   ],
                 ),

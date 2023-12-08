@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/main.dart';
 import 'package:medical_services/presentation/Screens/setting/favorite_doctor/favorite_doctor.dart';
 import 'package:medical_services/presentation/Screens/setting/help/help.dart';
@@ -33,7 +33,7 @@ class _SettingState extends State<Setting> {
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -188,7 +188,7 @@ class _SettingState extends State<Setting> {
                                   lang = value;
 
                                   setState(() {
-                                    topItms = value!;
+                                    topItms = value;
 
                                     // MyApp.setLocale(context, value as Locale);
                                   });

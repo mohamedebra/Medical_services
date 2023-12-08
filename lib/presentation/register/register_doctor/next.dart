@@ -6,9 +6,10 @@ import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/domian/model/modelLogin.dart';
-import 'package:medical_services/domian/model/model_firebase.dart';
+import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/Screens/search/search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homelayout.dart';
 
@@ -35,7 +36,7 @@ class _NextState extends State<Next> {
       ),
       body: BlocProvider<AppCubit>(
         create: (context) => AppCubit(),
-        child: BlocConsumer<AppCubit, MedialState>(
+        child: BlocConsumer<AppCubit, MedicalState>(
           listener: (context, state) {
             if (state is MedicalRegesterScussesState) {
               Navigator.pushAndRemoveUntil(
@@ -147,45 +148,68 @@ class _NextState extends State<Next> {
                       ),
                     ],
                   ),
+                  // Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 15),
+                  //     child: Container(
+                  //       height: 240,
+                  //       width: MediaQuery.of(context).size.width * .99,
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(20),
+                  //           color: Colors.grey),
+                  //       child: Container(
+                  //         height: 230,
+                  //         width: MediaQuery.of(context).size.width * .90,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(20),
+                  //             color: Colors.grey[100]),
+                  //         child: TextFormField(
+                  //           controller: abstract,
+                  //           keyboardType: TextInputType.visiblePassword,
+                  //           validator: (val) {
+                  //             if (val!.isEmpty) {
+                  //               return 'Please enter your Abstract';
+                  //             }
+                  //           },
+                  //           onTap: () {},
+                  //           decoration: InputDecoration(
+                  //             isCollapsed: true,
+                  //             hintText: 'Abstract ......',
+                  //             hintStyle: TextStyle(color: Colors.grey[400]),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     )),
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Container(
-                        height: 240,
-                        width: MediaQuery.of(context).size.width * .99,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey),
-                        child: Container(
-                          height: 230,
-                          width: MediaQuery.of(context).size.width * .90,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.grey[100]),
-                          child: TextFormField(
-                            controller: abstract,
-                            keyboardType: TextInputType.visiblePassword,
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return 'Please enter your Abstract';
-                              }
-                            },
-                            onFieldSubmitted: (value) {
-                              // if(formKey.currentState!.validate()){
-                              //   Logincubit.get(context)(
-                              //       email: emailcontrollr.text,
-                              //       password: passwordcontrollr.text
-                              //   );
-                              // }
-                            },
-                            onTap: () {},
-                            decoration: InputDecoration(
-                              isCollapsed: true,
-                              hintText: 'Abstract ......',
-                              hintStyle: TextStyle(color: Colors.grey[400]),
-                            ),
-                          ),
+                    padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: BorderDirectional(
+                            end: BorderSide(color: Colors.grey),
+                            start: BorderSide(color: Colors.grey),
+                            top: BorderSide(color: Colors.grey),
+                            bottom: BorderSide(color: Colors.grey),
+                          )),
+                      height: 200,
+                      child: TextField(
+                        onTap: () {},
+                        controller: abstract,
+                        maxLines: 7,
+                        decoration: const InputDecoration(
+                          hintText: '                                  Abstract',
+                          enabled: true,
+                          helperMaxLines: 5,
+                          focusedErrorBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity, maxHeight: double.infinity),
+                          border: OutlineInputBorder(borderSide: BorderSide.none),
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 25,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -234,12 +258,64 @@ class _NextState extends State<Next> {
                               //
                               // );
                               // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>  Home()), (route) => false);
-                              AppCubit.get(context).registaruser(
-                                  email: HomeLayOut.emailcontrollr.text,
-                                  password: HomeLayOut.passwordcontrollr.text,
-                                  phone: HomeLayOut.phonecontrollr.text,
-                                  name: HomeLayOut.userfirstcontrollr.text,
-                                  type: 'doctot');
+                              // FireModel? response =
+                              // await ModelLogin.registaruser(
+                              //     email: HomeLayOut.emailcontrollr.text,
+                              //     password: HomeLayOut.passwordcontrollr.text,
+                              //     phone: HomeLayOut.phonecontrollr.text,
+                              //     name: HomeLayOut.userfirstcontrollr.text,
+                              //     type: 'doctor'
+                              // );
+                              // SharedPreferences pref =
+                              // await SharedPreferences
+                              //     .getInstance();
+                              // pref
+                              //     .setBool('token', true)
+                              //     .then((value) {
+                              //   if (value = true) {
+                              //     Navigator.pushAndRemoveUntil(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //             builder: (context) =>
+                              //                 Home()),
+                              //             (route) => false);
+                              //     Fluttertoast.showToast(
+                              //         msg: "Welcome Medical +",
+                              //         toastLength: Toast.LENGTH_LONG,
+                              //         gravity: ToastGravity.CENTER,
+                              //         timeInSecForIosWeb: 2,
+                              //         backgroundColor:
+                              //         Colors.blueGrey,
+                              //         textColor: Colors.white,
+                              //         fontSize: 16.0);
+                              //
+                              //   }
+                              // }).catchError((error){
+                              //   print(error.toString());
+                              //   Fluttertoast.showToast(
+                              //       msg:
+                              //       "The your email is incorrect.",
+                              //       toastLength:
+                              //       Toast.LENGTH_LONG,
+                              //       gravity: ToastGravity.CENTER,
+                              //       timeInSecForIosWeb: 2,
+                              //       backgroundColor:
+                              //       Colors.blueGrey,
+                              //       textColor: Colors.white,
+                              //       fontSize: 16.0);
+                              // });
+                              AppCubit.get(context)
+                                  .registerUser(
+                                  email:
+                                  HomeLayOut.emailcontrollr.text,
+                                  password:
+                                  HomeLayOut.passwordcontrollr
+                                      .text,
+                                  phone:
+                                  HomeLayOut.phonecontrollr.text,
+                                  name: HomeLayOut.userfirstcontrollr
+                                      .text,
+                                  type: 'doctor');
                             },
                             child: Center(
                               child: Text(

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:medical_services/domian/model/onborading_model.dart';
+import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/presentation/base/base_View_model.dart';
 
 class OnBoardingViewModel extends BaseViewModel

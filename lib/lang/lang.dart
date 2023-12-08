@@ -57,9 +57,9 @@ class Lang extends ChangeNotifier {
 
   String getsearchHome() {
     if (getLang() == 'AR') {
-      return 'البحث حسب التخصص أو اسم الطبيب أو المستشفى';
+      return 'اهم الاخبار والمعلومات الصحيه';
     }
-    return "Search by specialty, doctor's name, or hospital";
+    return "The most important news and health information";
   }
 
   String getclinic() {

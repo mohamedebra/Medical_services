@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Drugs/fighting_the_infection/fighting_the_infection.dart';
 import 'package:medical_services/presentation/Screens/Drugs/hair_care/hair_care.dart';
 import 'package:medical_services/presentation/Screens/Drugs/man_care/man_care.dart';
@@ -24,7 +24,6 @@ class _DrugsState extends State<Drugs> {
   Lang _lang = Lang();
   @override
   void initState() {
-    getData();
     setState(() {
       _lang.getLang();
     });
@@ -32,25 +31,13 @@ class _DrugsState extends State<Drugs> {
   }
 
   List data = [];
-  void getData() async {
-    var response =
-        await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/news');
-    if (response.statusCode == 200) {
-      setState(() {
-        data = response.data['data'] as List;
-      });
-      print(response.data);
-    } else {
-      print(response.statusCode);
-    }
-  }
 
   Widget build(BuildContext context) {
     var txetContorlr = TextEditingController();
 
     return BlocProvider<AppCubit>(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(

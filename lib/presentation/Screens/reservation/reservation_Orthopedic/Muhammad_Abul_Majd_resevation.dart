@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/search/card.dart';
 import 'package:medical_services/presentation/resources/style.dart';
 

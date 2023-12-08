@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Drugs/hair_care/hair_conditioner/hair_conditioner.dart';
 import 'package:medical_services/presentation/Screens/Drugs/hair_care/hair_cream/hair_cream.dart';
 import 'package:medical_services/presentation/Screens/Drugs/hair_care/hair_shampoo/hair_shampoo.dart';

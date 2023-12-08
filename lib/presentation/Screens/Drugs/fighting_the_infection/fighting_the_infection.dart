@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 
 import 'package:medical_services/presentation/Screens/Drugs/fighting_the_infection/Alcohol_and_sterilization/Alcohol_and_sterilization.dart';
 import 'package:medical_services/presentation/Screens/Drugs/fighting_the_infection/face_masks/face_masks.dart';

@@ -9,10 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
-import 'package:medical_services/domian/model/chacheHelper.dart';
+import 'package:medical_services/data/webServies/dio.dart';
+import 'package:medical_services/data/webServies/chacheHelper.dart';
 import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/Screens/setting/language/lang.dart';
 import 'package:medical_services/presentation/onBaording/onBoarding_view/onboaring.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:medical_services/presentation/splash/open_app.dart';
 
@@ -33,6 +35,7 @@ void main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   CacheHelper.init();
+  DioHelper.init();
   SharedPreferences pref = await SharedPreferences.getInstance();
   Widget widget;
   onBoarding = await pref.get('OnBoarding');
@@ -56,17 +59,17 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final Widget startWidget;
-  MyApp({super.key, required this.startWidget});
+  const MyApp({super.key, required this.startWidget});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context) => AppCubit()),
+        BlocProvider(create: (BuildContext context) => AppCubit()..getNews()),
         BlocProvider(
-          create: (context) => AppCubit(),
+          create: (context) => AppCubit()..getNews()..getUsers() ,
         ),
       ],
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
@@ -77,7 +80,7 @@ class MyApp extends StatelessWidget {
                     titleTextStyle: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                        fontSize: AppSize.s25,
                         fontFamily: 'jannah'),
                     iconTheme: const IconThemeData(
                       color: Colors.blueGrey,
@@ -107,7 +110,7 @@ class MyApp extends StatelessWidget {
               AppLocale.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            supportedLocales: [
+            supportedLocales: const [
               Locale("en", ""),
               Locale("ar", ""),
             ],

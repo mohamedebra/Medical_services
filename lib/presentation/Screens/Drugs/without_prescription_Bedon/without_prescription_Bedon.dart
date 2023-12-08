@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Drugs/without_prescription_Bedon/Common%20symptomatic%20treatments/Common_symptomatic_treatments.dart';
 import 'package:medical_services/presentation/Screens/Drugs/without_prescription_Bedon/Pain_management/Pain_management.dart';
 import 'package:medical_services/presentation/Screens/Drugs/without_prescription_Bedon/first_aid/first_aid.dart';

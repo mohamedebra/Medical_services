@@ -1,8 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/business_logic/cubit.dart';
+import 'package:medical_services/business_logic/states.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/domian/model/modelLogin.dart';
 
 class First_aid extends StatefulWidget {
@@ -15,7 +18,6 @@ class First_aid extends StatefulWidget {
 class _First_aidState extends State<First_aid> {
   var messageContror = TextEditingController();
   Lang _lang = Lang();
-
   @override
   void initState() {
     getdata();
@@ -24,139 +26,191 @@ class _First_aidState extends State<First_aid> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            _lang.getfirstaid(),
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                child: Container(
-                  height: 50,
-                  child: TextFormField(
-                    onTap: () {},
-                    controller: messageContror,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      suffixIcon: Icon(Icons.search),
-                      hintText:
+    return BlocConsumer<AppCubit,MedicalState>(
+      listener: (context,state) {},
+      builder: (context,state){
+        var cubit = AppCubit.get(context);
+        return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                _lang.getfirstaid(),
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                    child: Container(
+                      height: 50,
+                      child: TextFormField(
+                        onTap: () {},
+                        controller: messageContror,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          suffixIcon: Icon(Icons.search),
+                          hintText:
                           '                                                   ${_lang.getAlcoholandsterilizationSearchbycategory()}',
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.grey[200]),
-                width: 120,
-                height: 30,
-                child: Center(child: Text(_lang.getProductType())),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey[300],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage(
-                                'images/ab46316c-2e10-40b1-9db8-07185d9d25af.jpg'),
-                            width: 120,
-                            height: 120,
-                          ),
-                          Text('ميبو مرهم 15 جم'),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          Text('41,50 جنيه'),
-                          InkWell(
-                            onTap: () {
-                              for (var i = 0; i >= 100; i++)
-                                ModelLogin.buyprodact(
-                                    product_id: First_aid.business[i]['id']);
-                              Fluttertoast.showToast(
-                                  msg: "تم اضافه المنتج",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 2,
-                                  backgroundColor: Colors.blueGrey,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue[100]),
-                              width: 120,
-                              height: 30,
-                              child: Center(
-                                  child: Text(
-                                'اضافه',
-                                style: TextStyle(color: Colors.blue),
-                              )),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 255,
-                    width: 1,
-                    color: Colors.grey[200],
+                  SizedBox(
+                    height: 15,
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage('images/بلاستر .jpg'),
-                            width: 120,
-                            height: 120,
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey[200]),
+                    width: 120,
+                    height: 30,
+                    child: Center(child: Text(_lang.getProductType())),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey[300],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage(
+                                    'images/ab46316c-2e10-40b1-9db8-07185d9d25af.jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('ميبو مرهم 15 جم'),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('41,50 جنيه'),
+                              InkWell(
+                                onTap: () async{
+
+                                  Fluttertoast.showToast(
+                                      msg: "تم اضافه المنتج",
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 2,
+                                      backgroundColor: Colors.blueGrey,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
+
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.blue[100]),
+                                  width: 120,
+                                  height: 30,
+                                  child: Center(
+                                      child: Text(
+                                        'اضافه',
+                                        style: TextStyle(color: Colors.blue),
+                                      )),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text('CURE AID PLASTER -1000 STRIPS'),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
+                        ),
+                      ),
+                      Container(
+                        height: 255,
+                        width: 1,
+                        color: Colors.grey[200],
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage('images/بلاستر .jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('CURE AID PLASTER -1000 STRIPS'),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('0,25  جنيه'),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.blue[100]),
+                                width: 120,
+                                height: 30,
+                                child: InkWell(
+                                    onTap: () {
+                                      for (var i = 0; i >= 100; i++)
+                                        ModelLogin.buyprodact(
+                                            product_id: First_aid.business[i]
+                                            ['id']);
+                                      Fluttertoast.showToast(
+                                          msg: "تم اضافه المنتج",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 2,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    },
+                                    child: Center(
+                                        child: Text(
+                                          'اضافه',
+                                          style: TextStyle(color: Colors.blue),
+                                        ))),
+                              ),
+                            ],
                           ),
-                          Text('0,25  جنيه'),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.blue[100]),
-                            width: 120,
-                            height: 30,
-                            child: InkWell(
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey[300],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage('images/فارماكول.jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('فارماكول بلاستر '),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('27 جنيه'),
+                              InkWell(
                                 onTap: () {
                                   for (var i = 0; i >= 100; i++)
                                     ModelLogin.buyprodact(
-                                        product_id: First_aid.business[i]
-                                            ['id']);
+                                        product_id: First_aid.business[i]['id']);
                                   Fluttertoast.showToast(
                                       msg: "تم اضافه المنتج",
                                       toastLength: Toast.LENGTH_LONG,
@@ -166,105 +220,105 @@ class _First_aidState extends State<First_aid> {
                                       textColor: Colors.white,
                                       fontSize: 16.0);
                                 },
-                                child: Center(
-                                    child: Text(
-                                  'اضافه',
-                                  style: TextStyle(color: Colors.blue),
-                                ))),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.blue[100]),
+                                  width: 120,
+                                  height: 30,
+                                  child: Center(
+                                      child: Text(
+                                        'اضافه',
+                                        style: TextStyle(color: Colors.blue),
+                                      )),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey[300],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage('images/فارماكول.jpg'),
-                            width: 120,
-                            height: 120,
-                          ),
-                          Text('فارماكول بلاستر '),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          Text('27 جنيه'),
-                          InkWell(
-                            onTap: () {
-                              for (var i = 0; i >= 100; i++)
-                                ModelLogin.buyprodact(
-                                    product_id: First_aid.business[i]['id']);
-                              Fluttertoast.showToast(
-                                  msg: "تم اضافه المنتج",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 2,
-                                  backgroundColor: Colors.blueGrey,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue[100]),
-                              width: 120,
-                              height: 30,
-                              child: Center(
-                                  child: Text(
-                                'اضافه',
-                                style: TextStyle(color: Colors.blue),
-                              )),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        height: 255,
+                        width: 1,
+                        color: Colors.grey[200],
                       ),
-                    ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage('images/شاش جروح.jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('شاش جروح لاصق (9*10 ) BM FOR Dressing '),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('7 جنيه'),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.blue[100]),
+                                width: 120,
+                                height: 30,
+                                child: InkWell(
+                                    onTap: () {
+                                      for (var i = 0; i >= 100; i++)
+                                        ModelLogin.buyprodact(
+                                            product_id: First_aid.business[i]
+                                            ['id']);
+                                      Fluttertoast.showToast(
+                                          msg: "تم اضافه المنتج",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 2,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    },
+                                    child: Center(
+                                        child: Text(
+                                          'اضافه',
+                                          style: TextStyle(color: Colors.blue),
+                                        ))),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
-                    height: 255,
-                    width: 1,
-                    color: Colors.grey[200],
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey[300],
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage('images/شاش جروح.jpg'),
-                            width: 120,
-                            height: 120,
-                          ),
-                          Text('شاش جروح لاصق (9*10 ) BM FOR Dressing '),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          Text('7 جنيه'),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.blue[100]),
-                            width: 120,
-                            height: 30,
-                            child: InkWell(
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage('images/Fito Burn.jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('Fito Burn cream 32gm '),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('95 جنيه'),
+                              InkWell(
                                 onTap: () {
                                   for (var i = 0; i >= 100; i++)
                                     ModelLogin.buyprodact(
-                                        product_id: First_aid.business[i]
-                                            ['id']);
+                                        product_id: First_aid.business[i]['id']);
                                   Fluttertoast.showToast(
                                       msg: "تم اضافه المنتج",
                                       toastLength: Toast.LENGTH_LONG,
@@ -274,129 +328,82 @@ class _First_aidState extends State<First_aid> {
                                       textColor: Colors.white,
                                       fontSize: 16.0);
                                 },
-                                child: Center(
-                                    child: Text(
-                                  'اضافه',
-                                  style: TextStyle(color: Colors.blue),
-                                ))),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.blue[100]),
+                                  width: 120,
+                                  height: 30,
+                                  child: Center(
+                                      child: Text(
+                                        'اضافه',
+                                        style: TextStyle(color: Colors.blue),
+                                      )),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey[300],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage('images/Fito Burn.jpg'),
-                            width: 120,
-                            height: 120,
-                          ),
-                          Text('Fito Burn cream 32gm '),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          Text('95 جنيه'),
-                          InkWell(
-                            onTap: () {
-                              for (var i = 0; i >= 100; i++)
-                                ModelLogin.buyprodact(
-                                    product_id: First_aid.business[i]['id']);
-                              Fluttertoast.showToast(
-                                  msg: "تم اضافه المنتج",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 2,
-                                  backgroundColor: Colors.blueGrey,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue[100]),
-                              width: 120,
-                              height: 30,
-                              child: Center(
-                                  child: Text(
-                                'اضافه',
-                                style: TextStyle(color: Colors.blue),
-                              )),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        height: 255,
+                        width: 1,
+                        color: Colors.grey[200],
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: 255,
-                    width: 1,
-                    color: Colors.grey[200],
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 25),
-                      child: Column(
-                        children: [
-                          Image(
-                            image: AssetImage('images/Plaster.jpg'),
-                            width: 120,
-                            height: 120,
-                          ),
-                          Text('بلاستر لازاله الكالو'),
-                          Text(
-                            'عبله',
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          Text('11 جنيه'),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.blue[100]),
-                            width: 120,
-                            height: 30,
-                            child: InkWell(
-                                onTap: () {
-                                  for (var i = 0; i >= 100; i++)
-                                    ModelLogin.buyprodact(
-                                        product_id: First_aid.business[i]
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25),
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage('images/Plaster.jpg'),
+                                width: 120,
+                                height: 120,
+                              ),
+                              Text('بلاستر لازاله الكالو'),
+                              Text(
+                                'عبله',
+                                style: TextStyle(color: Colors.grey[300]),
+                              ),
+                              Text('11 جنيه'),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.blue[100]),
+                                width: 120,
+                                height: 30,
+                                child: InkWell(
+                                    onTap: () {
+                                      for (var i = 0; i >= 100; i++)
+                                        ModelLogin.buyprodact(
+                                            product_id: First_aid.business[i]
                                             ['id']);
-                                  Fluttertoast.showToast(
-                                      msg: "تم اضافه المنتج",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.CENTER,
-                                      timeInSecForIosWeb: 2,
-                                      backgroundColor: Colors.blueGrey,
-                                      textColor: Colors.white,
-                                      fontSize: 16.0);
-                                },
-                                child: Center(
-                                    child: Text(
-                                  'اضافه',
-                                  style: TextStyle(color: Colors.blue),
-                                ))),
+                                      Fluttertoast.showToast(
+                                          msg: "تم اضافه المنتج",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 2,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    },
+                                    child: Center(
+                                        child: Text(
+                                          'اضافه',
+                                          style: TextStyle(color: Colors.blue),
+                                        ))),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
-        ));
+            ));
+      },
+    );
   }
 
   void getdata() async {

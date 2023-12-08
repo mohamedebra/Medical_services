@@ -2,7 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/domian/model/modelLogin.dart';
 
 class Common_symptomatic_treatments extends StatefulWidget {
@@ -97,9 +97,8 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[6]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
-                                      ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                    ModelLogin.buyprodact(
+                                        product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -150,9 +149,8 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[1]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
-                                      ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                    ModelLogin.buyprodact(
+                                        product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -207,9 +205,9 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[8]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
+
                                       ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                          product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -260,9 +258,8 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[3]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
-                                      ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                    ModelLogin.buyprodact(
+                                        product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -317,9 +314,8 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[4]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
-                                      ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                    ModelLogin.buyprodact(
+                                        product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -370,9 +366,8 @@ class _Common_symptomatic_treatmentsState
                                 Text('${business[5]['price']} جنيه'),
                                 InkWell(
                                   onTap: () {
-                                    for (var i = 0; i >= 100; i++)
-                                      ModelLogin.buyprodact(
-                                          product_id: business[i]['id']);
+                                    ModelLogin.buyprodact(
+                                        product_id: business[business.length]['id']);
                                     Fluttertoast.showToast(
                                         msg: "تم اضافه المنتج",
                                         toastLength: Toast.LENGTH_LONG,
@@ -415,7 +410,7 @@ class _Common_symptomatic_treatmentsState
   }
 
   void getdata() async {
-    var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
+    var response = await Dio().get('https://rowadtest.infosaseg.com/api/v1/products');
     if (response.statusCode == 200) {
       setState(() {
         business = response.data['data'] as List;

@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/Screens/news/build.dart';
 import 'package:medical_services/business_logic/states.dart';
@@ -95,7 +95,12 @@ class _SearchState extends State<Search> {
           ],
         ),
       );
-
+  @override
+  void initState() {
+    getsearch();
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +118,7 @@ class _SearchState extends State<Search> {
       ),
       body: BlocProvider(
         create: (BuildContext context) => AppCubit(),
-        child: BlocConsumer<AppCubit, MedialState>(
+        child: BlocConsumer<AppCubit, MedicalState>(
           listener: (context, state) {},
           builder: (context, state) {
             return SingleChildScrollView(
@@ -395,26 +400,27 @@ class _SearchState extends State<Search> {
                     //     ),
                     //   ],
                     // ),
-                    Container(
-                      height: 85,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: TextFormField(
-                          controller: usercontrollr,
-                          decoration: InputDecoration(
-                              hintText: "Please enter text",
-                              hintStyle: TextStyle(color: Colors.grey[400]),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20))),
-                          onChanged: (String val) {
-                            getsearch(val);
-                          },
-                        ),
-                      ),
-                    ),
+                    // input
+                    // Container(
+                    //   height: 85,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(15.0),
+                    //     child: TextFormField(
+                    //       controller: usercontrollr,
+                    //       decoration: InputDecoration(
+                    //           hintText: "Please enter text",
+                    //           hintStyle: TextStyle(color: Colors.grey[400]),
+                    //           border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.circular(20))),
+                    //       onChanged: (String val) {
+                    //         getsearch(val);
+                    //       },
+                    //     ),
+                    //   ),
+                    // ),
 
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .70,
+                      height: MediaQuery.of(context).size.height ,
                       child: ConditionalBuilder(
                           condition: Search.business.length > 0,
                           builder: (context) => ListView.separated(
@@ -440,36 +446,11 @@ class _SearchState extends State<Search> {
 
   List<dynamic> search = [];
   List<dynamic> error = [];
-  void getsearch(String val) async {
+  void getsearch() async {
     search = [];
-    // DioHelper.getData(
-    //     url: 'v2/everything',
-    //     query:{
-    //       'q':'$val',
-    //       'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
-    //     } )
-    //     .then((value) {
-    //   print(value.data.toString());
-    //
-    //   search = value.data['articles'];
-    //   print(search[0]['title']);
-    //   emit(NewsGetSearch());
-    //
-    // }).catchError((error){
-    //   print(error.toString());
-    //   emit(NewsGetSearchError(error.toString()));
-    // });
 
-    //https://newsapi.org/
-    // v2/everything
-    // ?q=tesla
-    // &from=2022-10-24
-    // &sortBy=publishedAt
-    // &apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
-    var response = await Dio().get(
-
-        //'https://newsapi.org/v2/everything?q=$val&from=2023-04-16&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'
-        "https://newsapi.org/v2/everything?q=$val&from=2023-04-21&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc");
+    var response = await Dio().get('https://newsapi.org/v2/top-headlines?country=eg&category=health&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc'
+    );
     if (response.statusCode == 200) {
       setState(() {
         Search.business = response.data['articles'] as List;

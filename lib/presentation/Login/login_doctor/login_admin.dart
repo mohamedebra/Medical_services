@@ -4,11 +4,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 import 'package:medical_services/domian/model/modelLogin.dart';
-import 'package:medical_services/domian/model/model_firebase.dart';
+import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/Screens/setting/language/lang.dart';
+import 'package:medical_services/presentation/resources/font_manger.dart';
 import 'package:medical_services/presentation/resources/style.dart';
 import 'package:medical_services/presentation/register/register_doctor/homelayout.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginAdmin extends StatelessWidget {
   var emailcontrollr = TextEditingController();
@@ -23,12 +26,12 @@ class LoginAdmin extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {
           if (state is MedicalLoginScussesState) {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => Home()),
+                MaterialPageRoute(builder: (context) => const Home()),
                 (route) => false);
             Fluttertoast.showToast(
                 msg: "Welcome Medical +",
@@ -37,7 +40,7 @@ class LoginAdmin extends StatelessWidget {
                 timeInSecForIosWeb: 2,
                 backgroundColor: Colors.blueGrey,
                 textColor: Colors.white,
-                fontSize: 16.0);
+                fontSize: FontSize.s16);
           } else if (state is MedicalLoginErrorState) {
             Fluttertoast.showToast(
                 msg: "The Email or password is wrong",
@@ -46,7 +49,7 @@ class LoginAdmin extends StatelessWidget {
                 timeInSecForIosWeb: 2,
                 backgroundColor: Colors.blueGrey,
                 textColor: Colors.white,
-                fontSize: 16.0);
+                fontSize: FontSize.s16);
           }
         },
         builder: (context, state) {
@@ -57,7 +60,7 @@ class LoginAdmin extends StatelessWidget {
             child: Stack(
               children: [
                 Image(
-                  image: AssetImage('images/login1.jpg'),
+                  image: const AssetImage('images/login1.jpg'),
                   fit: BoxFit.cover,
                   height: MediaQuery.of(context).size.height,
                 ),
@@ -81,11 +84,11 @@ class LoginAdmin extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 15),
+                                          horizontal: AppPadding.p15),
                                       child: Text(
                                         '${getLang(context, 'Welcome My Doctor')}',
                                         style: TextStyle(
-                                            fontSize: 25,
+                                            fontSize: FontSize.s25,
                                             color: Colors.blue[900]),
                                       ),
                                     ),
@@ -101,9 +104,9 @@ class LoginAdmin extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15),
                                       child: Text(
-                                        '${getLang(context, 'Emaill')}',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white),
+                                        'Email',
+                                        style: const TextStyle(
+                                            fontSize: FontSize.s15, color: Colors.white),
                                       ),
                                     ),
                                   ],
@@ -119,7 +122,7 @@ class LoginAdmin extends StatelessWidget {
                                     decoration: InputDecoration(
                                       fillColor: Colors.white30,
                                       filled: true,
-                                      prefix: Icon(IconBroken.Message),
+                                      prefix: const Icon(IconBroken.Message),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20)),
@@ -129,11 +132,11 @@ class LoginAdmin extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 15),
+                                          horizontal: AppPadding.p15),
                                       child: Text(
-                                        '${getLang(context, 'Password')}',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white),
+                                        'Password',
+                                        style: const TextStyle(
+                                            fontSize: FontSize.s15, color: Colors.white),
                                       ),
                                     ),
                                   ],
@@ -151,7 +154,7 @@ class LoginAdmin extends StatelessWidget {
                                     decoration: InputDecoration(
                                       fillColor: Colors.white30,
                                       filled: true,
-                                      prefix: Icon(IconBroken.Lock),
+                                      prefix: const Icon(IconBroken.Lock),
                                       suffixIcon: IconButton(
                                         onPressed: () {
                                           AppCubit.get(context).changeIcon();
@@ -162,45 +165,42 @@ class LoginAdmin extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                     )),
-                                SizedBox(
-                                  height: 30,
+                                const SizedBox(
+                                  height: AppSize.s30,
                                 ),
                                 Center(
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
-                                    child: TextButton(
-                                        onPressed: () async {
-                                          if (formKey.currentState!
-                                              .validate()) {
-                                            cubit.loginuser(
-                                                email: emailcontrollr.text,
-                                                password:
-                                                    passwordcontrollr.text);
-                                          }
-                                        },
-                                        child: Text(
-                                          '${getLang(context, 'Sign In')}',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                          ),
-                                        )),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.blue[300],
                                     ),
+                                    child: TextButton(
+                                        onPressed: () async {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            cubit.loginUser(email: emailcontrollr.text, password: passwordcontrollr.text);
+                                          }
+                                        },
+                                        child: Text(
+                                          '${getLang(context, 'Sign In')}',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: FontSize.s20,
+                                          ),
+                                        )),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10,
+                                const SizedBox(
+                                  height: AppSize.s10,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       "${getLang(context, "Don' t have an account?")}",
-                                      style: TextStyle(color: Colors.white),
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                     TextButton(
                                         onPressed: () {
@@ -213,7 +213,7 @@ class LoginAdmin extends StatelessWidget {
                                         child: Text(
                                           "${getLang(context, "Register")}",
                                           style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: FontSize.s18,
                                             color: Colors.blue[900],
                                           ),
                                         )),

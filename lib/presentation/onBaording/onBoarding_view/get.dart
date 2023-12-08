@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medical_services/presentation/Screens/setting/language/lang.dart';
+import 'package:medical_services/presentation/button_admin_client/botton_admin_client.dart';
+import 'package:medical_services/presentation/resources/font_manger.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
 
-import '../../botton_admin_client/botton_admin_client.dart';
 
 class Get_Started extends StatelessWidget {
   const Get_Started({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class Get_Started extends StatelessWidget {
                   children: [
                     Text(
                       '${getLang(context, 'Welcome')}',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
@@ -36,17 +38,17 @@ class Get_Started extends StatelessWidget {
                     ),
                     Text(
                       '${getLang(context, 'Your health first')}',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 15,
+                          fontSize: FontSize.s15,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
-                      height: 30,
+                    const SizedBox(
+                      height: AppSize.s30,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * .7,
-                      height: 60,
+                      height: AppSize.s60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: Colors.white,
@@ -57,13 +59,13 @@ class Get_Started extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Botton_Admin_client()));
+                                        Button_Admin_client()));
                           },
                           child: Text(
                             '${getLang(context, 'Get Started')}',
                             style: TextStyle(
                               color: Colors.blue[900],
-                              fontSize: 24,
+                              fontSize: FontSize.s24,
                             ),
                           )),
                     ),

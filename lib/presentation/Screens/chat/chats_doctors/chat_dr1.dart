@@ -8,7 +8,6 @@ import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medical_services/domian/model/model.dart';
-import 'package:medical_services/domian/model/model_chat.dart';
 import 'package:medical_services/presentation/Screens/chat/model_chat/video_call.dart';
 
 class ChatDr1 extends StatefulWidget {
@@ -58,7 +57,7 @@ class _ChatDr1State extends State<ChatDr1> {
             .snapshots(),
         builder: (context, snapshot) {
           var mag =
-              FirebaseFirestore.instance.collection('messages').doc().delete();
+          FirebaseFirestore.instance.collection('messages').doc().delete();
 
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
@@ -70,10 +69,10 @@ class _ChatDr1State extends State<ChatDr1> {
           // final docs = snapshot.data!.docs;
           return BlocProvider(
             create: (BuildContext context) => AppCubit(),
-            child: BlocConsumer<AppCubit, MedialState>(
+            child: BlocConsumer<AppCubit, MedicalState>(
               listener: (context, state) {},
               builder: (context, state) {
-                var uId = FirebaseAuth.instance.currentUser!.uid;
+                var uId = FirebaseAuth.instance.currentUser?.uid;
                 return Scaffold(
                   appBar: AppBar(
                     title: Row(
@@ -123,8 +122,8 @@ class _ChatDr1State extends State<ChatDr1> {
                                     : buildyourmessage(message[index]);
                               },
                               separatorBuilder: (context, index) => SizedBox(
-                                    height: 15,
-                                  ),
+                                height: 15,
+                              ),
                               itemCount: message.length),
                         ),
                         Container(
@@ -158,8 +157,9 @@ class _ChatDr1State extends State<ChatDr1> {
                                       dataTime: DateTime.now().toString(),
                                       text: messageContror.text,
                                       receiverId: FirebaseAuth
-                                          .instance.currentUser!.uid
+                                          .instance.currentUser?.uid
                                           .toString(),
+                                      senderId: SocialModel().uId,
                                     );
                                     messageContror.clear();
                                     controller.animateTo(0,
@@ -184,49 +184,49 @@ class _ChatDr1State extends State<ChatDr1> {
   }
 
   Widget buildmessage(MessageModel message) => Align(
-        alignment: AlignmentDirectional.centerStart,
-        child: InkWell(
-          onTap: () async {
-            // // AppCubit.get(context).deletemag();
-            // FirebaseFirestore.instance.collection('messages')
-            //     .doc() // <-- Doc ID to be deleted.
-            //     .delete() ;
-            // AppCubit.get(context).deletemag();
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10)),
-                color: Colors.grey[300]),
-            child: Text('${message.text}'),
-          ),
-        ),
-      );
+    alignment: AlignmentDirectional.centerStart,
+    child: InkWell(
+      onTap: () async {
+        // // AppCubit.get(context).deletemag();
+        // FirebaseFirestore.instance.collection('messages')
+        //     .doc() // <-- Doc ID to be deleted.
+        //     .delete() ;
+        // AppCubit.get(context).deletemag();
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10),
+                topLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10)),
+            color: Colors.grey[300]),
+        child: Text('${message.text}'),
+      ),
+    ),
+  );
   Widget buildyourmessage(MessageModel message) => InkWell(
-        onTap: () {
-          AppCubit.get(context).deletemag();
-        },
-        child: Align(
-          alignment: AlignmentDirectional.centerEnd,
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.only(
-                  topEnd: Radius.circular(10),
-                  topStart: Radius.circular(10),
-                  bottomStart: Radius.circular(10),
-                ),
-                color: Colors.blue[100]),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('${message.text}'),
+    onTap: () {
+      // AppCubit.get(context).deletemag();
+    },
+    child: Align(
+      alignment: AlignmentDirectional.centerEnd,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadiusDirectional.only(
+              topEnd: Radius.circular(10),
+              topStart: Radius.circular(10),
+              bottomStart: Radius.circular(10),
             ),
-          ),
+            color: Colors.blue[100]),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('${message.text}'),
         ),
-      );
+      ),
+    ),
+  );
 
   deletemeg(String id) {
     FirebaseFirestore.instance
@@ -236,21 +236,21 @@ class _ChatDr1State extends State<ChatDr1> {
   }
 
   Widget buildChats(SocialModel model, BuildContext context) => Row(
-        children: [
-          CircleAvatar(
-            radius: 17,
-            backgroundImage: NetworkImage(
-                'https://firebasestorage.googleapis.com/v0/b/medical-371515.appspot.com/o/WhatsApp%20Image%202023-04-19%20at%202.23.09%20AM.jpeg?alt=media&token=668dfc5a-0809-489b-9ab5-7dbdfb3b1748'),
-          ),
-          SizedBox(
-            width: 6,
-          ),
-          Text(
-            'Dr, Mohamed ebrahim',
-            style: TextStyle(fontSize: 15),
-          )
-        ],
-      );
+    children: [
+      CircleAvatar(
+        radius: 17,
+        backgroundImage: NetworkImage(
+            'https://firebasestorage.googleapis.com/v0/b/medical-371515.appspot.com/o/WhatsApp%20Image%202023-04-19%20at%202.23.09%20AM.jpeg?alt=media&token=668dfc5a-0809-489b-9ab5-7dbdfb3b1748'),
+      ),
+      SizedBox(
+        width: 6,
+      ),
+      Text(
+        'Dr, Mohamed ebrahim',
+        style: TextStyle(fontSize: 15),
+      )
+    ],
+  );
 }
 //builder:(BuildContext context, AsyncSnapshot snapshot)
 

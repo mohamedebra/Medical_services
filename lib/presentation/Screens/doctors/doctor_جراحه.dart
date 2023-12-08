@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Neurosurgery/Ahmed%20Mostafa%20Al-Saeed.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Neurosurgery/Curriculum_Vitae_doctor3.dart';

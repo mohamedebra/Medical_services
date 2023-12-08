@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 
 class Alcohol_and_sterilization extends StatelessWidget {
   Lang _lang = Lang();

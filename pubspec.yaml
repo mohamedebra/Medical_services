@@ -86,6 +86,7 @@ dependencies:
 
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -113,6 +114,7 @@ flutter:
     - images/
     - assets/lang/
     - assets/asset/Video Consult A Doctor Anytime, Anywhere.mp4
+    - images/Loading_icon.gif
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

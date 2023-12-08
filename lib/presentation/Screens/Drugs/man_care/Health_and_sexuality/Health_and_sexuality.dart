@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 
 class Health_and_sexuality extends StatelessWidget {
   Lang _lang = Lang();

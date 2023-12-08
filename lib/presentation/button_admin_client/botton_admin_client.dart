@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Login/login_client/login.dart';
 import 'package:medical_services/presentation/Login/login_doctor/login_admin.dart';
+import 'package:medical_services/presentation/resources/font_manger.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
 
-class Botton_Admin_client extends StatefulWidget {
+class Button_Admin_client extends StatefulWidget {
   @override
-  State<Botton_Admin_client> createState() => _Botton_Admin_clientState();
+  State<Button_Admin_client> createState() => _Button_Admin_clientState();
 }
 
-class _Botton_Admin_clientState extends State<Botton_Admin_client> {
+class _Button_Admin_clientState extends State<Button_Admin_client> {
   var controller = TextEditingController();
 
   Lang _lang = Lang();
@@ -26,7 +28,6 @@ class _Botton_Admin_clientState extends State<Botton_Admin_client> {
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
@@ -44,8 +45,12 @@ class _Botton_Admin_clientState extends State<Botton_Admin_client> {
                       height: MediaQuery.of(context).size.height * .47,
                     ),
                     Container(
-                      width: 250,
-                      height: 60,
+                      width: AppSize.s250,
+                      height: AppSize.s60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blue[200],
+                      ),
                       child: TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -55,22 +60,22 @@ class _Botton_Admin_clientState extends State<Botton_Admin_client> {
                           },
                           child: Text(
                             _lang.getDOCTOR(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24,
+                              fontSize: FontSize.s24,
                             ),
                           )),
+                    ),
+                    const SizedBox(
+                      height: AppSize.s50,
+                    ),
+                    Container(
+                      width: AppSize.s250,
+                      height: AppSize.s60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.blue[200],
                       ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Container(
-                      width: 250,
-                      height: 60,
                       child: TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -80,15 +85,11 @@ class _Botton_Admin_clientState extends State<Botton_Admin_client> {
                           },
                           child: Text(
                             _lang.getCLIENT(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24,
+                              fontSize: FontSize.s24,
                             ),
                           )),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue[200],
-                      ),
                     ),
                   ],
                 ),

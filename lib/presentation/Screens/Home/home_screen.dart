@@ -6,7 +6,8 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
+import 'package:medical_services/domian/model/modelLogin.dart';
 import 'package:medical_services/presentation/Screens/Drugs/Drugs.dart';
 import 'package:medical_services/presentation/Screens/map/map.dart';
 import 'package:medical_services/presentation/Screens/news/news.dart';
@@ -31,7 +32,7 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   @override
   void initState() {
-    getdata();
+    getData();
     setState(() {
       _lang.getLang();
     });
@@ -41,31 +42,18 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   Lang _lang = Lang();
   List business = [];
-  void getdata() async {
-    var response = await Dio()
-        .get('http://medicalservices.great-site.net/api/v1/specializations');
-    if (response.statusCode == 200) {
-      print(response.data);
-
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      pref.setBool('data', true).then((value) {
-        if (value == true) {
-          setState(() {
-            business = response.data['data'] as List;
-          });
-        }
-        print("$pref ////////////////////////////////");
-      });
-    } else {
-      print(response.statusCode);
-    }
+  void getData() async {
+    var response = await ModelLogin.getspecializations();
+    setState(() {
+      business = response;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (BuildContext context) => AppCubit(),
-        child: BlocConsumer<AppCubit, MedialState>(
+        child: BlocConsumer<AppCubit, MedicalState>(
           listener: (context, state) {},
           builder: (context, state) {
             return Scaffold(
@@ -120,7 +108,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 20,
+                                  width: 10,
                                 ),
                                 Icon(
                                   IconBroken.Search,
@@ -684,7 +672,9 @@ class _Home_ScreenState extends State<Home_Screen> {
                           ],
                         ),
                         fallback: (BuildContext context) => Center(
-                          child: CircularProgressIndicator(),
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
                         ),
                       ),
                     ],

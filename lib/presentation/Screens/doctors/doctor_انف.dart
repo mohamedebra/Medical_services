@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20nose%20and%20throat/Ahmed%20Alfy.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20nose%20and%20throat/Curriculum_Vitae_doctor4.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Ear,%20nose%20and%20throat/drIslam.dart';

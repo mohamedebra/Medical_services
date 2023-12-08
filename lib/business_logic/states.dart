@@ -1,90 +1,100 @@
-abstract class MedialState {}
+abstract class MedicalState {}
 
-class MedicalIntialstate extends MedialState {}
+class MedicalIntialstate extends MedicalState {}
 
-class MedicalChangeBottonNav extends MedialState {}
+class MedicalChangeBottonNav extends MedicalState {}
 
-class MedicalNewPostNav extends MedialState {}
+class MedicalNewPostNav extends MedicalState {}
 
-class MedicalRegister extends MedialState {}
+class MedicalRegister extends MedicalState {}
 
-class MedicalLoginScussesState extends MedialState {
-  final String uId;
+class MedicalLoginScussesState extends MedicalState {
+  final String? uId;
 
   MedicalLoginScussesState(this.uId);
 }
 
-class MedicalLoginScussesStatee extends MedialState {}
+class MedicalLoginScussesStatee extends MedicalState {}
 
-class MedicalLoginLodingState extends MedialState {}
+class MedicalLoginLodingState extends MedicalState {}
 
-class MedicalLoginErrorState extends MedialState {
+class MedicalLoginErrorState extends MedicalState {
   final String error;
   MedicalLoginErrorState(this.error);
 }
 
-class MedicalRegesterScussesState extends MedialState {}
+class MedicalRegesterScussesState extends MedicalState {}
 
-class MedicalRegesterErrorState extends MedialState {
+class MedicalRegesterErrorState extends MedicalState {
   final String error;
   MedicalRegesterErrorState(this.error);
 }
 
-class MedicalCreateRegister extends MedialState {}
+class MedicalCreateRegister extends MedicalState {}
 
-class MedicalCreateRegisterSuccessstate extends MedialState {}
+class MedicalCreateRegisterSuccessstate extends MedicalState {}
 
-class MedicalCreateRegisterError extends MedialState {
+class MedicalCreateRegisterError extends MedicalState {
   String error;
   MedicalCreateRegisterError(this.error);
 }
 
-class ChangeIcon extends MedialState {}
+class ChangeIcon extends MedicalState {}
 
-class ChangeImage extends MedialState {}
+class ChangeImage extends MedicalState {}
 
-class ChangeColor extends MedialState {}
+class ChangeColor extends MedicalState {}
 
-class ChangeColor1 extends MedialState {}
+class ChangeColor1 extends MedicalState {}
 
-class ChangeIconFavorie extends MedialState {}
+class ChangeIconFavorie extends MedicalState {}
 
-class ChangeIconFavorie1 extends MedialState {}
+class ChangeIconFavorie1 extends MedicalState {}
 
-class ChangeIconFavorie2 extends MedialState {}
+class ChangeIconFavorie2 extends MedicalState {}
 
-class ChangeIconFavorie3 extends MedialState {}
+class ChangeIconFavorie3 extends MedicalState {}
 
-class MedicalGetAllUsersLodingState extends MedialState {}
+class MedicalGetAllUsersLodingState extends MedicalState {}
 
-class MedicalGetAllUsersSucssesState extends MedialState {}
+class MedicalGetAllUsersSucssesState extends MedicalState {}
 
-class MedicalGetAllUsersErrorState extends MedialState {
+class MedicalGetAllUsersErrorState extends MedicalState {
   String error;
   MedicalGetAllUsersErrorState(this.error);
 }
 
-class MedicalSendMesssagesSucssesState extends MedialState {}
+class MedicalSendMesssagesSucssesState extends MedicalState {}
 
-class MedicalSendMesssagesErrorState extends MedialState {}
+class MedicalSendMesssagesErrorState extends MedicalState {}
 
-class MedicalDeleteMesssagesSucssesState extends MedialState {}
+class MedicalDeleteMesssagesSucssesState extends MedicalState {}
 
-class MedicaldeleteMesssagesSucssesState extends MedialState {}
+class MedicaldeleteMesssagesSucssesState extends MedicalState {}
 
-class MedicalGetMesssagesSucssesState extends MedialState {}
+class MedicalGetMesssagesSucssesState extends MedicalState {}
 
-class MedicalGetMesssagesErrorState extends MedialState {}
+class MedicalGetMesssagesErrorState extends MedicalState {}
 
-class MedecailImageErorrState extends MedialState {}
+class MedecailImageErorrState extends MedicalState {}
 
-class MedicalImageSucsessState extends MedialState {}
+class MedicalImageSucsessState extends MedicalState {}
 
-class NewsLodingnewsStates extends MedialState {}
+class NewsLodingnewsStates extends MedicalState {}
 
-class NewsGetvews extends MedialState {}
+class NewsGetNews extends MedicalState {}
 
-class NewsGetnewsError extends MedialState {
+class BuyProduct extends MedicalState {}
+class BuyItemsProduct extends MedicalState {}
+class DataProductLoaded extends MedicalState {}
+class DataProductLoadedError extends MedicalState {}
+
+class BuyProductError extends MedicalState {
+  String error;
+  BuyProductError(this.error);
+}
+
+class NewsGetnewsError extends MedicalState {
   String error;
   NewsGetnewsError(this.error);
 }

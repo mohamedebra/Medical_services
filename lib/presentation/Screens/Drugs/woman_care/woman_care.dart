@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Drugs/woman_care/Hair_and_skin/Hair_and_skin.dart';
 import 'package:medical_services/presentation/Screens/Drugs/woman_care/Taking_care_of_women/Taking_care_of_women.dart';
 import 'package:medical_services/presentation/Screens/Drugs/woman_care/health_and_beauty/health_and_beauty.dart';

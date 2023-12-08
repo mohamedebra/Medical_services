@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiology%20consultant/Adel%20Othman.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiology%20consultant/Ahmed%20Badir.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Cardiology%20consultant/Curriculum_Vitae_doctor6.dart';

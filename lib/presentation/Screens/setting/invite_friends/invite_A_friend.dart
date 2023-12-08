@@ -10,7 +10,7 @@ class Invite_a_friend extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           //  var cubit = AppCubit.get(context);

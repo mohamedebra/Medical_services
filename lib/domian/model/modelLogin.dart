@@ -1,43 +1,44 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:medical_services/domian/model/model_firebase.dart';
+import 'package:medical_services/constants/string.dart';
+import 'package:medical_services/data/webServies/dio.dart';
+import 'package:medical_services/data/webServies/chacheHelper.dart';
+import 'package:medical_services/domian/model/model.dart';
+import 'package:medical_services/domian/model/model_product.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ModelLogin {
-  static Future<FireModel?> loginuser({
+
+  static Future<AuthModel?> loginUser({
     required email,
     required password,
   }) async {
-    final url = 'http://medicalservices.great-site.net/api/v1/user/auth/login';
-    final data = {"email": email, "password": password};
-    final dio = Dio();
-    Response response;
-    response = await dio.post(url, data: data);
-    if (response.statusCode == 200) {
-      final body = response.data;
-      return FireModel(
+    final data ={
+      "email" : email,
+      "password" : password
+    };
+    Response response = await DioHelper.postData(url: 'login',data: data);
+    if (response.statusCode == 200){
+      return  AuthModel(
         email: email,
         token: data['token'],
         password: password,
-        category_id: '',
-        name: '',
-        phone: '',
-        type: '',
+
       );
-    } else {
+    }else {
       return null;
     }
   }
 
-  static Future<FireModel?> registaruser({
+  static Future<AuthModel?> registerUser({
     required email,
     required password,
     required phone,
     required name,
     required type,
   }) async {
-    const url =
-        'http://medicalservices.great-site.net/api/v1/user/auth/register';
     final data = {
       "email": email,
       "password": password,
@@ -45,61 +46,43 @@ class ModelLogin {
       "name": name,
       "type": type,
     };
-    final dio = Dio();
-    Response response;
-    response = await dio.post(url, data: data);
+//register
+    Response response = await DioHelper.postData(url: 'register',data: data);
     if (response.statusCode == 200) {
-      final body = response.data;
-      return FireModel(
+      return AuthModel(
           email: email,
           token: data['token'],
-          category_id: '',
-          name: '',
-          phone: '',
-          password: '',
-          type: '');
+          name: name,
+          phone: phone,
+          password: password,
+          type: type
+      );
     } else {
       return null;
     }
   }
 
-  List bussines = [];
 
   static Future buyprodact({
     required product_id,
   }) async {
-    final url = "http://192.168.1.12:8000/buy-product";
     final data = {"product_id": product_id};
-    final dio = Dio();
-    Response response;
-    response = await dio.post(url, data: data);
-    if (response.statusCode == 200) {
-      final body = response.data;
-      Fluttertoast.showToast(
-          msg: "",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 2,
-          backgroundColor: Colors.blueGrey,
-          textColor: Colors.white,
-          fontSize: 16.0);
 
+    Response response = await DioHelper.postData(url: "buy-product" ,data: data);
+    if (response.statusCode == 200) {
       return data['product_id'];
     } else {
       return null;
     }
   }
 
-  static Future getprodact({
+  static Future getProduct({
     required category_id,
   }) async {
-    final url = "http://192.168.1.12:8000/api/v1/user-products";
+    // const url = "http://192.168.1.12:8000/api/v1/user-products";
     final data = {"category_id": category_id};
-    final dio = Dio();
-    Response response;
-    response = await dio.get(url);
+    Response response = await DioHelper.getData(url: 'user-products',data: data);
     if (response.statusCode == 200) {
-      final body = response.data;
       Fluttertoast.showToast(
           msg: "تم اضافه المنتج",
           toastLength: Toast.LENGTH_LONG,
@@ -108,95 +91,41 @@ class ModelLogin {
           backgroundColor: Colors.blueGrey,
           textColor: Colors.white,
           fontSize: 16.0);
-      return FireModel(
-          token: data['token'],
-          category_id: '',
-          name: '',
-          email: '',
-          phone: '',
-          password: '',
-          type: '');
+      return AuthModel( token: data['token'],);
     } else {
       return null;
     }
   }
 
-//http://ugt.517.mywebsitetransfer.com/api/v1/products
-//http://ugt.517.mywebsitetransfer.com/api/v1/products
   static Future getreports() async {
-    final url = "http://192.168.1.12:8000/api/v1/products";
-
-    final dio = Dio();
-    Response response;
-    response = await dio.get(url);
+    Response response = await DioHelper.getData(url: buseUrlproducts);
     if (response.statusCode == 200) {
-      final body = response.data;
+      var data = await response.data['data'];
+      return data;
+    }
+  }
 
-      response.data['data'] as List;
-      print(response.data);
+  static Future getNews() async {
+    Response response = await DioHelper.getData(url: buseUrlNews);
+    if (response.statusCode == 200) {
+      var data = await response.data['data'];
+      return data;
+    }
+  }
+  static Future<List<Data>> getReports() async{
+    final data = await ModelLogin.getreports();
+    return data;
+
+  }
+
+  static Future getspecializations() async {
+    Response response = await DioHelper.getData(url: buseUrlspecializations);
+    if (response.statusCode == 200) {
+
+      var data = await response.data['data'];
+      return data;
     } else {
       return null;
     }
   }
 }
-
-//Future<dynamic> getdata() async {
-//   var uri =
-//       'https://newsapi.org/v2/top-headlines?apiKey=c9e2a047a41c43cca0ca5f777a0a82dc&sources=techcrunch';
-//
-//   final response = await http.get(Uri.parse(uri));
-//
-//   if (response.statusCode == 200) {
-//     var oje = json.decode(response.body);
-//   } else {
-//     print(response.reasonPhrase);
-//   }
-//   FirebaseMessaging.onMessage.listen((event) {
-//     print(event.data.toString());
-//   });
-//
-// }
-
-//  CacheHelper.sharedPreferences;
-// // Widget widget;
-
-// var uId = CacheHelper.getData(key: 'OnBoaring');
-// if(uId != null )
-//   {
-//     var widget = Home();
-//   }else{
-//   var widget = Login();
-// }
-// DioHelper.init();
-//    var on = CacheHelper.getData(key: 'OnBoaring');
-//   print("$on =============================================================================================");
-
-// var on = CacheHelper.getData(key: 'OnBoaring');
-// print(on);
-
-// var data =   await getdata();
-// for(var i = 0 ; i > 100 ; i++){
-//   print(data[0]['title']);
-// }
-// class MyApp extends StatefulWidget {
-//   //
-//   static void setLocale(BuildContext context, Locale newLocale) async {
-//     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
-//     state?.changeLanguage(newLocale);
-//   }
-//
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
-//
-// class _MyAppState extends State<MyApp> {
-//
-// }
-
-// changeLanguage(Locale locale) {
-//   setState(() {
-//     _locale = locale;
-//   });
-// }
-
-// This widget is the root of your application.

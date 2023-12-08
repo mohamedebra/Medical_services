@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Orthopedic/Ahmed%20Fathi.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Orthopedic/Bahauddin.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/Orthopedic/Curriculum_Vitae_doctor5.dart';

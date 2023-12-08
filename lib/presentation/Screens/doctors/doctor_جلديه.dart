@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/leather/Curriculum_Vitae_doctor2.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/leather/kamar%20Banna.dart';
 

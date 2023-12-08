@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Drugs/vitamins/Vitamin/vitamin.dart';
 import 'package:medical_services/presentation/Screens/Drugs/vitamins/vitamin_a_z/vitamina_z.dart';
 

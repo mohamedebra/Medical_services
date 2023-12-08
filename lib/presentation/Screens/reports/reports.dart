@@ -4,6 +4,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:medical_services/domian/model/modelLogin.dart';
 
 class Reports extends StatefulWidget {
   @override
@@ -91,64 +92,12 @@ class _ReportsState extends State<Reports> {
       ),
     );
   }
-  // void getdata()async{
-  //
-  //   // var response = await Dio().get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
-  //   // if(response.statusCode == 200)
-  //   // {
-  //   //   setState(() {
-  //   //     business = response.data ['data'];
-  //   //   });
-  //   //   print(response.data);
-  //   //
-  //   // }
-  //   // else{
-  //   //   print(response.statusCode);
-  //   // }
-  //   var uri = 'http://ugt.517.mywebsitetransfer.com/api/v1/user-products';
-  //   Map<String, String> headers = {
-  //     'Content-Type': 'application/json',
-  //   };
-  //   final response = await http.get(Uri.parse(uri,headers as int));
-  //
-  //   if (response.statusCode == 200) {
-  //
-  //     var oje = json.decode(response.body);
-  //     business  = json.decode(response.body);
-  //
-  //   }
-  //   else {
-  //     print(response.reasonPhrase);
-  //   }
-  //
-  // }
-
-  // ConditionalBuilder(
-  //         condition: business.length > 0 ,
-  //         builder: (BuildContext context) =>
-  //         fallback: (BuildContext context) => Center(child: Image(image: AssetImage('images/reports.png'),),)
   void getdata() async {
-    var response = await Dio().get('http://192.168.1.12:8000/api/v1/products');
-    // if(response.statusCode == 200)
-    // {
-    //   setState(() {
-    //     business = response.data['data'] as List;
-    //   });
-    //
-    // }
-    // else{
-    //   print(response.statusCode);
-    // }
 
-    if (response.statusCode == 200) {
-      final body = response.data;
+    var response = await ModelLogin.getreports();
+    setState(() {
+      business = response;
+    });
 
-      setState(() {
-        business = response.data['data'] as List;
-      });
-      print(response.data);
-    } else {
-      return null;
-    }
   }
 }

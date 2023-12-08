@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/market/market.dart';
 import 'package:medical_services/presentation/Screens/notifications/notifications.dart';
 import 'package:medical_services/presentation/Screens/search/search.dart';
@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {
           if (state is MedicalNewPostNav) {
             Navigator.push(

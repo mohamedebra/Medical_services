@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
@@ -104,25 +104,8 @@ class _NotificationsState extends State<Notifications> {
   }
 
   void getdata() async {
-    //
-    // print(business[0]['title']);
-    //
-    // var uri = 'https://newsapi.org/v2/top-headlines?apiKey=c9e2a047a41c43cca0ca5f777a0a82dc&sources=techcrunch';
-    //
-    // final response = await http.get(Uri.parse(uri));
-    //
-    // if (response.statusCode == 200) {
-    //
-    //   var oje = json.decode(response.body);
-    //   business  = json.decode(response.body);
-    //
-    // }
-    // else {
-    //   print(response.reasonPhrase);
-    // }
 
-    // https:newsapi.org/v2/everything?q=tesla&from=2023-02-09&sortBy=publishedAt&apiKey=c9e2a047a41c43cca0ca5f777a0a82dc
-    var response = await Dio().get('http://192.168.1.12:8000/api/v1/news');
+    var response = await Dio().get('https://rowadtest.infosaseg.com/api/v1/news');
     if (response.statusCode == 200) {
       setState(() {
         business = response.data['data'] as List;

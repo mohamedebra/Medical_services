@@ -10,7 +10,7 @@ class Favorite_doctor extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -171,7 +171,7 @@ class Favorite_doctor extends StatelessWidget {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    AppCubit.get(context).changeIconfavorite1();
+                                    AppCubit.get(context).changeIconFavorite1();
                                   },
                                   icon: Icon(
                                     AppCubit.get(context).iconData1,
@@ -251,7 +251,7 @@ class Favorite_doctor extends StatelessWidget {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    AppCubit.get(context).changeIconfavorite2();
+                                    AppCubit.get(context).changeIconFavorite2();
                                   },
                                   icon: Icon(
                                     AppCubit.get(context).iconData2,

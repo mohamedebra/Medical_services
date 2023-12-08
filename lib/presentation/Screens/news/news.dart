@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/constants/string.dart';
+import 'package:medical_services/domian/model/modelLogin.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/news/webview.dart';
 
 class News_Medical extends StatefulWidget {
@@ -18,9 +20,11 @@ class News_Medical extends StatefulWidget {
 
 class _News_MedicalState extends State<News_Medical> {
   Lang _lang = Lang();
+
   @override
   void initState() {
     getdata();
+    AppCubit.get(context).getNews();
     super.initState();
   }
 
@@ -28,11 +32,12 @@ class _News_MedicalState extends State<News_Medical> {
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var list = AppCubit.get(context).business;
-
+          List cubit = AppCubit
+              .get(context)
+              .news;
           return Scaffold(
             appBar: AppBar(
               title: Text(
@@ -42,83 +47,91 @@ class _News_MedicalState extends State<News_Medical> {
             ),
             body: ConditionalBuilder(
               condition: News_Medical.business.length > 0,
-              builder: (BuildContext context) => ListView.separated(
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (
-                  context,
-                  index,
-                ) =>
-                    InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WebViewScreen(
-                            News_Medical.business[index]['image2']),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    "${News_Medical.business[index]['image']}"),
-                                //${News_Medical.business[index]['urlToImage']}
-                                fit: BoxFit.cover,
+              builder: (BuildContext context) =>
+                  ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context,
+                        index,) =>
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    WebViewScreen(
+                                        News_Medical.business[index]['image2']),
                               ),
-                            )),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: 100,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Row(
                               children: [
-                                Expanded(
-                                  child: Text(
-                                    "${News_Medical.business[index]['title']}",
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                    // style: Theme.of(context).textTheme.headline5
-                                  ),
+                                Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            "${News_Medical
+                                                .business[index]['image']}"),
+                                        //${News_Medical.business[index]['urlToImage']}
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )),
+                                SizedBox(
+                                  width: 20,
                                 ),
                                 Expanded(
-                                    child: Text(
-                                  '${News_Medical.business[index]['created_at']}',
-                                  style: TextStyle(color: Colors.grey),
-                                ))
+                                  child: Container(
+                                    height: 100,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .start,
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .start,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            "${News_Medical
+                                                .business[index]['title']}",
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            // style: Theme.of(context).textTheme.headline5
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: Text(
+                                              '${News_Medical
+                                                  .business[index]['created_at']}',
+                                              style: TextStyle(
+                                                  color: Colors.grey),
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                    separatorBuilder: (context, index) =>
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                            height: 1,
+                            width: double.infinity,
+                            color: Colors.grey,
+                          ),
+                        ),
+                    itemCount: News_Medical.business.length,
                   ),
-                ),
-                separatorBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    height: 1,
-                    width: double.infinity,
-                    color: Colors.grey,
+              fallback: (BuildContext context) =>
+                  Center(
+                    child: CircularProgressIndicator(),
                   ),
-                ),
-                itemCount: News_Medical.business.length,
-              ),
-              fallback: (BuildContext context) => Center(
-                child: CircularProgressIndicator(),
-              ),
             ),
           );
         },
@@ -126,12 +139,13 @@ class _News_MedicalState extends State<News_Medical> {
     );
   }
 
-  Widget buildAitims(article) => InkWell(
+  Widget buildAitims(article) =>
+      InkWell(
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => WebViewScreen(article['url']),
+              builder: (context) => WebViewScreen(article['image2']),
             ),
           );
         },
@@ -172,9 +186,9 @@ class _News_MedicalState extends State<News_Medical> {
                       ),
                       Expanded(
                           child: Text(
-                        '${article['publishedAt']}',
-                        style: TextStyle(color: Colors.grey),
-                      ))
+                            '${article['publishedAt']}',
+                            style: TextStyle(color: Colors.grey),
+                          ))
                     ],
                   ),
                 ),
@@ -185,15 +199,9 @@ class _News_MedicalState extends State<News_Medical> {
       );
 
   void getdata() async {
-    var response =
-        await Dio().get('http://medicalservices.great-site.net/api/v1/news');
-    if (response.statusCode == 200) {
-      setState(() {
-        News_Medical.business = response.data['data'] as List;
-      });
-      print(response.data);
-    } else {
-      print(response.statusCode);
-    }
+    var response = await ModelLogin.getNews();
+    setState(() {
+      News_Medical.business = response;
+    });
   }
 }

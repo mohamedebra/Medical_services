@@ -5,8 +5,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medical_services/business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 import 'package:medical_services/domian/model/model.dart';
+import 'package:medical_services/domian/model/modelLogin.dart';
+import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/presentation/Screens/Home/Home.dart';
 import 'package:medical_services/presentation/resources/style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -38,7 +41,7 @@ class _HomeLayOutState extends State<Register> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {
           if (state is MedicalRegesterScussesState) {
             Navigator.pushAndRemoveUntil(
@@ -150,6 +153,8 @@ class _HomeLayOutState extends State<Register> {
                                   ),
                                 ),
                                 TextFormField(
+                                    onTap: (){},
+
                                     controller: userfirstcontrollr,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (val) {
@@ -173,6 +178,8 @@ class _HomeLayOutState extends State<Register> {
                                   ),
                                 ),
                                 TextFormField(
+                                    onTap: (){},
+
                                     controller: userlastcontrollr,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (val) {
@@ -197,6 +204,8 @@ class _HomeLayOutState extends State<Register> {
                                   ),
                                 ),
                                 TextFormField(
+                                    onTap: (){},
+
                                     controller: phonecontrollr,
                                     keyboardType: TextInputType.phone,
                                     validator: (val) {
@@ -220,6 +229,7 @@ class _HomeLayOutState extends State<Register> {
                                   ),
                                 ),
                                 TextFormField(
+                                  onTap: (){},
                                     controller: emailcontrollr,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (val) {
@@ -243,6 +253,8 @@ class _HomeLayOutState extends State<Register> {
                                   ),
                                 ),
                                 TextFormField(
+                                    onTap: (){},
+
                                     controller: passwordcontrollr,
                                     keyboardType: TextInputType.visiblePassword,
                                     validator: (val) {
@@ -293,7 +305,7 @@ class _HomeLayOutState extends State<Register> {
                                               // );
 
                                               AppCubit.get(context)
-                                                  .registaruser(
+                                                  .registerUser(
                                                       email:
                                                           emailcontrollr.text,
                                                       password:
@@ -304,8 +316,65 @@ class _HomeLayOutState extends State<Register> {
                                                       name: userfirstcontrollr
                                                           .text,
                                                       type: 'patient');
+                                              // FireModel? response = await  ModelLogin.registaruser(
+                                              //     email: emailcontrollr.text,
+                                              //     password: passwordcontrollr.text,
+                                              //     phone: phonecontrollr.text,
+                                              //     name: userfirstcontrollr.text,
+                                              //     type : "patient"
+                                              //
+                                              // );
+                                              // // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
 
-                                              // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+
+                                              // FireModel? response =
+                                              // await ModelLogin.registaruser(
+                                              //     email: emailcontrollr.text,
+                                              //     password: passwordcontrollr.text,
+                                              //     phone: phonecontrollr.text,
+                                              //     name: userfirstcontrollr.text,
+                                              //     type: 'patient'
+                                              // );
+                                              // SharedPreferences pref =
+                                              // await SharedPreferences
+                                              //     .getInstance();
+                                              // pref
+                                              //     .setBool('token', true)
+                                              //     .then((value) {
+                                              //   if (value = true) {
+                                              //     Navigator.pushAndRemoveUntil(
+                                              //         context,
+                                              //         MaterialPageRoute(
+                                              //             builder: (context) =>
+                                              //                 Home()),
+                                              //             (route) => false);
+                                              //     Fluttertoast.showToast(
+                                              //         msg: "Welcome Medical +",
+                                              //         toastLength: Toast.LENGTH_LONG,
+                                              //         gravity: ToastGravity.CENTER,
+                                              //         timeInSecForIosWeb: 2,
+                                              //         backgroundColor:
+                                              //         Colors.blueGrey,
+                                              //         textColor: Colors.white,
+                                              //         fontSize: 16.0);
+                                              //
+                                              //   }
+                                              // }).catchError((error){
+                                              //   print(error);
+                                              //   Fluttertoast.showToast(
+                                              //       msg:
+                                              //       "The your email is incorrect.",
+                                              //       toastLength:
+                                              //       Toast.LENGTH_LONG,
+                                              //       gravity: ToastGravity.CENTER,
+                                              //       timeInSecForIosWeb: 2,
+                                              //       backgroundColor:
+                                              //       Colors.blueGrey,
+                                              //       textColor: Colors.white,
+                                              //       fontSize: 16.0);
+                                              // });
+
+
                                             }
                                           },
                                           child: Center(

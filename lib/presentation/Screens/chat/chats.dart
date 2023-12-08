@@ -1,4 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -13,39 +12,10 @@ import '../../../business_logic/cubit.dart';
 import 'package:medical_services/business_logic/states.dart';
 
 class Chats extends StatelessWidget {
-  final List<String> days = <String>[
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
-  final List<String> months = <String>[
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  DateTime time = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    int hour = time.hour;
 
-    final int minute = time.minute;
-    final int day = time.weekday;
-    final int month = time.month;
-    final int dayInMonth = time.day;
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: FirebaseFirestore.instance.collection('users').snapshots(),
       builder: (context, snapshot) {
@@ -53,32 +23,26 @@ class Chats extends StatelessWidget {
         var users = FirebaseFirestore.instance.collection('users');
         List<SocialModel> usersList = [];
         if (snapshot.hasError) {
-          return SlideToUnlockPage();
+          return const CircularProgressIndicator();
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return SlideToUnlockPage();
+          return const CircularProgressIndicator();
         }
 
         return BlocProvider(
           create: (BuildContext context) => AppCubit(),
-          child: BlocConsumer<AppCubit, MedialState>(
+          child: BlocConsumer<AppCubit, MedicalState>(
             listener: (context, state) {},
             builder: (context, state) {
-              var uId = FirebaseAuth.instance.currentUser!.uid;
 
-              for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                if (snapshot.data!.docs[i]['uId'] != uId) {
-                  usersList.add(SocialModel.fromjson(snapshot.data!.docs[i]));
-                }
-              }
               return Scaffold(
                 body: ConditionalBuilder(
-                  condition: usersList.length >= 0,
+                  condition: cubit.length >= 0,
                   builder: (BuildContext context) {
                     return ListView.separated(
                         itemBuilder: (context, index) =>
-                            buildChats(usersList[index], context),
+                            buildChats(cubit[index], context),
                         separatorBuilder: (context, index) => Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
@@ -88,55 +52,16 @@ class Chats extends StatelessWidget {
                                 color: Colors.grey,
                               ),
                             ),
-                        itemCount: usersList.length);
+                        itemCount: cubit.length);
                   },
-                  fallback: (BuildContext context) => SlideToUnlockPage(),
+                  fallback: (BuildContext context) => const CircularProgressIndicator(),
                 ),
               );
             },
           ),
         );
       }
-      // else {
-      //   return Stack(
-      //     fit: StackFit.expand,
-      //     children: <Widget>[
-      //       Image.asset(
-      //         'images/doctor_client.jpg',
-      //         fit: BoxFit.cover,
-      //       ),
-      //       Positioned(
-      //         top: 48.0,
-      //         right: 0.0,
-      //         left: 0.0,
-      //         child: Shimmer.fromColors(
-      //           baseColor: Colors.black,
-      //           highlightColor: Colors.white,
-      //           child: Center(
-      //             child: Column(
-      //               children: <Widget>[
-      //                 Text(
-      //                   '${hour < 10 ? '0$hour' : '$hour'}:${minute < 10 ? '0$minute' : '$minute'}',
-      //                   style: const TextStyle(
-      //                     fontSize: 60.0,
-      //                     color: Colors.white,
-      //                   ),
-      //                 ),
-      //                 const Padding(
-      //                   padding: EdgeInsets.symmetric(vertical: 4.0),
-      //                 ),
-      //                 Text(
-      //                   '${days[day - 1]}, ${months[month - 1]} $dayInMonth',
-      //                   style: const TextStyle(fontSize: 24.0, color: Colors.white),
-      //                 )
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   );
-      // }
+
       ,
     );
   }
@@ -179,101 +104,3 @@ class Chats extends StatelessWidget {
       );
 }
 
-class SlideToUnlockPage extends StatelessWidget {
-  final List<String> days = <String>[
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
-  final List<String> months = <String>[
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  SlideToUnlockPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final DateTime time = DateTime.now();
-    final int hour = time.hour;
-    final int minute = time.minute;
-    final int day = time.weekday;
-    final int month = time.month;
-    final int dayInMonth = time.day;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Slide To Unlock'),
-      ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Image.asset(
-            'images/doctor_client.jpg',
-            fit: BoxFit.cover,
-          ),
-          Positioned(
-            top: 48.0,
-            right: 0.0,
-            left: 0.0,
-            child: Shimmer.fromColors(
-              baseColor: Colors.black,
-              highlightColor: Colors.white,
-              child: Center(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Medical +',
-                      style: const TextStyle(
-                        fontSize: 60.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4.0),
-                    ),
-                    Text(
-                      '${days[day - 1]}, ${months[month - 1]} $dayInMonth',
-                      style:
-                          const TextStyle(fontSize: 24.0, color: Colors.white),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-// ConditionalBuilder(
-//               condition: AppCubit.get(context).users.length > 0,
-//               builder: (BuildContext context) =>  ListView.separated(
-//                   physics: BouncingScrollPhysics(),
-//                   itemBuilder: (context,index) => buildChats(AppCubit.get(context).users[index]),
-//                   separatorBuilder: (context,index) => Padding(
-//                     padding: const EdgeInsets.symmetric(horizontal: 20),
-//                     child: Container(
-//                       width: double.infinity,
-//                       height: 1,
-//                       color: Colors.grey,
-//                     ),
-//                   ) ,
-//                   itemCount: AppCubit.get(context).users.length),
-//               fallback: (BuildContext context) => Center(child: CircularProgressIndicator()),
-//
-//

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/Ahmed%20Dweik.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/Amani%20Abd%20al-Maqsud.dart';
 import 'package:medical_services/presentation/Screens/Curriculum_Vitae/inside/Curriculum_Vitae_doctor1.dart';

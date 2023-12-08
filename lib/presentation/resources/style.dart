@@ -1,10 +1,3 @@
-// Place fonts/icons.ttf in your fonts/ directory and
-// add the following to your pubspec.yaml
-// flutter:
-//   fonts:
-//    - family: Iconly-Broken
-//      fonts:
-//       - asset: fonts/icons.ttf
 import 'package:flutter/widgets.dart';
 
 class IconBroken {

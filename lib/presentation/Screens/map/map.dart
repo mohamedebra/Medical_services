@@ -60,7 +60,7 @@ class _MapsState extends State<Maps> {
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
       create: (context) => AppCubit(),
-      child: BlocConsumer<AppCubit, MedialState>(
+      child: BlocConsumer<AppCubit, MedicalState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -101,6 +101,39 @@ class _MapsState extends State<Maps> {
                     initialCameraPosition: Maps._kGooglePlex,
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
+                      setState(() {
+                        _markers.add(Marker(
+                          markerId: MarkerId('2'),
+                          position:
+                          LatLng(31.050723452759147, 31.384650729596615),
+                          infoWindow: InfoWindow(
+                              title: "Dr: Amhed",
+                              snippet: "باطنة"
+                          ),
+                        ));
+                        _markers.add(Marker(
+                          markerId: MarkerId('3'),
+                          position: LatLng(31.09270532123056, 31.40604939311743),
+                          onTap: () {},
+                          infoWindow: InfoWindow(
+                              title: " Dr: Mohamed",
+                              snippet: "جراحه"
+                          ),
+                        ));
+                        _markers.add(Marker(
+                          markerId: MarkerId('4'),
+                          position:
+                          LatLng(31.06673515536795, 31.409514471888542),
+                          infoWindow: InfoWindow(
+                              title: "Dr: Osama",
+                              snippet: "عظام"                           ),
+                        ));
+
+                      });
+                      setState(() {
+                        print(currentLoction.latitude);
+                        print(currentLoction.longitude);
+                      });
                     },
                     onCameraMove: (CameraPosition _kGooglePlex) {
                       setState(() {
@@ -148,7 +181,9 @@ class _MapsState extends State<Maps> {
                 alignment: Alignment.center,
                 child: Text(
                     'lat: ${currentLoction.latitude} , long: ${currentLoction.longitude}'),
+
               ),
+
             ),
           );
         },

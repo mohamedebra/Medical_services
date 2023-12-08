@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:medical_services/domian/model/onborading_model.dart';
+import 'package:medical_services/constants/string.dart';
+import 'package:medical_services/domian/model/model.dart';
 import 'package:medical_services/presentation/Screens/setting/language/lang.dart';
 import 'package:medical_services/presentation/onBaording/onBoarding_view_model/onBoarding_viewModel.dart';
 import 'package:medical_services/presentation/resources/style.dart';
+import 'package:medical_services/presentation/resources/values.manger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:medical_services/presentation/onBaording/onBoarding_view/get.dart';
+class BaordindModel {
+  final String image;
+  final String title;
+  final String body;
 
+  BaordindModel({required this.image, required this.title, required this.body});
+}
 class OnBaording extends StatefulWidget {
   @override
   State<OnBaording> createState() => _OnBaordingState();
@@ -14,22 +22,31 @@ class OnBaording extends StatefulWidget {
 
 class _OnBaordingState extends State<OnBaording> {
   var controller = PageController();
+  List<BaordindModel> boarding = [
+    BaordindModel(
+      image: 'images/ppoo.png',
+      title: 'Who are we?',
+      body:
+      "Specialized proficiency in the field of medical supplies and medical instruments\n\nOur team of highly qualified and hardworking professionals anticipates the future with a renewed sense of enthusiasm to break the norm to become an exceptional provider of medical and non-medical supplies and grow beyond the region in the global market.",
+    ),
+    BaordindModel(
+      image: 'images/pp.png',
+      title: 'Medical Services',
+      body:
+      "Our philosophy\nRemember, teamwork begins with building trust. And the only way to do this is to overcome our need for your help to work with a team of professionals, in order to develop a mutual relationship with the most impressive medical companies in an unconventional business manner that defines our proposed position to be very different. Proficiency committed to conceptual marketing trends based on comprehensive business management and diversified service approaches to meet real market demands and future trends.",
+    ),
+    BaordindModel(
+      image: 'images/pppo.png',
+      title: 'Medical Services',
+      body:
+      'We strive to design, implement and manage medical programs for corporate clients according to their various needs. We offer innovative solutions, compatible with the unique requirements of each company, through programs designed to suit the specific needs of each client',
+    ),
+  ];
+  bool isLast = false;
 
-  OnBoardingViewModel _onBoardingViewModel = OnBoardingViewModel();
 
   void sumip() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    // CacheHelper.savedata(key: 'OnBoaring', value: false).then((value) {
-    //   if(value ){
-    //     Navigator.pushAndRemoveUntil(
-    //         context,
-    //         MaterialPageRoute(
-    //             builder: (context) => Get_Started()),
-    //             (route) => false);
-    //
-    //   }
-    // });
-
     pref.setBool('OnBoarding', true).then((value) {
       if (value == true) {
         Navigator.pushAndRemoveUntil(
@@ -40,27 +57,14 @@ class _OnBaordingState extends State<OnBaording> {
     });
   }
 
-  _bind() {
-    _onBoardingViewModel.start();
-  }
 
   @override
   void initState() {
-    _bind();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<SliderViewObject>(
-      stream: _onBoardingViewModel.outputSliderViewObject,
-      builder: (context, snapshot) {
-        return getContontWidget(snapshot.data);
-      },
-    );
-  }
-
-  Widget getContontWidget(SliderViewObject? sliderViewObject) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[50],
@@ -95,12 +99,20 @@ class _OnBaordingState extends State<OnBaording> {
               child: PageView.builder(
                 physics: BouncingScrollPhysics(),
                 onPageChanged: (int index) {
-                  _onBoardingViewModel.onPageChange(index);
+                  if (index == boarding.length - 1) {
+                    setState(() {
+                      isLast = true;
+                    });
+                  } else {
+                    setState(() {
+                      isLast = false;
+                    });
+                  }
                 },
                 controller: controller,
                 itemBuilder: (context, index) =>
-                    buildBaordingitime(sliderViewObject.baordindModel),
-                itemCount: sliderViewObject!.numOfSlides,
+                    buildBaordingitime(boarding[index]),
+                itemCount: boarding.length,
               ),
             ),
             SizedBox(
@@ -117,7 +129,7 @@ class _OnBaordingState extends State<OnBaording> {
                         expansionFactor: 4,
                         paintStyle: PaintingStyle.fill,
                         activeDotColor: Colors.lightBlue),
-                    count: sliderViewObject.numOfSlides),
+                    count: boarding.length),
                 Spacer(),
                 CircleAvatar(
                   radius: 32,
@@ -126,22 +138,18 @@ class _OnBaordingState extends State<OnBaording> {
                     tooltip: 'Next',
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     onPressed: () {
-                      if (sliderViewObject.currentIndex < 2) {
+                      if (isLast) {
+                        sumip();
+                      } else {
                         controller.nextPage(
-                            duration: const Duration(
+                            duration: Duration(
                               milliseconds: 750,
                             ),
                             curve: Curves.fastOutSlowIn);
-                      } else if (sliderViewObject.currentIndex == 2) {
-                        sumip();
-
                         //fastLinearToSlowEaseIn
                       }
                     },
-                    child: Icon(
-                      IconBroken.Arrow___Right,
-                      size: 27,
-                    ),
+                    child: Icon(Icons.arrow_right,size: 27,),
                   ),
                 )
               ],
@@ -152,6 +160,7 @@ class _OnBaordingState extends State<OnBaording> {
     );
   }
 
+
   Widget buildBaordingitime(BaordindModel model) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -159,11 +168,11 @@ class _OnBaordingState extends State<OnBaording> {
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 1, bottom: 7),
+                  padding: const EdgeInsets.only(top: AppPadding.p1, bottom: AppPadding.p7),
                   child: Container(
                     width: MediaQuery.of(context).size.width * .50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(300),
                           topLeft: Radius.circular(270),
                           bottomRight: Radius.circular(260),
@@ -174,30 +183,30 @@ class _OnBaordingState extends State<OnBaording> {
                 ),
                 Image(
                   image: AssetImage(model.image),
-                )
+                ),
+
               ],
             ),
           ),
-          SizedBox(
-            height: 25,
-          ),
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  '${model.title}',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  model.title,
+                  style: TextStyle(fontSize: AppSize.s28, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '${model.body}',
-                  style: TextStyle(
-                      fontSize: 15,
+                  model.body,
+                  style: const TextStyle(
+                      fontSize: AppSize.s15,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 8,
                 ),
+
               ],
             ),
           )
@@ -206,7 +215,6 @@ class _OnBaordingState extends State<OnBaording> {
 
   @override
   void dispose() {
-    _onBoardingViewModel.dispose();
     super.dispose();
   }
 }

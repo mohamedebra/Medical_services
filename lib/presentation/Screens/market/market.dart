@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:medical_services/domian/model/lang.dart';
+import 'package:medical_services/lang/lang.dart';
 import 'package:medical_services/domian/model/modelLogin.dart';
 import 'package:medical_services/presentation/Screens/Drugs/without_prescription_Bedon/first_aid/first_aid.dart';
 import 'package:medical_services/presentation/Screens/market/cart.dart';
@@ -17,11 +17,12 @@ class Market extends StatefulWidget {
 }
 
 class _MarketState extends State<Market> {
-  List business = [];
+  List data = [];
+  bool inLoading = false;
+
   Lang _lang = Lang();
   @override
   void initState() {
-    getdata();
     // getprodact();
   }
 
@@ -34,15 +35,14 @@ class _MarketState extends State<Market> {
           style: TextStyle(fontSize: 20),
         ),
       ),
-      body: SingleChildScrollView(
+      body: inLoading == true ? const Center(
+        child: CircularProgressIndicator(),
+      ): SingleChildScrollView(
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // SizedBox(height: 100,),
-              // Image(image: AssetImage('images/5555 (1).png'),
-              // width: 450,
-              // height: 450,),
+
               SizedBox(
                 height: MediaQuery.of(context).size.height * .62,
                 child: ListView.separated(
@@ -50,101 +50,54 @@ class _MarketState extends State<Market> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  // Container(
-                                  //   width: 90,
-                                  //   height: 80,
-                                  //   child: Image(
-                                  //     image: NetworkImage(
-                                  //         '${business[index]['image']}'),
-                                  //     fit: BoxFit.cover,
-                                  //   ),
-                                  // ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Image(
-                                          image: AssetImage('images/بيستر.jpg'),
-                                          width: 80,
-                                          height: 90,
-                                        ),
-                                        Text('بيستر يليانت مطهر طبي وجراحي'),
-                                        Text(
-                                          'عبله',
-                                          style: TextStyle(
-                                              color: Colors.grey[300]),
-                                        ),
-                                        Text('120 جنيه'),
-                                        Container(
-                                          height: 1,
-                                          width: double.infinity,
-                                          color: Colors.grey[300],
-                                        ),
-                                        Image(
-                                          image:
-                                              AssetImage('images/ايفوني.jpg'),
-                                          width: 80,
-                                          height: 100,
-                                        ),
-                                        Text('ايفوني ماسك'),
-                                        Text(
-                                          'عبله',
-                                          style: TextStyle(
-                                              color: Colors.grey[300]),
-                                        ),
-                                        Text('90 جنيه'),
-                                        Container(
-                                          height: 1,
-                                          width: double.infinity,
-                                          color: Colors.grey[300],
-                                        ),
-                                        Image(
-                                          image: AssetImage('images/Pure .jpg'),
-                                          width: 90,
-                                          height: 100,
-                                        ),
-                                        Text('Pure Aloohol ethyl Alcohol'),
-                                        Text(
-                                          'عبله',
-                                          style: TextStyle(
-                                              color: Colors.grey[300]),
-                                        ),
-                                        Text('20 جنيه'),
-                                        Container(
-                                          height: 1,
-                                          width: double.infinity,
-                                          color: Colors.grey[300],
-                                        ),
-                                        Image(
-                                          image: AssetImage(
-                                              'images/هيد اند شولدرز .jpg'),
-                                          width: 90,
-                                          height: 100,
-                                        ),
-                                        Text(
-                                            'يد اند شولدرز منتول فريش ضد القشره'),
-                                        Text(
-                                          'عبله',
-                                          style: TextStyle(
-                                              color: Colors.grey[300]),
-                                        ),
-                                        Text('55 جنيه'),
-                                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 25),
+                                child: Column(
+                                  children: [
+                                    Image(
+                                      image: AssetImage(
+                                          'images/ab46316c-2e10-40b1-9db8-07185d9d25af.jpg'),
+                                      width: 120,
+                                      height: 120,
                                     ),
-                                  ),
-                                ],
+                                    Text('ميبو مرهم 15 جم'),
+                                    Text(
+                                      'عبله',
+                                      style: TextStyle(color: Colors.grey[300]),
+                                    ),
+                                    Text('41,50 جنيه'),
+                                  ],
+                                ),
                               ),
                               Container(
-                                height: 10,
-                                width: 1,
-                                color: Colors.grey[200],
+                                width: double.infinity,
+                                height: 1,
+                                color: Colors.grey[300],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 25),
+                                child: Column(
+                                  children: [
+                                    Image(
+                                      image: AssetImage('images/بلاستر .jpg'),
+                                      width: 120,
+                                      height: 120,
+                                    ),
+                                    Text('CURE AID PLASTER -1000 STRIPS'),
+                                    Text(
+                                      'عبله',
+                                      style: TextStyle(color: Colors.grey[300]),
+                                    ),
+                                    Text('0,25  جنيه'),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: double.infinity,
+                                height: 1,
+                                color: Colors.grey[300],
                               ),
                             ],
                           ),
@@ -184,17 +137,7 @@ class _MarketState extends State<Market> {
               ),
               InkWell(
                 onTap: () {
-                  // for(var i = 0 ; i >= 100; i++)
-                  // ModelLogin.buyprodact(product_id: First_aid.business[i]['product_id']);
-                  // Fluttertoast.showToast(
-                  //     msg: "user buy product successfully",
-                  //     toastLength: Toast.LENGTH_LONG,
-                  //     gravity: ToastGravity.CENTER,
-                  //     timeInSecForIosWeb: 2,
-                  //     backgroundColor: Colors.blueGrey,
-                  //     textColor: Colors.white,
-                  //     fontSize: 16.0
-                  // );
+
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) => Cart()));
                 },
@@ -220,32 +163,7 @@ class _MarketState extends State<Market> {
     );
   }
 
-  void getdata() async {
-    var response = await Dio()
-        .get('http://ugt.517.mywebsitetransfer.com/api/v1/user-products');
-    if (response.statusCode == 200) {
-      // for(int i = 0; i >=100; i++ ) {
-      //   print('${response.data[i]["product_id"]} ===222===');
-      // }
 
-      setState(() {
-        for (var i = 0; i >= 100; i++) {
-          var id =
-              ModelLogin.buyprodact(product_id: First_aid.business[i]['id']);
-          print("$id ......");
-        }
-        for (int i = 0; i >= 100; i++)
-          business = response.data[First_aid.business[i]['id']]['data'];
-      });
-      // print(response.data);
-      var id = ModelLogin.buyprodact(product_id: First_aid.business[4]['id']);
-      print("$id ......");
-      print(business);
-      print('${response.statusCode}=======');
-    } else {
-      print('${response.statusCode} error====');
-    }
-  }
   // getprodact() async {
   //   const url = "http://ugt.517.mywebsitetransfer.com/api/v1/user-products";
   //
